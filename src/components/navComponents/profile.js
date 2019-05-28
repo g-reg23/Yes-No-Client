@@ -56,13 +56,12 @@ class ProfileModal extends Component {
     this.setState({[e.target.name]: e.target.value})
 
   }
-  // componentDidUpdate() {
-  //   if (this.props.auth.isAuthenticated) {
-  //     if(this.state.profMod) {
-  //       this.profModal();
-  //     }
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    console.log(prevProps.auth.username);
+    if (prevProps.auth.username !== this.props.auth.username || prevProps.auth.email !== this.props.auth.email) {
+      this.profModal();
+    }
+  }
   render() {
     let modAlert = this.props.message.id === 'modal' ? <Alert color='warning'>{this.props.message.msg}</Alert> : null;
     return (

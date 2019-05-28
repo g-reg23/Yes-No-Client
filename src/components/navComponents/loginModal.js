@@ -35,7 +35,6 @@ class LoginModal extends Component {
     // togLoginModal();
   }
   submitLog = () => {
-    console.log(this.state.logName + ': ' + this.state.logPass)
     if (this.state.logName.length >= 3 && this.state.logPass.length >= 3) {
       const info = {
         username: this.state.logName,

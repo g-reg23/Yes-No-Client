@@ -46,7 +46,6 @@ export const login = (info) => dispatch => {
  }
 
  export const updateProfile = (profile) => dispatch => {
-   console.log(profile.password);
    const newConfig = {
      headers: {
       'Content-Type': 'application/json',
@@ -54,16 +53,16 @@ export const login = (info) => dispatch => {
      }
    }
    const body = JSON.stringify(profile);
-   axios.put('api/auth', body, newConfig)
+   axios.put('api/users', body, newConfig)
     .then(res => {
       dispatch({
         type: UPDATE_PROFILE,
         payload: res.data
       });
-      dispatch(getMessages(res.data.msg, null, 'success', 'modal'))
+      dispatch(getMessages(res.data, null, 'success', null))
     })
     .catch(error => {
 
-      dispatch(getMessages(error.response.data.msg, error.response.status, 'error', 'modal' ))
+      dispatch(getMessages(error.response.data, error.response.status, 'error', 'modal' ))
     })
  }

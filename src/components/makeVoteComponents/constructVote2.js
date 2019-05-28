@@ -27,11 +27,6 @@ class ConstructVote extends Component {
       modal: !prevState.modal,
     }))
   }
-  // handleChange(e) {
-  //   this.setState({
-  //     selectValue: e.target.value,
-  //   })
-  // }
 
   onSubmit(e) {
     if (this.props.auth.isAuthenticated) {

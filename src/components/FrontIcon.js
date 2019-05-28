@@ -8,7 +8,7 @@ import YesIcon from './headComponents/yesIcon'
 import NoIcon from './headComponents/noIcon'
 
 class FrontIcon extends Component {
-
+// SWITCH STATEMENT FOR PAGE TITLE, BASED ON ROUTE PASSED IN FROM APP.JS ROUTER.
 
   render() {
     let top;

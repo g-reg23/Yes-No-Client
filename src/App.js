@@ -16,10 +16,6 @@ import { Provider } from 'react-redux';
 
 class App extends Component {
   render() {
-      // <EditVote addVote={this.handleAddVote.bind(this)} votes={this.state} handleGoIntro={this.handleGoIntro.bind(this)} />
-      // show = this.state.vote.name === '' || this.state.editVote === true ? voteType :
-      // <ShowVote votes={this.state} handleReset={this.handleReset.bind(this)} styleObject={this.props.styleObject} handleAddVoter={this.handleAddVoter.bind(this)} handleFullVote={this.handleFullVote.bind(this)} handleClearVoter={this.handleClearVoter.bind(this)} handleEdit={this.handleEdit}  />
-
 
     return (
       <Provider store={store}>

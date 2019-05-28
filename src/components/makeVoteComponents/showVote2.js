@@ -34,7 +34,6 @@ class ShowVote extends Component {
       };
       this.props.postVote(newVote);
     } else {
-      console.log('hi');
       this.props.getMessages({'msg': 'You must be logged in to make a vote.'}, 'client', 'error', 'nolognovote');
     };
   }

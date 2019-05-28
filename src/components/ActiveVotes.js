@@ -23,10 +23,6 @@ class ActiveVotes extends Component {
   scroll() {
     window.scroll(0,0)
   }
-  onSubmit(e) {
-    e.preventDefault();
-    console.log(this.refs.id.value)
-  }
   componentDidMount() {
     this.props.getVotes();
     // window.scrollTo(0,0);
