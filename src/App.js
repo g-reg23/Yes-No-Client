@@ -1,26 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
+import Navi from './components/Nav'
+import MakeVote from './components/MakeVote2'
+// import FinalVote from './components/FinalVote'
+import ActiveVotes from './components/ActiveVotes'
+import VoteIcon from './components/VoteIcon';
+import LandingPage from './components/landingPage'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import store from './store';
+import { Provider } from 'react-redux';
+
+
+
 
 class App extends Component {
   render() {
+      // <EditVote addVote={this.handleAddVote.bind(this)} votes={this.state} handleGoIntro={this.handleGoIntro.bind(this)} />
+      // show = this.state.vote.name === '' || this.state.editVote === true ? voteType :
+      // <ShowVote votes={this.state} handleReset={this.handleReset.bind(this)} styleObject={this.props.styleObject} handleAddVoter={this.handleAddVoter.bind(this)} handleFullVote={this.handleFullVote.bind(this)} handleClearVoter={this.handleClearVoter.bind(this)} handleEdit={this.handleEdit}  />
+
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Provider store={store}>
+        <Router>
+          <div className="App">
+            <Navi />
+            <Switch>
+              <Route exact path='/' render={(props)=><LandingPage {...props} state={store.getState()}/>} />
+              <Route exact path='/active' component={ActiveVotes} />
+              <Route exact path='/makevote' component={MakeVote} />
+            </Switch>
+            <VoteIcon />
+            <div style={{marginTop:'10%', marginBottom:'5%', padding:'3%'}}>Icons made by <a className='regLink' href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a className='regLink' href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a className='regLink' href="http://creativecommons.org/licenses/by/3.0/" 		    title="Creative Commons BY 3.0" target="_blank" rel="noopener noreferrer">CC 3.0 BY</a></div>
+          </div>
+        </Router>
+      </Provider>
     );
   }
 }
