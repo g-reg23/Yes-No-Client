@@ -1,4 +1,4 @@
-Front end for Vote-Yes-No. 
+Front end for Vote-Yes-No. React with redux.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
