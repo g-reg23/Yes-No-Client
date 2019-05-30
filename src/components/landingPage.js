@@ -31,9 +31,9 @@ class LandingPage extends Component {
     return (
       <div>
         <FrontIcon view='/'/>
-        <Tween duration={2} from={{transform:'rotate(180deg)'}}><div style={{marginBottom:'3%'}} align='center'><Link to='/active' className='CTAButton'>VOTE NOW!</Link></div></Tween>
         <Container id='about'>
-          {message}
+        {message}
+        <Tween duration={2} from={{transform:'rotate(180deg)'}}><div style={{marginBottom:'3%'}} align='center'><Link to='/active' className='CTAButton'>VOTE NOW!</Link></div></Tween>
           <Row>
             <Col className='subsectDiv firstSub' md={4}>
               <p className='subsectTitle'>Build</p>
@@ -56,11 +56,11 @@ class LandingPage extends Component {
               </div>
             </Col>
             <Col className='subsectDiv' md={4}>
-              <p className='subsectTitle'>Anonymous</p>
+              <p className='subsectTitle'>Archive</p>
               <div align='center'>
                 <img alt='userIcon' src={hacker} width='45%' />
               </div>
-              <p className='subsectBody'>YessNo is an anonymous voting platform, there is no login and usernames. Participate and build all votes with absolutely no judgement.</p>
+              <p className='subsectBody'>All votes at YessNo have a limited voting period, 200 votes. After that they are stored in the archive. Browse the archive to see all the archived votes.</p>
               <div align='center'>
                 <Link to='/active' className='subsectButton'>Browse</Link>
               </div>

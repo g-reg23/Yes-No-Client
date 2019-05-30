@@ -29,7 +29,7 @@ export const login = (info) => dispatch => {
         type: LOGIN_SUCCESS,
         payload: res.data
       })
-      dispatch(getMessages({'msg': 'Successfully Logged You in!'}, null, 'success', 'loginSuccess'))
+      dispatch(getMessages({'msg': 'Successfully Logged You int!'}, null, 'success', 'loginSuccess'))
     })
 
     .catch(error => {

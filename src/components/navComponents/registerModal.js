@@ -38,12 +38,18 @@ class RegisterModal extends Component {
   }
   submitReg = () => {
     if(this.state.regPass === this.state.regVPass) {
-      let info = {
-        username: this.state.regName,
-        email: this.state.regEmail,
-        password: this.state.regPass
+      // Simple email regex for frontend validation.
+      let re = /\S+@\S+\.\S+/;
+      if (re.test(this.state.regEmail)) {
+        let info = {
+          username: this.state.regName,
+          email: this.state.regEmail,
+          password: this.state.regPass
+        }
+        this.props.register(info);
+      } else {
+        this.props.getMessages({'msg': 'Email must be in standard email format.'}, 'client', 'error', 'modal')
       }
-      this.props.register(info);
     }else {
       this.props.getMessages({'msg': 'Passwords do not match'}, 'client', 'error', 'modal')
     }
