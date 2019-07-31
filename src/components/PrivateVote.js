@@ -47,7 +47,7 @@ class PrivateVote extends Component {
           <Row>
             <Col>
               <Card className='showCard' body>
-                <p className='showName' align='center'>{this.props.private.vote.name}</p>
+                <p className='showName' align='center' style={{fontSize: '3rem'}}>{this.props.private.vote.name}</p>
                 <Container>
                   <Row style={{margin:'5% 0 0 0'}}>
                     <Col><YesButton voteId={this.props.private.vote._id} yesVote={this.yesVote.bind(this)} index='0'/></Col>
