@@ -93,8 +93,8 @@ class ActiveVotes extends Component {
 
   render() {
     // this.scroll();
-    let activeVotes = this.props.vote.votes.filter(vote => vote.active === true)
-    let votes = activeVotes.map((v, index) =>
+    let activeVotes = this.props.vote.fetched === true ? this.props.vote.votes.filter(vote => vote.active === true) : null
+    let votes = activeVotes !== null ? activeVotes.map((v, index) =>
       <Col lg={6} key={v._id}>
         <Card className='showCard' body>
           <p className='showName' align='center'>{v.name}</p>
@@ -111,7 +111,7 @@ class ActiveVotes extends Component {
           </CardBody><hr />
           <PieChart yes={v.yes} no={v.no} voteId={v.Id}/>
         </Card>
-      </Col>)
+      </Col>) : null;
     let alert = this.props.message.msg !== '' && this.props.message.id !== 'modal' && this.props.message.id !== 'yesno' ?
     <Alert color='success' align='center'>{this.props.message.msg}</Alert> : null;
     return(
