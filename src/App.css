@@ -36,6 +36,10 @@ a:hover {
 .subsectButton {
   width: 50%;
 }
+.navDiv {
+  display: flex;
+  justify-content: center;
+}
 .sticky {
   position: fixed;
   width: 100%;
@@ -48,6 +52,9 @@ a:hover {
   background-color: #4f829b;
   overflow: hidden;
   padding:1%;
+}
+.dropdownItem:hover {
+  color: black;
 }
 .topIcons {
   width: 50%;
@@ -74,7 +81,45 @@ a:hover {
 .average, .total {
   color: whitesmoke;
 }
-
+.footerDiv {
+  padding:5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.linkDiv {
+  margin-top: 5%;
+}
+.privLink {
+  color: black;
+}
+.privLink:hover {
+  color:blue;
+  text-decoration: underline;
+}
+.privacyContainer {
+  margin: 10% 4%;
+}
+/* .inputDiv {
+  display: flex;
+  justify-content: center;
+} */
+.setButton, .goBackButton {
+  margin-top: 5%;
+}
+.voteInfoHeader {
+  font-weight:675;
+  font-size: 1.25rem;
+  margin-bottom: 10%;
+}
+.voteNameHead {
+  margin-top: 5%;
+  font-size: 1.25rem;
+  font-weight: 625;
+}
+.voteNameTrue {
+  font-size: 1.25rem;
+  font-weight: 550;
+}
 .subsectDiv {
   border: 2px solid slateblue;
   border-radius: .75rem;
@@ -146,9 +191,20 @@ a:hover {
 .introDiv section:nth-child(odd) {
   background: khaki;
 } */
+.centerButtonRow {
+  display: flex;
+  justify-content: center;
+}
+/* .setButton {
+  margin-left: 3%;
+} */
+.goBackButton {
+  margin-left: 3%;
+}
 .innerCard {
   background: cadetblue;
   margin-top: 5%;
+  color: white
 }
 .introDiv {
   padding: 4%;
@@ -291,7 +347,8 @@ a:hover {
   border:none;
 }
 .textInput {
-  width: 95%;
+  width: 70%;
+  margin-left: 15%;
   border-radius: .5rem;
   height: 2.5rem;
   margin-bottom: .8%;
@@ -395,6 +452,10 @@ a:hover {
   .yes_no_buttons {
     width: 26.5%;
   }
+  .textInput {
+    width: 78%;
+    margin-left: 11%;
+  }
 }
 /* Media query for regular tablet */
 @media only screen and (min-width:768px) {
@@ -419,6 +480,10 @@ a:hover {
     width: 30%;
     padding: 2.5% 5%;
   }
+  .textInput {
+    width: 86%;
+    margin-left: 7%;
+  }
 }
 /* Media qury for reular laptops */
 @media only screen and (min-width:1024px) {
@@ -439,6 +504,10 @@ a:hover {
   }
   .showCard {
     width: 100%;
+  }
+  .textInput {
+    width: 90%;
+    margin-left: 5%;
   }
 }
 /* Media query for large laptops */

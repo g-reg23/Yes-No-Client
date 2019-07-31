@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_VOTES, VOTE_INFO, RESET_INFO, VOTE_LOADING, POST_VOTE, ADD_VOTE  } from '../actions/types';
+import { GET_VOTES, VOTE_INFO, RESET_INFO, VOTE_LOADING, POST_VOTE, ADD_VOTE , POST_PRIVATE_VOTE } from '../actions/types';
 import { getMessages } from '../actions/messageActions';
 
 
@@ -22,10 +22,10 @@ export const getVotes = () => dispatch => {
 // POST A NEW VOTE. ADD CONTENT TYPE AND JWT TOKEN TO HEADER FOR AUTHENTICATION.
 // IF SUCCESSFUL ADD VOTE TO REDUX IN VOTE REDUCER. ERROR IF UNSUCCESSFUL.
 export const postVote = (newVote) => dispatch => {
+  console.log('actions');
   const newConfig = {
     headers: {
      'Content-Type': 'application/json',
-     'x-auth-token': localStorage.getItem('token')
     }
   }
   axios
@@ -41,6 +41,7 @@ export const postVote = (newVote) => dispatch => {
       dispatch(getMessages(error.response.data, 400, 'error'))
     })
 }
+
 // VOTE INFORMATION SUBMITTED FOR USER REVIEW.
 export const voteInfo = voteObject =>  {
   return {
@@ -79,12 +80,13 @@ export const addVote = vote => dispatch => {
   const newConfig = {
     headers: {
      'Content-Type': 'application/json',
-     'x-auth-token': localStorage.getItem('token')
     }
   }
+  const body = JSON.stringify(vote);
   axios
-   .put('/api/votes', vote, newConfig)
+   .put('/api/votes', body, newConfig)
    .then(res => {
+     console.log(res.data);
      dispatch({
        type: ADD_VOTE,
        payload: res.data

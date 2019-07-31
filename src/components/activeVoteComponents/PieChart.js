@@ -32,7 +32,7 @@ class PieChart extends Component {
     // SHOW HIGHER AVERAGE. YES VS NO.
     let avg = avgYes > avgNo ? avgYes : avgNo;
     // SUMMARIZE DATA AND SHOW PIE CHART IF ANY VOTES. OTHERWISE SHOW 'No Votes Yet.'
-    let pie = total > 0 ? <div><h5 className='average'>{avg}</h5><h5 className='total' style={{textAlign:'center'}}>{total} Total Votes</h5><VictoryPie data={[
+    let pie = total > 0 ? <div><h5 className='average'>{avgYes}</h5><h5 style={{textAlign:'center'}} className='total'>{avgNo}</h5><h5 className='total' style={{textAlign:'center'}}>{total} Total Votes</h5><VictoryPie data={[
       {x:'Yes', y: yes},
       {x:'No', y: no }
     ]} height={200} className='pieChart' labelRadius={55}/><p onClick={this.toggle} style={{color:'white'}} className='hidePieChart'><u>HIDE</u></p></div> : <p onClick={this.toggle} className='clickable'>No votes yet!!</p>

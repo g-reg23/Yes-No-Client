@@ -10,6 +10,7 @@ import YesButton from './yesButton';
 import FrontIcon from './FrontIcon';
 import PieChart from './activeVoteComponents/PieChart';
 import '../App.css';
+import { Spring } from 'react-spring/renderprops'
 
 
 class ActiveVotes extends Component {
@@ -23,17 +24,23 @@ class ActiveVotes extends Component {
   scroll() {
     window.scroll(0,0)
   }
-  componentDidMount() {
+  componentDidMount(prevProps) {
     this.props.getVotes();
+    this.props.clearMessages();
     // window.scrollTo(0,0);
   }
   yesVote(id) {
     let thisVote = this.props.vote.votes.find(vote => vote._id === id);
-    let voted = thisVote.voters.includes(this.props.auth._id);
+    // let voted = thisVote.voters.some(voter => voter.user === this.props.auth._id);
+    let voted;
     if (this.props.auth.isAuthenticated) {
       if (!voted) {
-        thisVote.yes += 1;
-        thisVote.voters.push(this.props.auth._id);
+        // thisVote.yes += 1;
+        thisVote.type = 'yes';
+        thisVote.voters.push({
+          user: this.props.auth._id,
+          vote: 'yes'
+        });
         thisVote.userId = this.props.auth._id;
         this.props.addVote(thisVote);
       }else {
@@ -44,12 +51,17 @@ class ActiveVotes extends Component {
     }
   }
   noVote(id) {
+    console.log('say what?')
     let thisVote = this.props.vote.votes.find(vote => vote._id === id);
     let voted = thisVote.voters.includes(this.props.auth._id);
     if (this.props.auth.isAuthenticated) {
       if (!voted) {
-        thisVote.no += 1;
-        thisVote.voters.push(this.props.auth._id);
+        // thisVote.no += 1;
+        thisVote.type = 'no';
+        thisVote.voters.push({
+          user: this.props.auth._id,
+          vote: 'no'
+        });
         thisVote.userId = this.props.auth._id;
         this.props.addVote(thisVote);
       }else {
@@ -70,11 +82,19 @@ class ActiveVotes extends Component {
       )
     }
   }
-
+  scroll() {
+    window.scrollTo(0,0)
+  }
+  componentDidUpdate(prevProps) {
+    // if (prevProps.message.msg !== this.props.message.msg && this.props.message.id !== 'yesno') {
+    //   window.scroll(0,50);
+    // }
+  }
 
   render() {
     // this.scroll();
-    let votes = this.props.vote.votes.map((v, index) =>
+    let activeVotes = this.props.vote.votes.filter(vote => vote.active === true)
+    let votes = activeVotes.map((v, index) =>
       <Col lg={6} key={v._id}>
         <Card className='showCard' body>
           <p className='showName' align='center'>{v.name}</p>
@@ -95,17 +115,22 @@ class ActiveVotes extends Component {
     let alert = this.props.message.msg !== '' && this.props.message.id !== 'modal' && this.props.message.id !== 'yesno' ?
     <Alert color='success' align='center'>{this.props.message.msg}</Alert> : null;
     return(
-      <div>
-        <FrontIcon view='activeVotes' />
-        <div className='introDiv'>
-          {alert}
-          <Container>
-            <Row>
-              {votes}
-            </Row>
-          </Container>
-        </div>
-      </div>
+      <Spring from={{ opacity: 0, marginTop: -1000 }} to={{ opacity: 1, marginTop: 0 }}>
+        {props => (
+          <div style={props}>
+            <FrontIcon view='activeVotes' />
+            <div className='introDiv'>
+              {alert}
+              <Container>
+                <Row>
+                  {votes}
+                </Row>
+              </Container>
+            </div>
+          </div>
+          )
+        }
+      </Spring>
     )
   }
 }

@@ -8,6 +8,7 @@ import yes from '../../images/iconfinder_checkmark-24_103184.svg';
 import no from '../../images/iconfinder_No_984759.svg';
 import { getMessages, clearMessages } from '../../actions/messageActions';
 import PieChart from '../activeVoteComponents/PieChart';
+import { Link } from 'react-router-dom';
 
 
 class ShowVote extends Component {
@@ -30,7 +31,7 @@ class ShowVote extends Component {
         no: 0,
         voters: [],
         creator: this.props.auth.username,
-        _id: this.props.auth._id
+        userId: this.props.auth._id
       };
       this.props.postVote(newVote);
     } else {
@@ -45,8 +46,10 @@ class ShowVote extends Component {
     return (
       <div>
         <h3 style={{fontWeight:'700'}} align='center'>Vote Review</h3>
-        <h3 style={{fontWeight:'500', marginTop: '3.5%', textAlign: 'center'}}>Click Submit if you are ready to submit this vote, click edit to go back and work on the vote.</h3>
-        <div style={{display:'flex', justifyContent:'center', marginBottom:'2%'}}><Button className='subButton' onClick={this.onSubmit} size='md' color='primary'>Submit</Button><Button className='editButton' onClick={this.onEdit} size='md' >Edit</Button></div>
+        <h3 style={{fontWeight:'500', marginTop: '3.5%', textAlign: 'center'}}>Click Submit if you are ready to submit this vote to the public, click Private to add contacts and make a provate vote, or  click edit to go back and work on the vote.</h3>
+        <div style={{display:'flex', justifyContent:'center', marginBottom:'2%'}}>
+          <Button className='subButton' onClick={this.onSubmit} size='md' color='primary'>Submit</Button>
+          <Button className='editButton' onClick={this.onEdit} size='md' >Edit</Button></div>
         <Col>
           <Card className='showCard' body>
             <p className='showName' align='center'>{this.props.vote.info.name}</p>

@@ -4,7 +4,7 @@ import '../../App.css';
 import { Link } from 'react-router-dom';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Alert } from 'reactstrap';
 import { connect } from 'react-redux';
-import { updateProfile } from '../../actions/authActions';
+import { updateProfile, deleteAccount } from '../../actions/authActions';
 import { getMessages, clearMessages } from '../../actions/messageActions';
 import propTypes from 'prop-types';
 
@@ -22,20 +22,26 @@ class ProfileModal extends Component {
     this.profModal = this.profModal.bind(this);
     this.handleProfChange = this.handleProfChange.bind(this);
     this.updateProfile = this.updateProfile.bind(this);
+    this.delete = this.delete.bind(this);
   }
   static propTypes = {
     // update: propTypes.func.isRequired,
     auth: propTypes.object.isRequired,
     message: propTypes.object.isRequired,
-    updateProfile: propTypes.func.isRequired
+    updateProfile: propTypes.func.isRequired,
+    deleteAccount: propTypes.func.isRequired
   }
   profModal()  {
-    this.props.clearMessages();
-    this.setState({
-      profMod: !this.state.profMod,
-      profName: this.props.auth.username,
-      profEmail: this.props.auth.email
-    })
+    if (this.props.auth.facebook === false && this.props.auth.google === false) {
+      this.props.clearMessages();
+      this.setState({
+        profMod: !this.state.profMod,
+        profName: this.props.auth.username,
+        profEmail: this.props.auth.email
+      })
+    } else {
+      this.props.getMessages({'msg': 'You cannot edit google or facebook data.'}, null, 'error', null)
+    }
     // togRegModal();
   }
   updateProfile() {
@@ -56,20 +62,30 @@ class ProfileModal extends Component {
     this.setState({[e.target.name]: e.target.value})
 
   }
+  delete() {
+    if (this.state.profPass.length < 3) {
+      this.props.getMessages({'msg': 'You must enter your password.'}, null, 'error', 'modal');
+    } else return this.props.deleteAccount(this.props.auth._id, this.state.profPass);
+
+  }
   componentDidUpdate(prevProps) {
-    console.log(prevProps.auth.username);
     if (prevProps.auth.username !== this.props.auth.username || prevProps.auth.email !== this.props.auth.email) {
       this.profModal();
     }
   }
   render() {
     let modAlert = this.props.message.id === 'modal' ? <Alert color='warning'>{this.props.message.msg}</Alert> : null;
+    let social = this.props.auth.facebook === true || this.props.auth.google === true ? <Alert color='warning'>You cannot edit your facebook or google information.</Alert> :
+    null
     return (
-        <div>
+        <div className='navDiv'>
             <Link className='nav-link navLink navUsername' onClick={this.profModal} to='#'>{this.props.auth.username}</Link>
+            {this.props.auth.facebook === true ? <img src={this.props.auth.pic.url} height='30' alt='profilePic' /> : null}
+            {this.props.auth.google === true ? <img src={this.props.auth.pic} height='30' alt='profilePic' /> : null}
             <Modal isOpen={this.state.profMod} toggle={this.profModal} className='register-modal' centered style={{marginTop:'3.5%'}}>
               <ModalHeader style={{background:'lightgray'}}>Update Profile</ModalHeader>
               <ModalBody style={{padding:'7% 5% 7% 5%'}}>
+                {social}
                 {modAlert}
                 <input placeholder='Username' type='text'  className='textInput' ref='username' name='profName' value={this.state.profName} onChange={this.handleProfChange} />
                 <input placeholder='Email' type='email'  className='textInput' ref='email' name='profEmail' value={this.state.profEmail} onChange={this.handleProfChange} />
@@ -78,6 +94,7 @@ class ProfileModal extends Component {
               <ModalFooter style={{background:'lightgray'}}>
                 <Button color="primary" onClick={this.updateProfile}>Submit</Button>
                 <Button color="danger" onClick={this.profModal}>Cancel</Button>
+                <Button color="danger" onClick={this.delete}>Delete</Button>
               </ModalFooter>
             </Modal>
         </div>
@@ -90,4 +107,4 @@ const mapStateToProps = (state) => ({
   message: state.messageObject
 })
 
-export default connect(mapStateToProps, { updateProfile, getMessages, clearMessages })(ProfileModal);
+export default connect(mapStateToProps, { updateProfile, getMessages, clearMessages, deleteAccount })(ProfileModal);

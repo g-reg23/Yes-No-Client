@@ -7,7 +7,8 @@ import { connect } from 'react-redux';
 import { login, logout } from '../../actions/authActions';
 import { getMessages, clearMessages } from '../../actions/messageActions';
 import propTypes from 'prop-types';
-
+import Facebook from './facebook'
+import Google from './google'
 
 class LoginModal extends Component {
   constructor(props) {
@@ -46,7 +47,13 @@ class LoginModal extends Component {
     }
   }
   logout() {
-    this.props.logout();
+    let social;
+    if (this.props.auth.facebook === true || this.props.auth.google === true) {
+      social = true;
+    } else {
+      social = false
+    }
+    this.props.logout(social);
   }
   handleLogChange = e => {
     this.setState({[e.target.name]: e.target.value})
@@ -65,17 +72,20 @@ class LoginModal extends Component {
     return (
         <div>
             {auth}
+
             <Modal isOpen={this.state.loginMod} toggle={this.loginModal} className='login-modal' centered style={{marginTop:'3.5%'}}>
-              <ModalHeader style={{background:'lightgray'}}>Login</ModalHeader>
+              <h3 className='mt-5' align='center'>Login with YessNo</h3>
               <ModalBody style={{padding:'7% 5% 7% 5%'}}>
                 {modAlert}
-                <input placeholder='Username' type='text'  className='textInput' name='logName' ref='username' onChange={this.handleLogChange} />
-                <input placeholder='Password' type='password'  className='textInput' name='logPass' ref='password' onChange={this.handleLogChange} />
+                <input placeholder='Username' type='text'  className='textInput' name='logName' onChange={this.handleLogChange} />
+                <input placeholder='Password' type='password'  className='textInput' name='logPass' onChange={this.handleLogChange} />
               </ModalBody>
               <ModalFooter style={{background:'lightgray'}}>
                 <Button color="primary" onClick={this.submitLog}>Submit</Button>
                 <Button color="danger" onClick={this.loginModal}>Cancel</Button>
               </ModalFooter>
+              <h3 className='mt-5' align='center'>Or Login with Social Media.</h3>
+              <div className='m-5'><Google /><Facebook /></div>
             </Modal>
         </div>
     );

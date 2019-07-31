@@ -4,17 +4,31 @@ import './App.css';
 import Navi from './components/Nav'
 import MakeVote from './components/MakeVote2'
 // import FinalVote from './components/FinalVote'
-import ActiveVotes from './components/ActiveVotes'
+import ActiveVotes from './components/ActiveVotes';
+import Archive from './components/archive'
 import VoteIcon from './components/VoteIcon';
+import Private from './components/private';
+import PrivateArchive from './components/privateArchive';
+import ViewPrivate from './components/viewPrivate';
 import LandingPage from './components/landingPage'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import store from './store';
+import Verify from './components/verify';
 import { Provider } from 'react-redux';
-
+import { checkToke } from './actions/authActions';
+import PrivacyPolicy from './privacyPolicy'
+import { Link } from 'react-router-dom';
 
 
 
 class App extends Component {
+  componentDidMount(prevProps) {
+    console.log(prevProps);
+    let path = window.location.pathname;
+    if (path === '/' || path === '/makevote' || path === '/active' || path === '/private' || path === '/privateArhive' || path === '/archive' || path === '/privacyPolicy' && prevProps === undefined) {
+      store.dispatch(checkToke());
+    }
+  }
   render() {
 
     return (
@@ -25,10 +39,17 @@ class App extends Component {
             <Switch>
               <Route exact path='/' render={(props)=><LandingPage {...props} state={store.getState()}/>} />
               <Route exact path='/active' component={ActiveVotes} />
+              <Route exact path='/archive' component={Archive} />
               <Route exact path='/makevote' component={MakeVote} />
+              <Route exact path='/private' component={Private} />
+              <Route exact path='/privateArchive' component={PrivateArchive} />
+              <Route exact path='/viewPrivate/:id' component={ViewPrivate} />
+              <Route exact path='/privacyPolicy' component={PrivacyPolicy} />
+              <Route exact path='/verify/:id' component={Verify} />
             </Switch>
             <VoteIcon />
-            <div style={{marginTop:'10%', marginBottom:'5%', padding:'3%'}}>Icons made by <a className='regLink' href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a className='regLink' href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a className='regLink' href="http://creativecommons.org/licenses/by/3.0/" 		    title="Creative Commons BY 3.0" target="_blank" rel="noopener noreferrer">CC 3.0 BY</a></div>
+            <div className='footerDiv'>Icons made by <a className='regLink' href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a className='regLink' href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a className='regLink' href="http://creativecommons.org/licenses/by/3.0/" 		    title="Creative Commons BY 3.0" target="_blank" rel="noopener noreferrer">CC 3.0 BY</a>
+            <div className='linkDiv'><Link className='privLink' to='/privacyPolicy'> Our Privacy Policy</Link></div></div>
           </div>
         </Router>
       </Provider>

@@ -5,7 +5,7 @@ import { Card, CardBody,
 // import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import '../../App.css';
 import { connect } from 'react-redux';
-import { voteInfo } from '../../actions/voteActions';
+import { privInfo } from '../../actions/privateActions';
 import { getMessages } from '../../actions/messageActions';
 import propTypes from 'prop-types';
 import { Tween } from 'react-gsap';
@@ -14,18 +14,20 @@ import { Tween } from 'react-gsap';
 
 
 
-class ConstructVote extends Component {
+class ConstructPrivate extends Component {
   constructor(props) {
     super(props);
     this.state = {
       modal: false,
       name: '',
       description: '',
+      voteLength: '2 hour',
       nameSet: false,
       descSet: false
     }
     this.toggle = this.toggle.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.selectChange = this.selectChange.bind(this);
     this.setName = this.setName.bind(this);
     this.setDesc = this.setDesc.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -33,6 +35,11 @@ class ConstructVote extends Component {
   }
   handleChange(e) {
     this.setState({[e.target.name]: e.target.value})
+  }
+  selectChange(e) {
+    this.setState({
+      length: e.target.value,
+    })
   }
 
   toggle() {
@@ -63,7 +70,6 @@ class ConstructVote extends Component {
     }
   }
   onSubmit(e) {
-    console.log(this.state)
     if (this.props.auth.isAuthenticated) {
       if (this.state.name.length > 3) {
         if (this.state.description.length > 8) {
@@ -71,10 +77,10 @@ class ConstructVote extends Component {
             name: this.state.name,
             desc: this.state.description,
             creator: this.props.auth.username,
+            voteLength: this.state.voteLength,
             saved: true,
           }
-          console.log(newVote)
-          this.props.voteInfo(newVote)
+          this.props.privInfo(newVote)
           // this.props.addVote(newVote);
         }else {this.toggle()}
       }else{this.toggle()}
@@ -96,7 +102,14 @@ class ConstructVote extends Component {
       <div className='centerButtonRow'><Button color='primary' className='setButton' onClick={this.setDesc}>SET</Button><Button color='primary' className='goBackButton' onClick={this.goBack}>Go Back</Button></div></div><div><p align='center' className='voteNameHead'>Vote Name</p><p className='voteNameTrue' align='center'>{this.state.name}</p></div></div></Tween>
     let intro1 = this.state.nameSet === false ? <CardTitle className='voteInfoHeader'>Please enter the question to be voted on in the box below. It should be a simple yes/no question. Then click the Set button</CardTitle> :
       <CardTitle className='voteInfoHeader'>Now you may enter any additional details and a brief description of the vote and enter the Set button.</CardTitle>
-    let finalReview =<div><CardTitle className='voteInfoHeader'>Click save to view your vote before submitting. Otherwise click Go Back.</CardTitle>
+    let finalReview =<div><CardTitle className='voteInfoHeader'>Now choose the length of your vote and click save. Otherwise click Go Back.</CardTitle>
+      <select className='textInput' onChange={this.selectChange}>
+        <option name='length' value='2 Hours'>2 Hours</option>
+        <option name='length' value='3 Hours'>3 Hours</option>
+        <option name='length' value='6 Hours'>6 Hours</option>
+        <option name='length' value='12 Hours'>12 Hours</option>
+        <option name='length' value='24 Hours'>24 Hours</option>
+      </select><br />
       <p align='center' className='voteNameHead'>Vote Name</p><p className='voteNameTrue' align='center'>{this.state.name}</p>
       <p align='center' className='voteNameHead'>Vote Description</p><p className='voteNameTrue' align='center'>{this.state.description}</p>
       <div className='centerButtonRow'><Button style={{marginTop:'5%'}} onClick={this.onSubmit} color='primary' type='submit' value='Submit'><span>Save</span></Button><Button color='primary' className='goBackButton' onClick={this.goBack}>Go Back</Button></div></div>
@@ -124,8 +137,8 @@ class ConstructVote extends Component {
     );
   }
 }
-ConstructVote.propTypes = {
-  voteInfo: propTypes.func.isRequired,
+ConstructPrivate.propTypes = {
+  privInfo: propTypes.func.isRequired,
   vote: propTypes.object.isRequired,
   message: propTypes.object.isRequired,
   auth: propTypes.object.isRequired,
@@ -138,4 +151,4 @@ const mapStateToProps = (state) => ({
   message: state.messageObject
 })
 
-export default connect(mapStateToProps, { voteInfo, getMessages })(ConstructVote);
+export default connect(mapStateToProps, { privInfo, getMessages })(ConstructPrivate);

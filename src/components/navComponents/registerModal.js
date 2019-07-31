@@ -29,13 +29,17 @@ class RegisterModal extends Component {
     auth: propTypes.object.isRequired,
     message: propTypes.object.isRequired,
   }
-  registerModal()  {
+  registerModal(e)  {
     this.props.clearMessages();
     this.setState({
       registerMod: !this.state.registerMod
     })
     // togRegModal();
+    // if (e.target.textContent !== 'Cancel') {
+    //   this.props.handleClick();
+    // }
   }
+
   submitReg = () => {
     if(this.state.regPass === this.state.regVPass) {
       // Simple email regex for frontend validation.
@@ -47,6 +51,7 @@ class RegisterModal extends Component {
           password: this.state.regPass
         }
         this.props.register(info);
+        this.registerModal();
       } else {
         this.props.getMessages({'msg': 'Email must be in standard email format.'}, 'client', 'error', 'modal')
       }
@@ -60,11 +65,6 @@ class RegisterModal extends Component {
 
   }
   componentDidUpdate() {
-    if (this.props.auth.isAuthenticated) {
-      if(this.state.registerMod) {
-        this.registerModal();
-      }
-    }
   }
   render() {
     let modAlert = this.props.message.id === 'modal' ? <Alert color='warning'>{this.props.message.msg}</Alert> : null;

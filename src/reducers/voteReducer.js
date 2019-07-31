@@ -34,7 +34,7 @@ export default function(state=initialState, action) {
       })
     case RESET_INFO:
       return Object.assign({}, state, {
-        info: infoInitialState,
+        info: infoInitialState
       })
     // case DELETE_VOTE:
     //   let newArray = state.votes.filter(vote => vote._id !== action.payload);
@@ -46,15 +46,11 @@ export default function(state=initialState, action) {
         loading: true
       })
     case ADD_VOTE:
-      console.log('in reducer')
-      // let newState = arrayChanger(state, action.payload);
-      // console.log(newState);
-      // return Object.assign({}, state, {newState})
       let array = state.votes.map((vote, index) => {
         if (vote._id !== action.payload._id) {
           return vote;
         }
-        return action.payload
+        return action.payload;
       })
       return Object.assign({}, state, {
         votes: array
