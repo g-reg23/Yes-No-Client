@@ -23,7 +23,6 @@ import { Link } from 'react-router-dom';
 
 class App extends Component {
   componentDidMount(prevProps) {
-    console.log(prevProps);
     let path = window.location.pathname;
     if (path === '/' || path === '/makevote' || path === '/active' || path === '/private' || path === '/privateArhive' || path === '/archive' || path === '/privacyPolicy' && prevProps === undefined) {
       store.dispatch(checkToke());

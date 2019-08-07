@@ -8,7 +8,6 @@ export const getPrivateVotes = id => dispatch => {
   axios
     .get(`/api/privateVotes/${id}`)
     .then(res => {
-      console.log(res.data.voters);
       if (res.data.voters !== undefined) {
         dispatch({
           type: GET_PRIVATE_VOTES,
@@ -46,7 +45,6 @@ export const privInfo = vote =>  {
   }
 }
 export const fetchPastPrivateVotes = id => dispatch => {
-  console.log(id);
   axios
     .get(`api/privateVotes/archive/${id}`)
     .then(res => {
@@ -68,11 +66,9 @@ export const addPrivateVote = vote => dispatch => {
      'Content-Type': 'application/json',
     }
   }
-  console.log(vote);
   axios
     .put(`/api/privateVotes/${vote._id}`, vote, newConfig)
     .then(res => {
-      console.log(res.status);
       dispatch({
         type: ADD_PRIVATE_VOTES,
         payload: res.data,
@@ -80,14 +76,12 @@ export const addPrivateVote = vote => dispatch => {
       dispatch(getMessages({'msg': 'Vote was successfully added!'}, null, 'success'))
     })
     .catch(error => {
-      console.log('huh?');
       dispatch(getMessages(error.response.data, error.response.status))
     })
 
 }
 
 export const postPrivateVote = (newVote) => dispatch => {
-  console.log(newVote);
   const newConfig = {
     headers: {
      'Content-Type': 'application/json',
@@ -97,8 +91,6 @@ export const postPrivateVote = (newVote) => dispatch => {
   axios
     .post('/api/privateVotes', body, newConfig)
       .then(res => {
-        console.log(res.data)
-
         dispatch(returnUser(res.data))
         dispatch(getMessages({'msg': 'Your private vote was stored and messages were sent to all members of the vote.'}, 200, 'success', null))
       })

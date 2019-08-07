@@ -32,7 +32,6 @@ class LoginModal extends Component {
     this.setState({
       loginMod: !this.state.loginMod
     })
-    // console.log('hi')
     // togLoginModal();
   }
   submitLog = () => {

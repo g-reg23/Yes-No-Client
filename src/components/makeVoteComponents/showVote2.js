@@ -19,7 +19,6 @@ class ShowVote extends Component {
   }
 
   onEdit() {
-    console.log('edit submit')
     this.props.resetInfo();
   }
   onSubmit() {

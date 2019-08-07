@@ -16,14 +16,12 @@ const initialState = {
 export default function(state=initialState, action) {
   switch(action.type) {
     case GET_VOTES:
-      console.log(action.payload);
       return Object.assign({}, state, {
         votes: action.payload,
         loading: false,
         fetched: true
       })
     case VOTE_INFO:
-      console.log(action.payload)
       return Object.assign({}, state, {
         info: action.payload,
         loading: false
@@ -57,7 +55,6 @@ export default function(state=initialState, action) {
       });
       // return Object.assign
     case NO_LOAD:
-      console.log('There was an error fething the data: ' + action.payload);
       return state;
     default:
       return state

@@ -11,10 +11,13 @@ import propTypes from 'prop-types';
 import { Tween } from 'react-gsap';
 
 
-
-
-
 class ConstructPrivate extends Component {
+
+  /**
+   * Takes in name of vote, if name is set asks for description, if description is set
+   * asks for vote length, if all are set, reviews all vote data and can submit for final review or
+   * go back to beginning.
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -53,7 +56,6 @@ class ConstructPrivate extends Component {
     })
   }
   setDesc() {
-    console.log('ji')
     this.setState({
       descSet: !this.state.descSet
     })

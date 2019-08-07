@@ -17,7 +17,6 @@ class MakeVote extends Component {
     window.scrollTo(0,0);
   }
   componentDidUpdate(prevProps) {
-    console.log(prevProps);
     if (prevProps.message.msg !== this.props.message.msg) {
       window.scroll(0,50);
     }

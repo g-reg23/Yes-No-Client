@@ -6,6 +6,13 @@ import { Card, CardBody,
 
 
 class GetVoter extends Component {
+
+  /**
+   * Add voter name, and/or both email and phone number to voters list.
+   * Submits the entire vote to be sent to api, to be saved and links to the private vote will be
+   * texted, emailed, or both (depending on method supplied), to all on voter list.
+   */
+
   constructor(props) {
     super(props);
     this.state = {
@@ -42,14 +49,12 @@ class GetVoter extends Component {
 
   }
   submit() {
-
     this.props.submitVote(this.state.voters);
   }
 
   render() {
-    console.log(this.state.voters)
     let voters = this.state.voters.length > 0 ? '' : 'No current voters added';
-    let voterDisplay =  this.state.voters.length > 0 ? this.state.voters.map((votr, i) => <li className='voterListItem' key={i} align='center' value={votr.voterId}><strong>{votr.name} {votr.number} {votr.email}</strong><span onClick={this.onClear.bind(this)} className='clearNumber'>Clear</span></li>) : '';
+    let voterDisplay =  this.state.voters.length > 0 ? this.state.voters.map((votr, i) => <li className='voterListItem' key={i} align='center' value={votr.voterId}><strong>{votr.name}  {votr.number} {votr.email}</strong><span onClick={this.onClear.bind(this)} className='clearNumber'>Clear</span></li>) : '';
     // let nameState = <p className='voteInfoP voteName' style={{fontSize:'2em'}}><strong>{this.props.votes.vote.name}</strong></p>
     return (
       <Card className='showCard' body >

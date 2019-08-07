@@ -35,7 +35,6 @@ export default function(state=authInitialState, action) {
     case REGISTER_FAIL:
       return state;
     case LOGIN_SUCCESS:
-      console.log(action.payload.user)
       return Object.assign({}, state, {
         isAuthenticated: true,
         _id: action.payload.user._id,
@@ -44,7 +43,7 @@ export default function(state=authInitialState, action) {
         private: action.payload.user.private
       })
     case RETURN_USER:
-    console.log('ko')
+
       return Object.assign({}, state, {
         isAuthenticated: true,
         _id: action.payload._id,
@@ -53,7 +52,6 @@ export default function(state=authInitialState, action) {
         private: action.payload.private
       })
     case FACEBOOK_LOGIN:
-      console.log(action.payload);
       return Object.assign({}, state, {
         isAuthenticated: true,
         _id: action.payload.id,
@@ -65,7 +63,6 @@ export default function(state=authInitialState, action) {
       case VERIFIED_EMAIL:
         return state;
       case GOOGLE_LOGIN:
-        console.log(action.payload);
         return Object.assign({}, state, {
           isAuthenticated: true,
           _id: action.payload.id,
@@ -75,7 +72,6 @@ export default function(state=authInitialState, action) {
           pic: action.payload.imageUrl
         })
     case UPDATE_PROFILE:
-      console.log(action.payload);
       return Object.assign({}, state, {
         ...state,
         username: action.payload.body.username,

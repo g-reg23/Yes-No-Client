@@ -12,7 +12,6 @@ class YesButton extends React.Component {
     };
   }
   voteYes() {
-    console.log(this.props.voteId )
     this.props.yesVote(this.props.voteId)
   }
 

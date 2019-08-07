@@ -51,7 +51,6 @@ class ActiveVotes extends Component {
     }
   }
   noVote(id) {
-    console.log('say what?')
     let thisVote = this.props.vote.votes.find(vote => vote._id === id);
     let voted = thisVote.voters.includes(this.props.auth._id);
     if (this.props.auth.isAuthenticated) {
@@ -72,7 +71,6 @@ class ActiveVotes extends Component {
     }
   }
   handleDelete(id) {
-    console.log(id);
     this.props.deleteVote(id);
   }
   renderMessage() {

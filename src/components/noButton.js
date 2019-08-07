@@ -12,7 +12,6 @@ class NoButton extends React.Component {
     };
   }
   voteNo(e) {
-    console.log('You voted Noo for : ' + this.props.voteId);
     this.props.noVote(this.props.voteId);
   }
 
@@ -20,9 +19,6 @@ class NoButton extends React.Component {
     this.setState({
       popoverOpen: !this.state.popoverOpen
     });
-  }
-  comoponentDidMount() {
-    console.log(this.props.voteId)
   }
 
   render() {

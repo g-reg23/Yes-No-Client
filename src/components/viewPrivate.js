@@ -18,7 +18,6 @@ class PrivateVote extends Component {
 
   yesVote() {
     const values = queryString.parse(this.props.location.search)
-    console.log('You voted yes');
     let thisVote = this.props.private.vote;
     thisVote.type = 'yes';
     thisVote.voter = values.name;
@@ -27,7 +26,6 @@ class PrivateVote extends Component {
   }
   noVote() {
     const values = queryString.parse(this.props.location.search)
-    console.log('You voted no');
     let thisVote = this.props.private.vote;
     thisVote.type = 'no';
     thisVote.voter = values.name;
@@ -40,11 +38,9 @@ class PrivateVote extends Component {
     let id = this.props.location.pathname.split('/');
     this.props.getPrivateView(id[2]);
     const values = queryString.parse(this.props.location.search)
-    console.log(values.name)
   }
   render() {
     const values = queryString.parse(this.props.location.search)
-    console.log(values.token)
     let alert = this.props.message.msg !== '' ?
     <Alert color='success' align='center'>{this.props.message.msg}</Alert> : null;
 

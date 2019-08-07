@@ -17,7 +17,6 @@ class Google extends Component {
     message: propTypes.object.isRequired,
   }
   responseGoogle = (response) => {
-    console.log(response);
     if (!response.error) {
       this.props.googleLogin(response.profileObj);
     }

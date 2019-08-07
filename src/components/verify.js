@@ -28,7 +28,6 @@ class Verify extends Component {
   }
   componentDidMount() {
     const values = queryString.parse(this.props.location.search)
-    console.log(values.user + ': ' + values.hash + ': ' + this.props.match.params.id);
     this.props.verifyEmail(values.user, values.hash, this.props.match.params.id);
     this.redirect()
   }

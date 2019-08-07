@@ -22,14 +22,12 @@ class LandingPage extends Component {
     window.scrollTo(0,0)
   }
   componentDidUpdate(prevProps) {
-    console.log(prevProps);
     if (prevProps.message.msg !== this.props.message.msg) {
       window.scroll(0,50);
     }
   }
 
   render() {
-    console.log(this.props.state);
     this.scroll();
     let message = this.props.message.msg !== '' && this.props.message.id !== 'modal' && this.props.message.id !== 'yesno' ? <Alert align='center' color='success'>{this.props.message.msg}</Alert> : null
     return (

@@ -22,7 +22,6 @@ export const getVotes = () => dispatch => {
 // POST A NEW VOTE. ADD CONTENT TYPE AND JWT TOKEN TO HEADER FOR AUTHENTICATION.
 // IF SUCCESSFUL ADD VOTE TO REDUX IN VOTE REDUCER. ERROR IF UNSUCCESSFUL.
 export const postVote = (newVote) => dispatch => {
-  console.log('actions');
   const newConfig = {
     headers: {
      'Content-Type': 'application/json',
@@ -86,7 +85,6 @@ export const addVote = vote => dispatch => {
   axios
    .put('/api/votes', body, newConfig)
    .then(res => {
-     console.log(res.data);
      dispatch({
        type: ADD_VOTE,
        payload: res.data

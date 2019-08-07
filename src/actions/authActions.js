@@ -25,7 +25,6 @@ export const login = (info) => dispatch => {
   const body = JSON.stringify(info);
   axios.post('api/auth', body, config)
     .then(res => {
-      console.log(res.cookies);
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data
@@ -44,10 +43,8 @@ export const verifyEmail = (name, hash, id) => dispatch => {
     hash: hash
   }
   const body = JSON.stringify(info);
-  console.log(body)
   axios.put(`/api/auth/verify/${id}`, body, config)
     .then(res => {
-      console.log(res.cookies);
       dispatch({
         type: VERIFIED_EMAIL,
         payload: res.data
@@ -62,7 +59,6 @@ export const verifyEmail = (name, hash, id) => dispatch => {
 
 // DISPATCH LOGOUT TO REDUCER AND LOGOUT MESSAGE TO MESSAGE REDUCER.
 export const logout = (social) => dispatch => {
-  console.log(social)
   if (social === false) {
     axios.post('api/auth/logout')
       .then(res => {

@@ -16,7 +16,6 @@ import queryString from 'query-string';
 class PrivateVote extends Component {
 
   yesVote() {
-    console.log('You voted yes');
     // const values = queryString.parse(this.props.location.search)
     let thisVote = this.props.private.vote;
     thisVote.type = 'yes';
@@ -24,7 +23,6 @@ class PrivateVote extends Component {
     this.props.addPrivateVote(thisVote);
   }
   noVote() {
-    console.log('You voted no');
     // const values = queryString.parse(this.props.location.search)
     let thisVote = this.props.private.vote;
     thisVote.type = 'no';

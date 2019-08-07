@@ -20,11 +20,9 @@ class Facebook extends Component {
   }
 
   componentClicked()  {
-    console.log('hi');
   }
 
   responseFacebook(response) {
-    console.log(response.status);
     if (response.status !== undefined) {
       this.props.facebookLogin(response);
     }

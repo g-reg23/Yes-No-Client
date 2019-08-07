@@ -14,21 +14,20 @@ import { Link } from 'react-router-dom';
 
 class PrivateArchive extends Component {
 
-  componentDidMount() {
-    window.scrollTo(0,0);
-    if (this.props.auth.isAuthenticated) {
-      this.props.fetchPastPrivateVotes(this.props.auth.username)
-    }
-  }
-  componentDidUpdate() {
-    if (this.props.isAuthenticated && this.props.private.past === []) {
-      this.props.fetchPastPrivateVotes(this.props.auth.username)
-    }
-  }
+  // componentDidMount() {
+  //   window.scrollTo(0,0);
+  //   if (this.props.auth.isAuthenticated) {
+  //     this.props.fetchPastPrivateVotes(this.props.auth.username)
+  //   }
+  // }
+  // componentDidUpdate() {
+  //   if (this.props.isAuthenticated && this.props.private.past === []) {
+  //     this.props.fetchPastPrivateVotes(this.props.auth.username)
+  //   }
+  // }
   render() {
     let alert = this.props.message.msg !== '' ?
     <Alert color='success' align='center'>{this.props.message.msg}</Alert> : null;
-    console.log(this.props.private.past)
     let votes = this.props.private.past.length === 0 ? <div><h1>Whoa, nothing to see here!! :) You have not made a private vote yet. Click below to start</h1><Link className='nav-link navLink dropdownItem' to='/private' onClick={this.toggle}><Button>Make a Private Vote</Button></Link></div> :
       this.props.private.past.map((v, index) =>
         <Col lg={6} key={v._id}>

@@ -46,7 +46,6 @@ class ConstructVote extends Component {
     })
   }
   setDesc() {
-    console.log('ji')
     this.setState({
       descSet: !this.state.descSet
     })
@@ -63,7 +62,6 @@ class ConstructVote extends Component {
     }
   }
   onSubmit(e) {
-    console.log(this.state)
     if (this.props.auth.isAuthenticated) {
       if (this.state.name.length > 3) {
         if (this.state.description.length > 8) {
@@ -73,7 +71,6 @@ class ConstructVote extends Component {
             creator: this.props.auth.username,
             saved: true,
           }
-          console.log(newVote)
           this.props.voteInfo(newVote)
           // this.props.addVote(newVote);
         }else {this.toggle()}
