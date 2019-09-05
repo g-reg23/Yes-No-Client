@@ -11,7 +11,8 @@ import FrontIcon from './FrontIcon';
 import PieChart from './activeVoteComponents/PieChart';
 import '../App.css';
 import { Spring } from 'react-spring/renderprops'
-
+import icon from '../images/027-global-voting.svg';
+import VoterList from './voterList';
 
 class ActiveVotes extends Component {
   constructor(props) {
@@ -26,7 +27,6 @@ class ActiveVotes extends Component {
   }
   componentDidMount(prevProps) {
     this.props.getVotes();
-    this.props.clearMessages();
     // window.scrollTo(0,0);
   }
   yesVote(id) {
@@ -39,6 +39,7 @@ class ActiveVotes extends Component {
         thisVote.type = 'yes';
         thisVote.voters.push({
           user: this.props.auth._id,
+          username:this.props.auth.username,
           vote: 'yes'
         });
         thisVote.userId = this.props.auth._id;
@@ -59,7 +60,8 @@ class ActiveVotes extends Component {
         thisVote.type = 'no';
         thisVote.voters.push({
           user: this.props.auth._id,
-          vote: 'no'
+          username: this.props.auth.username,
+          vote: 'no',
         });
         thisVote.userId = this.props.auth._id;
         this.props.addVote(thisVote);
@@ -80,9 +82,6 @@ class ActiveVotes extends Component {
       )
     }
   }
-  scroll() {
-    window.scrollTo(0,0)
-  }
   componentDidUpdate(prevProps) {
     // if (prevProps.message.msg !== this.props.message.msg && this.props.message.id !== 'yesno') {
     //   window.scroll(0,50);
@@ -91,23 +90,25 @@ class ActiveVotes extends Component {
 
   render() {
     // this.scroll();
-    let activeVotes = this.props.vote.fetched === true ? this.props.vote.votes.filter(vote => vote.active === true) : null
+    let activeVotes = this.props.vote.fetched === true ? this.props.vote.votes.filter(vote => vote.active === true) : null;
     let votes = activeVotes !== null ? activeVotes.map((v, index) =>
       <Col lg={6} key={v._id}>
         <Card className='showCard' body>
+          <img width='20%' src={icon} alt='vote icon'style={{marginLeft:'40%'}}  />
           <p className='showName' align='center'>{v.name}</p>
+          <p align='center' className='showDesc'>{v.desc}</p>
           {this.props.message.status === v._id ? this.renderMessage() : null}
           <Container>
-            <Row style={{margin:'5% 0 0 0'}}>
+            <Row>
               <Col><YesButton voteId={v._id} yesVote={this.yesVote} index={index}/></Col>
               <Col><NoButton voteId={v._id} noVote={this.noVote} index={index}/></Col>
             </Row>
           </Container><hr />
           <CardBody>
-            <p align='center' className='showDesc'>{v.desc}</p>
-            <p style={{marginBottom:'0'}} className='showCreator'>Created By: {v.creator}</p>
-          </CardBody><hr />
-          <PieChart yes={v.yes} no={v.no} voteId={v.Id}/>
+            <p style={{marginBottom:'0', float: 'none'}} className='showCreator'>Created By: {v.creator}</p><hr />
+            <PieChart yes={v.yes} no={v.no} voteId={v.Id}/><hr />
+            <VoterList voters={v.voters} />
+          </CardBody>
         </Card>
       </Col>) : null;
     let alert = this.props.message.msg !== '' && this.props.message.id !== 'modal' && this.props.message.id !== 'yesno' ?

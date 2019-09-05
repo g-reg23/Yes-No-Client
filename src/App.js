@@ -24,8 +24,10 @@ import { Link } from 'react-router-dom';
 class App extends Component {
   componentDidMount(prevProps) {
     let path = window.location.pathname;
-    if (path === '/' || path === '/makevote' || path === '/active' || path === '/private' || path === '/privateArhive' || path === '/archive' || path === '/privacyPolicy' && prevProps === undefined) {
-      store.dispatch(checkToke());
+    if (prevProps === undefined) {
+      if (path === '/' || path === '/makevote' || path === '/active' || path === '/private' || path === '/privateArchive' || path === '/archive' || path === '/privacyPolicy') {
+        store.dispatch(checkToke());
+      }
     }
   }
   render() {

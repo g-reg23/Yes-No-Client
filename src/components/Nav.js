@@ -4,7 +4,6 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 import RegisterModal from './navComponents/registerModal';
 import LoginModal from './navComponents/loginModal';
-import ProfileModal from './navComponents/profile';
 import {
   Collapse,
   Navbar,

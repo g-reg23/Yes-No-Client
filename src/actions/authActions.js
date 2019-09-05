@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { REGISTER_SUCCESS, LOGIN_SUCCESS, LOGOUT, UPDATE_PROFILE, FACEBOOK_LOGIN, GOOGLE_LOGIN, RETURN_USER, VERIFIED_EMAIL } from '../actions/types';
+import { LOGIN_SUCCESS, LOGOUT, UPDATE_PROFILE, FACEBOOK_LOGIN, GOOGLE_LOGIN, RETURN_USER, VERIFIED_EMAIL } from '../actions/types';
 import { getMessages } from '../actions/messageActions';
 const config = { headers: {'Content-Type': 'application/json'}};
 
@@ -16,7 +16,11 @@ export const register = (info) => dispatch => {
       dispatch(getMessages({'msg': 'Registration Success!! Please verify your email to login.'}, null, 'success', 'regSuccess'))
     })
     .catch(error => {
-      dispatch(getMessages(error.response.data, error.response.status, 'error', 'modal'));
+      let e = {msg: ''};
+      error.response.data.forEach(error => {
+        e.msg += error.msg + ' '
+      })
+      dispatch(getMessages(e, error.response.status, 'error', 'modal'));
     })
 };
 

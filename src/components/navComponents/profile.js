@@ -37,7 +37,7 @@ class ProfileModal extends Component {
       this.setState({
         profMod: !this.state.profMod,
         profName: this.props.auth.username,
-        profEmail: this.props.auth.email
+        profEmail: this.props.auth.email,
       })
     } else {
       this.props.getMessages({'msg': 'You cannot edit google or facebook data.'}, null, 'error', null)
@@ -50,7 +50,7 @@ class ProfileModal extends Component {
         _id: this.props.auth._id,
         username: this.state.profName,
         email: this.state.profEmail,
-        password: this.state.profPass
+        password: this.state.profPass,
       };
       this.props.updateProfile(newProfile);
     } else {

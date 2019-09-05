@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../../App.css';
 import { Card, CardBody,
-  CardTitle, Button, Container, Col, Row } from 'reactstrap';
+  CardTitle, Button } from 'reactstrap';
 
 
 
@@ -34,7 +34,7 @@ class GetVoter extends Component {
   }
   onAdd(e){
     let voter = {
-      name: this.state.name,
+      username: this.state.name,
       number: this.state.number,
       email: this.state.email
     }
@@ -63,12 +63,12 @@ class GetVoter extends Component {
           <p>{voters}</p>
           <CardTitle style={{fontSize:'1.25rem'}}>Add voters name and one or both of valid US phone number, and/or email address.</CardTitle>
           <hr className='my-2' />
-          <ol className='voterList'>
+          <ol className='getVoterList'>
             {voterDisplay}
           </ol>
           <hr className='my-2' />
           <input className='textInput' type='text' placeholder='Voter Name' name='name' value={this.state.name} onChange={this.handleChange}/>
-          <input className='textInput' type="number" name="telephone" name='number' onChange={this.handleChange} value={this.state.number} pattern="[0-9]{3} [0-9]{3} [0-9]{4}" maxLength="12" placeholder='888 888 8888'  title="Ten digits code" required />
+          <input className='textInput' type="number" name='number' onChange={this.handleChange} value={this.state.number} pattern="[0-9]{3} [0-9]{3} [0-9]{4}" maxLength="12" placeholder='888 888 8888'  title="Ten digits code" required />
           <input placeholder='Email' type='email'  className='textInput' value={this.state.email} name='email' onChange={this.handleChange} />
           <Button style={{marginTop:'5%'}} onClick={this.onAdd} color='primary' >Add Voter</Button>
         </CardBody>

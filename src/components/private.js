@@ -7,10 +7,6 @@ import MakePrivate from './makePrivate';
 import PrivateVote from './PrivateVote'
 import FrontIcon from './FrontIcon';
 
-
-import { Container, Row, Col, Card, CardBody, Alert } from 'reactstrap';
-
-
 class Private extends Component {
 
   render() {

@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../App.css';
 import ConstructPrivate from './makeVoteComponents/constructPrivate';
-import ShowVote from './makeVoteComponents/showVote2';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { voteInfo } from '../actions/voteActions'
 import propTypes from 'prop-types'
 import { Container, Row, Col, Alert } from 'reactstrap';
-import FrontIcon from './FrontIcon';
 import GetVoters from './makeVoteComponents/getVoters';
 import { resetPrivateInfo, postPrivateVote } from '../actions/privateActions'
 import {Button} from 'reactstrap';
@@ -16,11 +13,6 @@ import {Button} from 'reactstrap';
 class MakePrivate extends Component {
 
   handleSubmit(voters) {
-    let creator = {
-      name: this.props.auth.username,
-      id: this.props.auth._id,
-      account: 'yesno'
-    }
     let newVote = {
       name: this.props.private.info.name,
       desc: this.props.private.info.desc,
@@ -29,7 +21,8 @@ class MakePrivate extends Component {
       no: 0,
       voters: voters,
       creator: this.props.auth.username,
-      userId: this.props.auth._id
+      userId: this.props.auth._id,
+      csrfToken: this.props.auth.csrfToken
     };
     this.props.postPrivateVote(newVote);
   }

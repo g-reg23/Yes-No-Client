@@ -17,6 +17,10 @@ a:hover {
   justify-content: space-around;
   /* text-align: center; */
 }
+.archiveDiv {
+  display:flex;
+  justify-content: center;
+}
 .CTAButton, .subsectButton {
   border: none;
   padding: 3% 5%;
@@ -183,7 +187,7 @@ a:hover {
 .showCreator {
   color: whitesmoke;
   font-weight: 435;
-  float: right;
+  text-align: center;
 }
 /* introDiv section:nth-child(even) {
   background: slategray;
@@ -256,11 +260,36 @@ a:hover {
   border-radius: .5em;
   border: solid black .1rem;
 } */
+.pieDiv {
+  cursor: pointer;
+}
 .voterList {
+  table-layout: fixed;
+  width: 100%;
+  display: block;
+  list-style-type: none;
+  cursor: pointer;
+  height: 15rem;
+  overflow-y: scroll;
+  background:#8376d5;
+}
+.voterList td {
+  width: 4%;
+}
+/* .voterListRow {
+  margin-left: 15%;
+} */
+.getVoterList {
   list-style-type: none;
 }
+.white {
+  cursor: pointer;
+  color: white;
+  text-decoration: underline;
+  text-align: center;
+}
 .voterListItem {
-  margin-left: -15%;
+  margin-left: -5%;
   text-align: left;
 }
 .voteInstruct {

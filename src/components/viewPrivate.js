@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../App.css';
 import { connect } from 'react-redux';
-import { getPrivateView,noVote, yesVote } from '../actions/privateActions'
+import { getPrivateView } from '../actions/privateActions'
 import propTypes from 'prop-types'
 
 import FrontIcon from './FrontIcon';
@@ -12,10 +12,19 @@ import NoButton from './noButton'
 import YesButton from './yesButton';
 import { Container, Row, Col, Card, CardBody, Alert } from 'reactstrap';
 import queryString from 'query-string';
-
+import EndTimer from './endTimer';
+import VoterList from './voterList';
 
 class PrivateVote extends Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      showVoterList: false
+    }
+  }
+  toggleList = () => {
+    this.setState({showVoterList: !this.state.showVoterList});
+  }
   yesVote() {
     const values = queryString.parse(this.props.location.search)
     let thisVote = this.props.private.vote;
@@ -32,39 +41,39 @@ class PrivateVote extends Component {
     thisVote.token = values.token;
     this.props.addPrivateVote(thisVote);
   }
-  //
   componentDidMount() {
     window.scrollTo(0,0);
     let id = this.props.location.pathname.split('/');
     this.props.getPrivateView(id[2]);
-    const values = queryString.parse(this.props.location.search)
+    // const values = queryString.parse(this.props.location.search)
   }
   render() {
-    const values = queryString.parse(this.props.location.search)
+    // const values = queryString.parse(this.props.location.search)
     let alert = this.props.message.msg !== '' ?
     <Alert color='success' align='center'>{this.props.message.msg}</Alert> : null;
-
     return (
       <div>
         <FrontIcon view='private'/>
         <Container>
           {alert}
           <Row>
-            <Col>
+            <Col lg={6}>
               <Card className='showCard' body>
                 <p className='showName' align='center'>{this.props.private.vote.name}</p>
+                <p align='center' className='showDesc'>{this.props.private.vote.desc}</p>
                 <Container>
-                  <Row style={{margin:'5% 0 0 0'}}>
+                  <Row>
                     <Col><YesButton voteId={this.props.private.vote._id} yesVote={this.yesVote.bind(this)} index='0'/></Col>
                     <Col><NoButton voteId={this.props.private.vote._id} noVote={this.noVote.bind(this)} index='0'/></Col>
                   </Row>
                 </Container><hr />
+                {!this.props.private.loaded ? <p>Loading</p> : <EndTimer end={this.props.private.vote.endDate} /> }
                 <hr />
                 <CardBody>
-                  <p align='center' className='showDesc'>{this.props.private.vote.desc}</p>
-                  <p style={{marginBottom:'0'}} className='showCreator'>Created By: {this.props.private.vote.creator}</p>
-                </CardBody><hr />
-                <PieChart yes={this.props.private.vote.yes} no={this.props.private.vote.no} voteId={this.props.private.vote._id} />
+                  <p style={{marginBottom:'0'}} className='showCreator'>Created By: {this.props.private.vote.creator}</p><hr />
+                  <PieChart yes={this.props.private.vote.yes} no={this.props.private.vote.no} voteId={this.props.private.vote._id} /><hr />
+                  <VoterList voters={this.props.private.vote.voters}/>
+                </CardBody>
               </Card>
             </Col>
           </Row>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_VOTES, VOTE_INFO, RESET_INFO, VOTE_LOADING, POST_VOTE, ADD_VOTE , POST_PRIVATE_VOTE } from '../actions/types';
+import { GET_VOTES, VOTE_INFO, RESET_INFO, VOTE_LOADING, POST_VOTE, ADD_VOTE } from '../actions/types';
 import { getMessages } from '../actions/messageActions';
 
 
@@ -81,6 +81,7 @@ export const addVote = vote => dispatch => {
      'Content-Type': 'application/json',
     }
   }
+  delete vote.csrfToken;
   const body = JSON.stringify(vote);
   axios
    .put('/api/votes', body, newConfig)

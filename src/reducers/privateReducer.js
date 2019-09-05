@@ -1,4 +1,4 @@
-import { GET_PRIVATE_VOTES, ADD_PRIVATE_VOTES, POST_VOTE, PRIVATE_VOTE_INFO, RESET_PRIVATE_INFO, PRIV_VOTE_POSTED, FETCH_PAST_PRIVATE } from '../actions/types';
+import { GET_PRIVATE_VOTES, ADD_PRIVATE_VOTES, POST_VOTE, PRIVATE_VOTE_INFO, RESET_PRIVATE_INFO, FETCH_PAST_PRIVATE } from '../actions/types';
 
 const infoInitialState = {
   name: '',
@@ -12,7 +12,8 @@ const initialState = {
   active: false,
   info: infoInitialState,
   vote: {},
-  past: []
+  past: [],
+  loaded: false
 }
 
 
@@ -22,7 +23,8 @@ export default function(state=initialState, action) {
       return Object.assign({}, state, {
         active: true,
         info: infoInitialState,
-        vote: action.payload
+        vote: action.payload,
+        loaded: true,
       })
     case PRIVATE_VOTE_INFO:
       return Object.assign({}, state, {

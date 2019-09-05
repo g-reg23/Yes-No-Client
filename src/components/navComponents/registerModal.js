@@ -51,7 +51,7 @@ class RegisterModal extends Component {
           password: this.state.regPass
         }
         this.props.register(info);
-        this.registerModal();
+        // this.registerModal();
       } else {
         this.props.getMessages({'msg': 'Email must be in standard email format.'}, 'client', 'error', 'modal')
       }

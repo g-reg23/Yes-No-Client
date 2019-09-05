@@ -40,8 +40,9 @@ class ConstructPrivate extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
   selectChange(e) {
+    console.log(e.target.value)
     this.setState({
-      length: e.target.value,
+      voteLength: e.target.value,
     })
   }
 
@@ -105,7 +106,7 @@ class ConstructPrivate extends Component {
     let intro1 = this.state.nameSet === false ? <CardTitle className='voteInfoHeader'>Please enter the question to be voted on in the box below. It should be a simple yes/no question. Then click the Set button</CardTitle> :
       <CardTitle className='voteInfoHeader'>Now you may enter any additional details and a brief description of the vote and enter the Set button.</CardTitle>
     let finalReview =<div><CardTitle className='voteInfoHeader'>Now choose the length of your vote and click save. Otherwise click Go Back.</CardTitle>
-      <select className='textInput' onChange={this.selectChange}>
+      <select className='textInput' value={this.state.voteLength} onChange={this.selectChange}>
         <option name='length' value='2 Hours'>2 Hours</option>
         <option name='length' value='3 Hours'>3 Hours</option>
         <option name='length' value='6 Hours'>6 Hours</option>

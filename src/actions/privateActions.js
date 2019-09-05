@@ -1,12 +1,17 @@
 import axios from 'axios';
-import { GET_PRIVATE_VOTES, ADD_PRIVATE_VOTES, PRIVATE_VOTE_INFO, RESET_PRIVATE_INFO, PRIV_VOTE_POSTED,  FETCH_PAST_PRIVATE } from '../actions/types';
+import { GET_PRIVATE_VOTES, ADD_PRIVATE_VOTES, PRIVATE_VOTE_INFO, RESET_PRIVATE_INFO, FETCH_PAST_PRIVATE } from '../actions/types';
 import { getMessages } from '../actions/messageActions';
 import { returnUser } from '../actions/authActions';
 
 // FETCH DATA FROM DATABASE. DISPATCH TO Private VOTE REDUCER. RETURN ERROR IF UNSUCCESSFUL
-export const getPrivateVotes = id => dispatch => {
+export const getPrivateVotes = data => dispatch => {
+  const newConfig = {
+    headers: {
+     'Content-Type': 'application/json',
+    }
+  }
   axios
-    .get(`/api/privateVotes/${id}`)
+    .get(`/api/privateVotes/${data.id}`, newConfig)
     .then(res => {
       if (res.data.voters !== undefined) {
         dispatch({

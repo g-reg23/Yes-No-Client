@@ -8,7 +8,6 @@ import yes from '../../images/iconfinder_checkmark-24_103184.svg';
 import no from '../../images/iconfinder_No_984759.svg';
 import { getMessages, clearMessages } from '../../actions/messageActions';
 import PieChart from '../activeVoteComponents/PieChart';
-import { Link } from 'react-router-dom';
 
 
 class ShowVote extends Component {

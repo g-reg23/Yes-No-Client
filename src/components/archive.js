@@ -5,8 +5,6 @@ import { getVotes } from '../actions/voteActions';
 import propTypes from 'prop-types';
 import { getMessages, clearMessages } from '../actions/messageActions';
 import { Container, Row, Col, Card, CardBody, Alert } from 'reactstrap';
-import NoButton from './noButton'
-import YesButton from './yesButton';
 import FrontIcon from './FrontIcon';
 import PieChart from './activeVoteComponents/PieChart';
 import '../App.css';
@@ -14,9 +12,6 @@ import { Spring } from 'react-spring/renderprops'
 
 
 class Archive extends Component {
-  constructor(props) {
-    super(props);
-  }
   scroll() {
     window.scroll(0,0)
   }
