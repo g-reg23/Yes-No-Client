@@ -514,6 +514,12 @@ a:hover {
     margin-left: 7%;
   }
 }
+/* @media only screen and (min-width:990px) {
+  .showCard {
+    margin-left:45%;
+  }
+} */
+
 /* Media qury for reular laptops */
 @media only screen and (min-width:1024px) {
   .innerCard {

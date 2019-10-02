@@ -31,8 +31,8 @@ class ActiveVotes extends Component {
   }
   yesVote(id) {
     let thisVote = this.props.vote.votes.find(vote => vote._id === id);
-    // let voted = thisVote.voters.some(voter => voter.user === this.props.auth._id);
-    let voted;
+    // let newVoter;
+    let voted = thisVote.voters.some(voter => voter.user === this.props.auth._id);
     if (this.props.auth.isAuthenticated) {
       if (!voted) {
         // thisVote.yes += 1;

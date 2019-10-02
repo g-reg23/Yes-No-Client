@@ -16,18 +16,14 @@ export const register = (info) => dispatch => {
       dispatch(getMessages({'msg': 'Registration Success!! Please verify your email to login.'}, null, 'success', 'regSuccess'))
     })
     .catch(error => {
-      let e = {msg: ''};
-      error.response.data.forEach(error => {
-        e.msg += error.msg + ' '
-      })
-      dispatch(getMessages(e, error.response.status, 'error', 'modal'));
+      dispatch(getMessages(error.response.data, error.response.status, 'error', 'modal'));
     })
 };
 
 // LOGIN. DISPATCH AUTH REDUCER AND SUCCESS MESSAGE ON SUCCESS. ERROR MESSAGE IF UNSUCCESSFUL
 export const login = (info) => dispatch => {
   const body = JSON.stringify(info);
-  axios.post('api/auth', body, config)
+  axios.post('http://yessno.tk/api/auth', body, config)
     .then(res => {
       dispatch({
         type: LOGIN_SUCCESS,

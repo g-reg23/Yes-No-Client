@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardBody } from 'reactstrap';
 import PieChart from './activeVoteComponents/PieChart';
-import icon from '../images/026-online-voting.svg';
+import icon from '../images/027-global-voting.svg';
 import VoterList from './voterList';
 
 const Privy  = ({vote}) => {

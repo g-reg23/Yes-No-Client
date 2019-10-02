@@ -9,7 +9,7 @@ import PieChart from './activeVoteComponents/PieChart';
 import NoButton from './noButton'
 import YesButton from './yesButton';
 import { Container, Row, Col, Card, CardBody, Alert } from 'reactstrap';
-import icon from '../images/026-online-voting.svg';
+import icon from '../images/027-global-voting.svg';
 import EndTimer from './endTimer';
 import VoterList from './voterList'
 

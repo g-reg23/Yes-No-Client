@@ -7,13 +7,14 @@ import { getMessages } from '../actions/messageActions';
 export const getVotes = () => dispatch => {
   dispatch(setVotesLoading());
   axios
-    .get('/api/votes')
-    .then(res =>
+    .get('http://yessno.tk/api/votes')
+    .then(res => {
+      console.log(res)
       dispatch({
         type: GET_VOTES,
         payload: res.data
       })
-    )
+    })
     .catch(error => {
       dispatch(getMessages(error.response.data, error.response.status))
     })
@@ -81,7 +82,6 @@ export const addVote = vote => dispatch => {
      'Content-Type': 'application/json',
     }
   }
-  delete vote.csrfToken;
   const body = JSON.stringify(vote);
   axios
    .put('/api/votes', body, newConfig)
