@@ -23,7 +23,7 @@ export const register = (info) => dispatch => {
 // LOGIN. DISPATCH AUTH REDUCER AND SUCCESS MESSAGE ON SUCCESS. ERROR MESSAGE IF UNSUCCESSFUL
 export const login = (info) => dispatch => {
   const body = JSON.stringify(info);
-  axios.post('http://yessno.tk/api/auth', body, config)
+  axios.post('api/auth', body, config)
     .then(res => {
       dispatch({
         type: LOGIN_SUCCESS,

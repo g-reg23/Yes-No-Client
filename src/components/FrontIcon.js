@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'react-grid-system';
+import { Container, Row, Col } from 'reactstrap';
 import '../App.css';
 import Typography from '@material-ui/core/Typography'
 import YesIcon from './headComponents/yesIcon';
