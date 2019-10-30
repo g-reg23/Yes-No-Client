@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'react-grid-system';
+import { Container, Row, Col } from 'reactstrap';
 import '../App.css';
 import Typography from '@material-ui/core/Typography'
 import YesIcon from './headComponents/yesIcon';
@@ -44,15 +44,13 @@ class FrontIcon extends Component {
     // let cta = this.props.view === '/' ? <button className='CTAButton'>Make A Vote</button> : ''
     return(
       <div className='topDiv'>
-        <Tween duration={3} from={{ opacity:0 }} to={{opacity:1}}>
-          {top}
-          <Container>
-            <Row>
-              <Col><YesIcon /></Col>
-              <Col><NoIcon /></Col>
-            </Row>
-          </Container>
-        </Tween>
+        {top}
+        <Container>
+          <Row>
+            <Col><YesIcon /></Col>
+            <Col><NoIcon /></Col>
+          </Row>
+        </Container>
       </div>
     )
   }
