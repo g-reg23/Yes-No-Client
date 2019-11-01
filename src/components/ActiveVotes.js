@@ -39,7 +39,7 @@ class ActiveVotes extends Component {
         thisVote.type = 'yes';
         thisVote.voters.push({
           user: this.props.auth._id,
-          username:this.props.auth.username,
+          name:this.props.auth.username,
           vote: 'yes'
         });
         thisVote.userId = this.props.auth._id;

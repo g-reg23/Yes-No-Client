@@ -4,7 +4,7 @@ import '../App.css';
 import Typography from '@material-ui/core/Typography'
 import YesIcon from './headComponents/yesIcon';
 import NoIcon from './headComponents/noIcon';
-import { Tween } from 'react-gsap';
+
 
 class FrontIcon extends Component {
 // SWITCH STATEMENT FOR PAGE TITLE, BASED ON ROUTE PASSED IN FROM APP.JS ROUTER.
@@ -44,15 +44,13 @@ class FrontIcon extends Component {
     // let cta = this.props.view === '/' ? <button className='CTAButton'>Make A Vote</button> : ''
     return(
       <div className='topDiv'>
-        <Tween duration={3} from={{ opacity:0 }} to={{opacity:1}}>
-          {top}
-          <Container>
-            <Row>
-              <Col><YesIcon /></Col>
-              <Col><NoIcon /></Col>
-            </Row>
-          </Container>
-        </Tween>
+        {top}
+        <Container>
+          <Row>
+            <Col><YesIcon /></Col>
+            <Col><NoIcon /></Col>
+          </Row>
+        </Container>
       </div>
     )
   }

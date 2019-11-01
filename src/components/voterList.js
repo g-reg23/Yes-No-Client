@@ -22,7 +22,7 @@ class VoterList extends React.Component {
         </thead>
         <tbody>
           {this.props.voters.map((voter, index) =>
-            <tr className='voterListRow' key={index}><td className='voterListCell'>{voter.username}</td><td className='voterListCell'>{voter.vote}</td></tr>
+            <tr className='voterListRow' key={index}><td className='voterListCell'>{voter.name}</td><td className='voterListCell'>{voter.vote}</td></tr>
           )}
         </tbody>
       </Table> : <p className='white' onClick={this.toggleList}>View Voters</p>
