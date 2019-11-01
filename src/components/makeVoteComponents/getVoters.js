@@ -34,7 +34,7 @@ class GetVoter extends Component {
   }
   onAdd(e){
     let voter = {
-      username: this.state.name,
+      name: this.state.name,
       number: this.state.number,
       email: this.state.email
     }

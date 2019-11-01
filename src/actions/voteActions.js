@@ -7,7 +7,7 @@ import { getMessages } from '../actions/messageActions';
 export const getVotes = () => dispatch => {
   dispatch(setVotesLoading());
   axios
-    .get('http://yessno.tk/api/votes')
+    .get('/api/votes')
     .then(res => {
       console.log(res)
       dispatch({
