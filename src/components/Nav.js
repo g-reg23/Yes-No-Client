@@ -25,14 +25,20 @@ class Navi extends Component {
         privateOpen: false,
         publicOpen: false
     }
-    this.state = {
-      isOpen: this.initialState.isOpen,
-    }
+    this.state = this.initialState;
   }
   toggle = () => {
     this.setState({
       isOpen: !this.state.isOpen,
     });
+  }
+  closeCollapse = () => {
+    console.log('in');
+    if (this.state.isOpen !== false) {
+      this.setState({
+        isOpen: !this.state.isOpen,
+      });
+    }
   }
   privateToggle = () => {
     this.setState({
@@ -73,9 +79,9 @@ class Navi extends Component {
                       <DropdownToggle nav caret className='navLink'>
                         Private
                       </DropdownToggle>
-                      <DropdownMenu right>
+                      <DropdownMenu>
                         <DropdownItem><Link className='nav-link navLink dropdownItem' to='/private' onClick={this.toggle}>Active</Link></DropdownItem>
-                        <DropdownItem divider />
+                        <DropdownItem />
                         <DropdownItem><Link className='nav-link navLink dropdownItem' to='/privateArchive' onClick={this.toggle}>Archive</Link></DropdownItem>
                       </DropdownMenu>
                     </Dropdown>
@@ -83,17 +89,17 @@ class Navi extends Component {
                       <DropdownToggle nav caret className='navLink'>
                         Public
                       </DropdownToggle>
-                      <DropdownMenu className='dropdown-menu-right'>
+                      <DropdownMenu>
                         <DropdownItem><Link className='nav-link navLink dropdownItem' to='/makevote' onClick={this.toggle}>Build</Link></DropdownItem>
-                        <DropdownItem divider />
+                        <DropdownItem />
                         <DropdownItem><Link className='nav-link navLink dropdownItem' to='/active'  onClick={this.toggle}>Active</Link></DropdownItem>
-                        <DropdownItem divider />
+                        <DropdownItem />
                         <DropdownItem><Link className='nav-link navLink dropdownItem' to='/archive' onClick={this.toggle}>Archive</Link></DropdownItem>
                       </DropdownMenu>
                     </Dropdown>
                     <Link className='nav-link navLink' to='/' onClick={this.toggle}>Home</Link>
-                    <RegisterModal handleClick={this.toggle} />
-                    <LoginModal handleClick={this.toggle}/>
+                    <RegisterModal handleClick={this.toggle} colState={this.state.isOpen} />
+                    <LoginModal handleClick={this.toggle} colState={this.state.isOpen}/>
                   </Nav>
                 </Collapse>
               </Container>

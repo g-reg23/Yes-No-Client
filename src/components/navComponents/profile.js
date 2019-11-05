@@ -78,7 +78,7 @@ class ProfileModal extends Component {
     let social = this.props.auth.facebook === true || this.props.auth.google === true ? <Alert color='warning'>You cannot edit your facebook or google information.</Alert> :
     null
     return (
-        <div className='navDiv'>
+        <div>
             <Link className='nav-link navLink navUsername' onClick={this.profModal} to='#'>{this.props.auth.username}</Link>
             {this.props.auth.facebook === true ? <img src={this.props.auth.pic.url} height='30' alt='profilePic' /> : null}
             {this.props.auth.google === true ? <img src={this.props.auth.pic} height='30' alt='profilePic' /> : null}

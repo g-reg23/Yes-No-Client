@@ -44,6 +44,7 @@ class PrivateVote extends Component {
   componentDidMount() {
     window.scrollTo(0,0);
     let id = this.props.location.pathname.split('/');
+    console.log(id)
     this.props.getPrivateView(id[2]);
     // const values = queryString.parse(this.props.location.search)
   }
@@ -55,19 +56,19 @@ class PrivateVote extends Component {
       <div>
         <FrontIcon view='private'/>
         <Container>
-          {alert}
           <Row>
             <Col lg={6}>
               <Card className='showCard' body>
                 <p className='showName' align='center'>{this.props.private.vote.name}</p>
                 <p align='center' className='showDesc'>{this.props.private.vote.desc}</p>
+                {alert}
                 <Container>
                   <Row>
                     <Col><YesButton voteId={this.props.private.vote._id} yesVote={this.yesVote.bind(this)} index='0'/></Col>
                     <Col><NoButton voteId={this.props.private.vote._id} noVote={this.noVote.bind(this)} index='0'/></Col>
                   </Row>
                 </Container><hr />
-                {!this.props.private.loaded ? <p>Loading</p> : <EndTimer end={this.props.private.vote.endDate} /> }
+                <EndTimer end={this.props.private.vote.endDate} />
                 <hr />
                 <CardBody>
                   <p style={{marginBottom:'0'}} className='showCreator'>Created By: {this.props.private.vote.creator}</p><hr />

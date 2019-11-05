@@ -32,6 +32,9 @@ class LoginModal extends Component {
     this.setState({
       loginMod: !this.state.loginMod
     })
+    if (this.props.colState === true) {
+      this.props.handleClick();
+    }
     // togLoginModal();
   }
   submitLog = () => {
@@ -83,8 +86,6 @@ class LoginModal extends Component {
                 <Button color="primary" onClick={this.submitLog}>Submit</Button>
                 <Button color="danger" onClick={this.loginModal}>Cancel</Button>
               </ModalFooter>
-              <h3 className='mt-5' align='center'>Or Login with Social Media.</h3>
-              <div className='m-5'><Google /><Facebook /></div>
             </Modal>
         </div>
     );

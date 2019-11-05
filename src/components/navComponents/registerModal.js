@@ -34,10 +34,9 @@ class RegisterModal extends Component {
     this.setState({
       registerMod: !this.state.registerMod
     })
-    // togRegModal();
-    // if (e.target.textContent !== 'Cancel') {
-    //   this.props.handleClick();
-    // }
+    if (this.props.colState === true) {
+      this.props.handleClick();
+    }
   }
 
   submitReg = () => {
