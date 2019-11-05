@@ -68,7 +68,7 @@ class PrivateVote extends Component {
                     <Col><NoButton voteId={this.props.private.vote._id} noVote={this.noVote.bind(this)} index='0'/></Col>
                   </Row>
                 </Container><hr />
-                <EndTimer end={this.props.private.vote.endDate} />
+                {!this.props.private.loaded ? <p>No Time Remaining</p> : <EndTimer end={this.props.private.vote.endDate} /> }
                 <hr />
                 <CardBody>
                   <p style={{marginBottom:'0'}} className='showCreator'>Created By: {this.props.private.vote.creator}</p><hr />
