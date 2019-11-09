@@ -32,15 +32,13 @@ class ProfileModal extends Component {
     deleteAccount: propTypes.func.isRequired
   }
   profModal()  {
-    if (this.props.auth.facebook === false && this.props.auth.google === false) {
-      this.props.clearMessages();
-      this.setState({
-        profMod: !this.state.profMod,
-        profName: this.props.auth.username,
-        profEmail: this.props.auth.email,
-      })
-    } else {
-      this.props.getMessages({'msg': 'You cannot edit google or facebook data.'}, null, 'error', null)
+    this.setState({
+      profMod: !this.state.profMod,
+      profName: this.props.auth.username,
+      profEmail: this.props.auth.email,
+    });
+    if (this.props.colState === true) {
+      this.props.handleClick();
     }
     // togRegModal();
   }
@@ -74,6 +72,7 @@ class ProfileModal extends Component {
     }
   }
   render() {
+    console.log(this.props.colState)
     let modAlert = this.props.message.id === 'modal' ? <Alert color='warning'>{this.props.message.msg}</Alert> : null;
     let social = this.props.auth.facebook === true || this.props.auth.google === true ? <Alert color='warning'>You cannot edit your facebook or google information.</Alert> :
     null

@@ -36,8 +36,8 @@ class LandingPage extends Component {
           <div style={props}>
             <FrontIcon view='/'/>
             <Container id='about'>
-            <Tween duration={2} from={{transform:'rotate(180deg)'}}><div style={{marginBottom:'3%'}} align='center'><Link to='/private' className='CTAButton'>Make a Private Vote!</Link></div></Tween>
             {message}
+            <Tween duration={2} from={{transform:'rotate(180deg)'}}><div style={{marginBottom:'3%'}} align='center'><Link to='/private' className='CTAButton'>Make a Private Vote!</Link></div></Tween>
               <Row>
                 <Col className='subsectDiv firstSub' md={4}>
                   <p className='subsectTitle'>Private Votes</p>

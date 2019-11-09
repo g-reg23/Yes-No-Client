@@ -30,7 +30,6 @@ class RegisterModal extends Component {
     message: propTypes.object.isRequired,
   }
   registerModal(e)  {
-    this.props.clearMessages();
     this.setState({
       registerMod: !this.state.registerMod
     })
@@ -50,7 +49,7 @@ class RegisterModal extends Component {
           password: this.state.regPass
         }
         this.props.register(info);
-        // this.registerModal();
+        this.registerModal();
       } else {
         this.props.getMessages({'msg': 'Email must be in standard email format.'}, 'client', 'error', 'modal')
       }
@@ -68,7 +67,7 @@ class RegisterModal extends Component {
   render() {
     let modAlert = this.props.message.id === 'modal' ? <Alert color='warning'>{this.props.message.msg}</Alert> : null;
     const reg = !this.props.auth.isAuthenticated ? <Link className='nav-link navLink' onClick={this.registerModal} to='#'>Sign Up</Link>:
-    <ProfileModal />
+    <ProfileModal handleClick={this.props.handleClick} colState={this.props.colState}/>
     return (
         <div>
             {reg}

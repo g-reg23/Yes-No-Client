@@ -16,7 +16,7 @@ export const register = (info) => dispatch => {
       dispatch(getMessages({'msg': 'Registration Success!! Please verify your email to login.'}, null, 'success', 'regSuccess'))
     })
     .catch(error => {
-      dispatch(getMessages(error.response.data, error.response.status, 'error', 'modal'));
+      dispatch(getMessages(error.response.data, error.response.status, 'error', null));
     })
 };
 
