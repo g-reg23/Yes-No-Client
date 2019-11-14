@@ -34,7 +34,7 @@ class FrontIcon extends Component {
         break;
       case 'privacyPolicy':
         top = <div><Typography className='routeTitle' style={{fontWeight:'9', color:'rgb(211, 211, 211)'}} variant='display2' align='center' gutterBottom>Privacy Policy</Typography>
-        <h3 style={{fontWeight:'9', color:'rgb(211, 211, 211)'}} align='center'>Be Infromed</h3></div>
+        <h3 style={{fontWeight:'9', color:'rgb(211, 211, 211)'}} align='center'>Be Informed</h3></div>
         break;
       default:
         top = <div><Typography className='routeTitle' style={{fontWeight:'9', color:'rgb(211, 211, 211)'}} variant='display2' align='center' gutterBottom>YessNo</Typography>

@@ -9,7 +9,6 @@ export const getVotes = () => dispatch => {
   axios
     .get('/api/votes')
     .then(res => {
-      console.log(res)
       dispatch({
         type: GET_VOTES,
         payload: res.data

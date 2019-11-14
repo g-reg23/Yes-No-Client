@@ -375,7 +375,7 @@ a:hover {
   background: #c9383d;
   border:none;
 }
-.textInput {
+.textInput, .resetInput {
   width: 70%;
   margin-left: 15%;
   border-radius: .5rem;
@@ -460,7 +460,10 @@ a:hover {
 .switch-wrapper > div {
   position: absolute;
 }
-
+.resetInput {
+  width: 60%;
+  margin-left: 20%;
+}
 
 /* Media query for Medium Moblie */
 @media only screen and (min-width:375px) {

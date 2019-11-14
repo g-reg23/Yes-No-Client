@@ -44,7 +44,6 @@ class PrivateVote extends Component {
   componentDidMount() {
     window.scrollTo(0,0);
     let id = this.props.location.pathname.split('/');
-    console.log(id)
     this.props.getPrivateView(id[2]);
     // const values = queryString.parse(this.props.location.search)
   }

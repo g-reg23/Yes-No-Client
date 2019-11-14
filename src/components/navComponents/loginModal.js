@@ -4,7 +4,7 @@ import '../../App.css';
 import { Link } from 'react-router-dom';
 import { Button, Modal, ModalBody, ModalFooter, Alert } from 'reactstrap';
 import { connect } from 'react-redux';
-import { login, logout } from '../../actions/authActions';
+import { login, logout, forgotPassword } from '../../actions/authActions';
 import { getMessages, clearMessages } from '../../actions/messageActions';
 import propTypes from 'prop-types';
 import Facebook from './facebook'
@@ -17,6 +17,8 @@ class LoginModal extends Component {
       loginMod: false,
       logName: '',
       logPass: '',
+      forgotMod: false,
+      emailName: '',
     }
     this.loginModal = this.loginModal.bind(this);
     this.logout = this.logout.bind(this);
@@ -43,9 +45,35 @@ class LoginModal extends Component {
         username: this.state.logName,
         password: this.state.logPass
       }
-      this.props.login(info)
+      this.props.login(info);
+      this.setState({
+        logName: '',
+        logPass: '',
+      })
     }else {
       this.props.getMessages({'msg': 'Username and password must be at least 3 characters.'}, 'client', 'error', 'modal')
+    }
+  }
+  forgotModal = () => {
+    this.setState({
+      loginMod: !this.state.loginMod,
+      forgotMod: !this.state.forgotMod,
+    })
+  }
+  cancelForgotModal = () => {
+    this.setState({
+      forgotMod: !this.state.forgotMod,
+    })
+  }
+  submitForgot = () => {
+    let re = /\S+@\S+\.\S+/;
+    if (re.test(this.state.emailName)) {
+      this.props.forgotPassword(this.state.emailName);
+      this.props.getMessages({'msg': 'Thank you, your email was submitted, if there is an account associated with this email, one will arrive shortly.'}, 'client', 'success', null)
+      this.cancelForgotModal();
+      this.setState({emailName: ''})
+    } else {
+      this.props.getMessages({'msg': 'Please submit a valid email address.'}, 'client', 'error', 'modal')
     }
   }
   logout() {
@@ -79,12 +107,24 @@ class LoginModal extends Component {
               <h3 className='mt-5' align='center'>Login with YessNo</h3>
               <ModalBody style={{padding:'7% 5% 7% 5%'}}>
                 {modAlert}
-                <input placeholder='Username' type='text'  className='textInput' name='logName' onChange={this.handleLogChange} />
-                <input placeholder='Password' type='password'  className='textInput' name='logPass' onChange={this.handleLogChange} />
+                <input placeholder='Username' type='text'  className='textInput' name='logName' value={this.state.logName} onChange={this.handleLogChange} />
+                <input placeholder='Password' type='password'  className='textInput' name='logPass' value={this.state.logPass} onChange={this.handleLogChange} />
               </ModalBody>
               <ModalFooter style={{background:'lightgray'}}>
                 <Button color="primary" onClick={this.submitLog}>Submit</Button>
                 <Button color="danger" onClick={this.loginModal}>Cancel</Button>
+              </ModalFooter>
+              <a hef='#' align='center' onClick={this.forgotModal} style={{fontStyle:'bold', color:'blue', padding:'3%', paddingRight:'5%', cursor:'pointer'}}>Forgot Your Password? Click Here</a>
+            </Modal>
+            <Modal isOpen={this.state.forgotMod} toggle={this.forgotModal} className='login-modal' centered style={{marginTop:'3.5%'}}>
+              <h3 className='mt-5' align='center'>Login with YessNo</h3>
+              <ModalBody style={{padding:'7% 5% 7% 5%'}}>
+                {modAlert}
+                <input placeholder='YessNo Email' type='text'  className='textInput' name='emailName' onChange={this.handleLogChange} />
+              </ModalBody>
+              <ModalFooter style={{background:'lightgray'}}>
+                <Button color="primary" onClick={this.submitForgot}>Submit</Button>
+                <Button color="danger" onClick={this.cancelForgotModal}>Cancel</Button>
               </ModalFooter>
             </Modal>
         </div>
@@ -97,4 +137,4 @@ const mapStateToProps = (state) => ({
   message: state.messageObject
 })
 
-export default connect(mapStateToProps, { login, logout, getMessages, clearMessages })(LoginModal);
+export default connect(mapStateToProps, { login, logout, getMessages, clearMessages, forgotPassword })(LoginModal);

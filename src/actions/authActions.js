@@ -23,13 +23,13 @@ export const register = (info) => dispatch => {
 // LOGIN. DISPATCH AUTH REDUCER AND SUCCESS MESSAGE ON SUCCESS. ERROR MESSAGE IF UNSUCCESSFUL
 export const login = (info) => dispatch => {
   const body = JSON.stringify(info);
-  axios.post('api/auth', body, config)
+  axios.post('/api/auth', body, config)
     .then(res => {
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data
       })
-      dispatch(getMessages({'msg': 'Successfully Logged You int!'}, null, 'success', 'loginSuccess'))
+      dispatch(getMessages({'msg': 'Successfully Logged You in!'}, null, 'success', 'loginSuccess'))
     })
 
     .catch(error => {
@@ -60,7 +60,7 @@ export const verifyEmail = (name, hash, id) => dispatch => {
 // DISPATCH LOGOUT TO REDUCER AND LOGOUT MESSAGE TO MESSAGE REDUCER.
 export const logout = (social) => dispatch => {
   if (social === false) {
-    axios.post('api/auth/logout')
+    axios.post('/api/auth/logout')
       .then(res => {
         dispatch({
           type: LOGOUT
@@ -83,7 +83,7 @@ export const updateProfile = (profile) => dispatch => {
      }
    }
    const body = JSON.stringify(profile);
-   axios.put('api/users', body, newConfig)
+   axios.put('/api/users', body, newConfig)
     .then(res => {
       dispatch({
         type: UPDATE_PROFILE,
@@ -99,7 +99,7 @@ export const updateProfile = (profile) => dispatch => {
 
  export const deleteAccount = (user, pass) => dispatch => {
    axios.delete(
-     `api/users/${user}`,
+     `/api/users/${user}`,
      {headers: {
        'Content-Type': 'application/json',
      }, data: {
@@ -137,13 +137,46 @@ export const returnUser = user => dispatch => {
   })
 }
 
+export const forgotPassword = email => dispatch => {
+  const newConfig = {
+    headers: {
+     'Content-Type': 'application/json',
+    }
+  }
+  axios.post('/api/auth/forgotPass', {email: email}, newConfig)
+    .then(res => {
+      dispatch(getMessages({'msg': 'Email sent'}, 'client', 'success', null))
+    })
+    .catch(err => {
+      dispatch(getMessages(err.response.data, 'client', 'success', null))
+    })
+
+}
+
+export const resetPass = (data, id) => dispatch => {
+  const body = JSON.stringify(data);
+  const newConfig = {
+    headers: {
+     'Content-Type': 'application/json',
+    }
+  }
+  const username = data.username;
+  axios.put(`/api/auth/resetPass/${id}`, body, newConfig)
+    .then(res => {
+      dispatch(getMessages({'msg': 'HIt'}, 'client', 'success', null))
+    })
+    .catch(err => {
+      dispatch(getMessages(err.response.data, 'client', 'success', null));
+    })
+}
+
  export const checkToke = () => dispatch => {
    const newConfig = {
      headers: {
       'Content-Type': 'application/json',
      }
    }
-   axios.get('api/auth/user', newConfig)
+   axios.get('/api/auth/user', newConfig)
      .then(res => {
        dispatch({
          type: LOGIN_SUCCESS,

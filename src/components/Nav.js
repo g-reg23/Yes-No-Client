@@ -33,7 +33,6 @@ class Navi extends Component {
     });
   }
   closeCollapse = () => {
-    console.log('in');
     if (this.state.isOpen !== false) {
       this.setState({
         isOpen: !this.state.isOpen,

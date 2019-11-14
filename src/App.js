@@ -9,6 +9,7 @@ import Archive from './components/archive'
 import VoteIcon from './components/VoteIcon';
 import Private from './components/private';
 import PrivateArchive from './components/privateArchive';
+import ResetPass from './components/resetPass';
 import ViewPrivate from './components/viewPrivate';
 import LandingPage from './components/landingPage'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -47,6 +48,7 @@ class App extends Component {
               <Route exact path='/viewPrivate/:id' component={ViewPrivate} />
               <Route exact path='/privacyPolicy' component={PrivacyPolicy} />
               <Route exact path='/verify/:id' component={Verify} />
+              <Route exact path='/resetPass/:id' component={ResetPass} />
             </Switch>
             <VoteIcon />
             <div className='footerDiv'>Icons made by <a className='regLink' href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a className='regLink' href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a className='regLink' href="http://creativecommons.org/licenses/by/3.0/" 		    title="Creative Commons BY 3.0" target="_blank" rel="noopener noreferrer">CC 3.0 BY</a>
