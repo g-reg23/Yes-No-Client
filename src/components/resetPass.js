@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../App.css';
-import { Redirect } from 'react-router'
-// import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { Container, Row, Col, Alert, Button, Card, CardBody } from 'reactstrap';
 import FrontIcon from './FrontIcon';
-import { Link } from 'react-router-dom';
-import hacker from '../images/012-hacker.svg';
-import onlineVote from '../images/026-online-voting.svg';
-import vote from '../images/022-vote-2.svg';
-import { Tween } from 'react-gsap';
 import queryString from 'query-string';
 import {resetPass} from '../actions/authActions';
 import { getMessages, clearMessages } from '../actions/messageActions';

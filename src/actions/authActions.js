@@ -145,7 +145,7 @@ export const forgotPassword = email => dispatch => {
   }
   axios.post('/api/auth/forgotPass', {email: email}, newConfig)
     .then(res => {
-      dispatch(getMessages({'msg': 'Email sent'}, 'client', 'success', null))
+      dispatch(getMessages(res.data, 'client', 'success', null))
     })
     .catch(err => {
       dispatch(getMessages(err.response.data, 'client', 'success', null))
@@ -160,10 +160,9 @@ export const resetPass = (data, id) => dispatch => {
      'Content-Type': 'application/json',
     }
   }
-  const username = data.username;
   axios.put(`/api/auth/resetPass/${id}`, body, newConfig)
     .then(res => {
-      dispatch(getMessages({'msg': 'HIt'}, 'client', 'success', null))
+      dispatch(getMessages(res.data, 'client', 'success', null))
     })
     .catch(err => {
       dispatch(getMessages(err.response.data, 'client', 'success', null));

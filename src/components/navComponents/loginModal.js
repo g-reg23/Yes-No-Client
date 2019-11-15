@@ -114,12 +114,13 @@ class LoginModal extends Component {
                 <Button color="primary" onClick={this.submitLog}>Submit</Button>
                 <Button color="danger" onClick={this.loginModal}>Cancel</Button>
               </ModalFooter>
-              <a hef='#' align='center' onClick={this.forgotModal} style={{fontStyle:'bold', color:'blue', padding:'3%', paddingRight:'5%', cursor:'pointer'}}>Forgot Your Password? Click Here</a>
+              <a href='#' align='center' onClick={this.forgotModal} style={{fontStyle:'bold', color:'blue', padding:'3%', paddingRight:'5%', cursor:'pointer'}}>Forgot Your Password? Click Here</a>
             </Modal>
             <Modal isOpen={this.state.forgotMod} toggle={this.forgotModal} className='login-modal' centered style={{marginTop:'3.5%'}}>
-              <h3 className='mt-5' align='center'>Login with YessNo</h3>
+              <h3 className='mt-5' align='center'>Password Reset</h3>
               <ModalBody style={{padding:'7% 5% 7% 5%'}}>
                 {modAlert}
+                <p>Enter the email address associated with your YessNo account</p>
                 <input placeholder='YessNo Email' type='text'  className='textInput' name='emailName' onChange={this.handleLogChange} />
               </ModalBody>
               <ModalFooter style={{background:'lightgray'}}>

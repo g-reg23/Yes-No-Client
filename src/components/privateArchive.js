@@ -8,6 +8,7 @@ import FrontIcon from './FrontIcon';
 import { Container, Row, Col, Alert, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Privy from './privy';
+import { Spring } from 'react-spring/renderprops'
 
 
 class PrivateArchive extends Component {
@@ -33,10 +34,14 @@ class PrivateArchive extends Component {
         </Col>
       )
     return (
-      <div>
-        <FrontIcon view={'privateArchive'}/>
-        <Container>{alert}<Row>{votes}</Row></Container>
-      </div>
+      <Spring from={{ opacity: 0, marginTop: -1000 }} to={{ opacity: 1, marginTop: 0 }}>
+        {props => (
+          <div style={props}>
+            <FrontIcon view={'privateArchive'}/>
+            <Container>{alert}<Row>{votes}</Row></Container>
+          </div>
+        )}
+      </Spring>
     )
   }
 }

@@ -6,6 +6,7 @@ import propTypes from 'prop-types'
 import MakePrivate from './makePrivate';
 import PrivateVote from './PrivateVote'
 import FrontIcon from './FrontIcon';
+import { Spring } from 'react-spring/renderprops'
 
 class Private extends Component {
 
@@ -13,10 +14,14 @@ class Private extends Component {
     let display = this.props.auth.private.active === true ? <PrivateVote /> : <MakePrivate />
 
     return (
-      <div>
-        <FrontIcon view='private'/>
-        {display}
-      </div>
+      <Spring from={{ opacity: 0, marginTop: -1000 }} to={{ opacity: 1, marginTop: 0 }}>
+        {props => (
+          <div style={props}>
+            <FrontIcon view='private'/>
+            {display}
+          </div>
+        )}
+      </Spring>
     )
   }
 }

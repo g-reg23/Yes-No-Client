@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import '../../App.css';
 import { Link } from 'react-router-dom';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Alert } from 'reactstrap';
+import { Button, Modal, ModalBody, ModalFooter, Alert } from 'reactstrap';
 import { connect } from 'react-redux';
 import { register } from '../../actions/authActions';
 import { getMessages, clearMessages } from '../../actions/messageActions';
@@ -72,7 +72,7 @@ class RegisterModal extends Component {
         <div>
             {reg}
             <Modal isOpen={this.state.registerMod} toggle={this.registerModal} className='register-modal' centered style={{marginTop:'3.5%'}}>
-              <ModalHeader style={{background:'lightgray'}}>Register</ModalHeader>
+              <h3 className='mt-5' align='center'>Register with YessNo</h3>
               <ModalBody style={{padding:'7% 5% 7% 5%'}}>
                 {modAlert}
                 <input placeholder='Username' type='text'  className='textInput' ref='username' name='regName' onChange={this.handleRegChange} />

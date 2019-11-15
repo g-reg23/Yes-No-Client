@@ -21,7 +21,7 @@ export const getPrivateVotes = data => dispatch => {
         dispatch(getMessages({'msg': 'Private vote loaded!!'}), 200, 'success');
       } else {
         dispatch(returnUser(res.data))
-        dispatch(getMessages({'msg': 'Your latest private vote has expired. Please make a new vote, or to view older votes, click Expired under the Private tab.'}), 200)
+        dispatch(getMessages({'msg': 'Your latest private vote has expired. Please make a new vote, or to view older votes, click Archive under the Private tab.'}), 200)
       }
     })
     .catch(error => {
