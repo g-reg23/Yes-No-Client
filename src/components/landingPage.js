@@ -12,6 +12,7 @@ import onlineVote from '../images/026-online-voting.svg';
 import vote from '../images/022-vote-2.svg';
 import { Tween } from 'react-gsap';
 import { Spring } from 'react-spring/renderprops';
+import { clearMessages } from '../actions/messageActions';
 
 class LandingPage extends Component {
   constructor(props) {
@@ -26,18 +27,22 @@ class LandingPage extends Component {
       window.scroll(0,50);
     }
   }
+  componentDidMount() {
+    if (this.props.message.type === 'loginSuccess' || this.props.message.type === 'regSuccess' || this.props.message.type === 'verifySuccess') return
+    else this.props.clearMessages();
+  }
 
   render() {
     this.scroll();
     let message = this.props.message.msg !== '' && this.props.message.id !== 'modal' && this.props.message.id !== 'yesno' ? <Alert align='center' color='success'>{this.props.message.msg}</Alert> : null
     return (
-      <Spring from={{ opacity: 0, marginTop: -1000 }} to={{ opacity: 1, marginTop: 0 }}>
+      <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
         {props => (
           <div style={props}>
             <FrontIcon view='/'/>
             <Container id='about'>
             {message}
-            <Tween duration={2} from={{transform:'rotate(180deg)'}}><div style={{marginBottom:'3%'}} align='center'><Link to='/private' className='CTAButton'>Make a Private Vote!</Link></div></Tween>
+              <Tween duration={2} from={{transform:'rotate(180deg)'}}><div style={{marginBottom:'3%'}} align='center'><Link to='/active' className='CTAButton'>Vote!</Link></div></Tween>
               <Row>
                 <Col className='subsectDiv firstSub' md={4}>
                   <p className='subsectTitle'>Private Votes</p>
@@ -66,7 +71,7 @@ class LandingPage extends Component {
                   </div>
                   <p className='subsectBody'>All public votes at YessNo have a limited voting period, 500 votes. After that they are stored in the archive. To participate in currently active votes, click Vote. Or browse the archive to see all that made it to 500!</p>
                   <div align='center'>
-                    <Link to='/active' className='subsectButton'>Active</Link>
+                    <Link to='/active' className='subsectButton'>Vote</Link>
                     <Link to='/active' className='subsectButton'>Archive</Link>
                   </div>
                 </Col>
@@ -91,4 +96,4 @@ const mapStateToProps = (state) => ({
   auth: state.authObject
 })
 
-export default connect(mapStateToProps, {})(LandingPage);
+export default connect(mapStateToProps, {clearMessages})(LandingPage);

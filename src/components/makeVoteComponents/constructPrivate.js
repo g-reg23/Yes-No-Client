@@ -6,7 +6,7 @@ import { Card, CardBody,
 import '../../App.css';
 import { connect } from 'react-redux';
 import { privInfo } from '../../actions/privateActions';
-import { getMessages } from '../../actions/messageActions';
+import { getMessages, clearMessages } from '../../actions/messageActions';
 import propTypes from 'prop-types';
 import { Tween } from 'react-gsap';
 
@@ -40,7 +40,6 @@ class ConstructPrivate extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
   selectChange(e) {
-    console.log(e.target.value)
     this.setState({
       voteLength: e.target.value,
     })
@@ -52,14 +51,22 @@ class ConstructPrivate extends Component {
     }))
   }
   setName() {
-    this.setState({
-      nameSet: !this.state.nameSet
-    })
+    if (this.state.name.length >= 5 && this.state.name.length < 61) {
+      this.setState({
+        nameSet: !this.state.nameSet
+      })
+    } else {
+      this.props.getMessages({'msg': 'The vote name must be at least 5 characters in length, and not longer than 60 characters.'}, null, null, 'constructPrivate')
+    }
   }
   setDesc() {
-    this.setState({
-      descSet: !this.state.descSet
-    })
+    if (this.state.description.length > 9 && this.state.description.length < 101) {
+      this.setState({
+        descSet: !this.state.descSet
+      })
+    } else {
+      this.props.getMessages({'msg': 'Sorry the vote description must be at least 10 characters in length, and no longer that 100 characters.'}, null, null, 'constructPrivate')
+    }
   }
   goBack() {
     if (this.state.descSet) {
@@ -90,12 +97,11 @@ class ConstructPrivate extends Component {
     } else {
       this.props.getMessages({'msg': 'You must log in first'}, 'client', 'error', 'login')
     }
-
   }
-
-  componentDidMount() {
-
-  }
+componentDidMount() {
+  if (this.props.message.type === 'constructPrivate' || this.props.message.type === 'loginSuccess' || this.props.message.type === 'regSuccess') return
+  else this.props.clearMessages();
+}
 
 
   render() {
@@ -154,4 +160,4 @@ const mapStateToProps = (state) => ({
   message: state.messageObject
 })
 
-export default connect(mapStateToProps, { privInfo, getMessages })(ConstructPrivate);
+export default connect(mapStateToProps, { privInfo, getMessages, clearMessages })(ConstructPrivate);

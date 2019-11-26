@@ -49,7 +49,7 @@ export const verifyEmail = (name, hash, id) => dispatch => {
         type: VERIFIED_EMAIL,
         payload: res.data
       })
-      dispatch(getMessages({'msg': 'Successfully verified your Email. You may now log in!!'}, null, 'success', 'loginSuccess'))
+      dispatch(getMessages({'msg': 'Successfully verified your Email. You may now log in!!'}, null, 'success', 'verifySuccess'))
     })
 
     .catch(error => {
@@ -71,7 +71,7 @@ export const logout = (social) => dispatch => {
     dispatch({
       type: LOGOUT
     })
-    dispatch(getMessages({'msg': 'You were successully logged out'}, null, 'success', 'logout'))
+    dispatch(getMessages({'msg': 'You were successully logged out'}, null, 'success', 'logoutSuccess'))
   }
 
  }
@@ -162,10 +162,10 @@ export const resetPass = (data, id) => dispatch => {
   }
   axios.put(`/api/auth/resetPass/${id}`, body, newConfig)
     .then(res => {
-      dispatch(getMessages(res.data, 'client', 'success', null))
+      dispatch(getMessages(res.data, 'client', 'success', 'resetSuccess'))
     })
     .catch(err => {
-      dispatch(getMessages(err.response.data, 'client', 'success', null));
+      dispatch(getMessages(err.response.data, 'client', 'success', 'resetError'));
     })
 }
 
@@ -181,7 +181,7 @@ export const resetPass = (data, id) => dispatch => {
          type: LOGIN_SUCCESS,
          payload: res.data
        })
-       dispatch(getMessages({'msg': 'You were successfully logged in.'}, 200, 'success', null))
+       dispatch(getMessages({'msg': 'You were successfully logged in.'}, 200, 'success', 'loginSuccess'))
      })
      .catch(error => {
        dispatch({type: LOGOUT});

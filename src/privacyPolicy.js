@@ -15,7 +15,7 @@ class PrivacyPolicy extends Component {
     let alert = this.props.message.msg !== '' ?
     <Alert color='success' align='center'>{this.props.message.msg}</Alert> : null;
     return (
-      <Spring from={{ opacity: 0, marginTop: -1000 }} to={{ opacity: 1, marginTop: 0 }}>
+      <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
         {props => (
           <div style={props}>
             <FrontIcon view='privacyPolicy' />

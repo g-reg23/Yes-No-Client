@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getVotes, addVote } from '../actions/voteActions';
 import propTypes from 'prop-types';
 import { getMessages, clearMessages } from '../actions/messageActions';
-import { Container, Row, Col, Card, CardBody, Alert } from 'reactstrap';
+import { Container, Row, Col, Card, CardBody, Alert, Button } from 'reactstrap';
 import NoButton from './noButton'
 import YesButton from './yesButton';
 import FrontIcon from './FrontIcon';
@@ -13,6 +13,7 @@ import '../App.css';
 import { Spring } from 'react-spring/renderprops'
 import icon from '../images/027-global-voting.svg';
 import VoterList from './voterList';
+import { Link } from 'react-router-dom';
 
 class ActiveVotes extends Component {
   constructor(props) {
@@ -26,8 +27,15 @@ class ActiveVotes extends Component {
     window.scroll(0,0)
   }
   componentDidMount(prevProps) {
-    this.props.getVotes();
-    // window.scrollTo(0,0);
+    if (this.props.message.type === 'loginSuccess' || this.props.message.type === 'regSuccess') return
+    else this.props.clearMessages();
+    if (this.props.vote.fetched === false) {
+      this.props.getVotes();
+    }
+    window.scrollTo(0,0);
+    if (this.props.message.type === null) {
+      this.clear()
+    }
   }
   yesVote(id) {
     let thisVote = this.props.vote.votes.find(vote => vote._id === id);
@@ -75,17 +83,15 @@ class ActiveVotes extends Component {
   handleDelete(id) {
     this.props.deleteVote(id);
   }
+  clear = () => {
+    this.props.clearMessages();
+  }
   renderMessage() {
     if (this.props.message.id === 'yesno') {
       return (
         <Alert align='center' color='success'>{this.props.message.msg}</Alert>
       )
     }
-  }
-  componentDidUpdate(prevProps) {
-    // if (prevProps.message.msg !== this.props.message.msg && this.props.message.id !== 'yesno') {
-    //   window.scroll(0,50);
-    // }
   }
 
   render() {
@@ -114,11 +120,22 @@ class ActiveVotes extends Component {
     let alert = this.props.message.msg !== '' && this.props.message.id !== 'modal' && this.props.message.id !== 'yesno' ?
     <Alert color='success' align='center'>{this.props.message.msg}</Alert> : null;
     return(
-      <Spring from={{ opacity: 0, marginTop: -1000 }} to={{ opacity: 1, marginTop: 0 }}>
+      <Spring from={{ opacity: 0 }} to={{ opacity: 1}}>
         {props => (
-          <div style={props}>
+          <div>
             <FrontIcon view='activeVotes' />
             <div className='introDiv'>
+              <Container>
+                <Row>
+                  <Col>
+                    <Link align='center' className='nav-link navLink dropdownItem' to='/archive'><Button>View Archived Public Votes</Button></Link>
+                  </Col>
+                  <Col>
+                    <Link align='center' className='nav-link navLink dropdownItem' to='/private'><Button>My Current Private Votes</Button></Link>
+                  </Col>
+                </Row>
+              </Container>
+              <hr />
               {alert}
               <Container>
                 <Row>

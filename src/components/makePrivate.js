@@ -5,10 +5,10 @@ import ConstructPrivate from './makeVoteComponents/constructPrivate';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types'
-import { Container, Row, Col, Alert } from 'reactstrap';
+import { Container, Row, Col, Alert, Button } from 'reactstrap';
 import GetVoters from './makeVoteComponents/getVoters';
 import { resetPrivateInfo, postPrivateVote } from '../actions/privateActions'
-import {Button} from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 class MakePrivate extends Component {
 
@@ -52,8 +52,11 @@ class MakePrivate extends Component {
     return (
       <div>
         <Container>
+          <Link align='center' className='nav-link navLink dropdownItem' to='/privateArchive'><Button>View My Past Private Votes</Button></Link>
           {alert}
           {form}
+          <hr /> <br />
+          {alert}
         </Container>
       </div>
     );

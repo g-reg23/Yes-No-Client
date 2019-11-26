@@ -15,18 +15,15 @@ class MakeVote extends Component {
 
   componentDidMount() {
     window.scrollTo(0,0);
-  }
-  componentDidUpdate(prevProps) {
-    if (prevProps.message.msg !== this.props.message.msg) {
-      window.scroll(0,50);
-    }
+    if (this.props.message.type === 'loginSuccess' || this.props.message.type === 'regSuccess' || 'makeVote') return
+    else this.props.clearMessages();
   }
   render() {
     let voteInfoCard = this.props.vote.info.saved === false ? <ConstructVote /> : <ShowVote />;
     let alert = this.props.message.msg !== '' && this.props.message.id !== 'modal'  && this.props.message.id !== 'yesno' ?
     <Alert align='center' color='success'>{this.props.message.msg}</Alert> : null;
     return (
-      <Spring from={{ opacity: 0, marginTop: -1000 }} to={{ opacity: 1, marginTop: 0 }}>
+      <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
         {props => (
           <div style={props}>
             <FrontIcon view='makeVote'/>
@@ -36,6 +33,8 @@ class MakeVote extends Component {
                   <Col>
                     {alert}
                     {voteInfoCard}
+                    <hr /><br />
+                    {alert}
                   </Col>
                 </Row>
               </Container>

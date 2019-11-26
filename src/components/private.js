@@ -11,10 +11,12 @@ import { Spring } from 'react-spring/renderprops'
 class Private extends Component {
 
   render() {
-    let display = this.props.auth.private.active === true ? <PrivateVote /> : <MakePrivate />
+    let today = new Date()
+
+    let display = new Date(this.props.auth.private.coolDown) >= new Date(today.setDate(today.getDate())) ? <PrivateVote /> : <MakePrivate />
 
     return (
-      <Spring from={{ opacity: 0, marginTop: -1000 }} to={{ opacity: 1, marginTop: 0 }}>
+      <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
         {props => (
           <div style={props}>
             <FrontIcon view='private'/>

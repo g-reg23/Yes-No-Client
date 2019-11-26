@@ -6,7 +6,7 @@ import { Card, CardBody,
 import '../../App.css';
 import { connect } from 'react-redux';
 import { voteInfo } from '../../actions/voteActions';
-import { getMessages } from '../../actions/messageActions';
+import { getMessages, clearMessages } from '../../actions/messageActions';
 import propTypes from 'prop-types';
 import { Tween } from 'react-gsap';
 
@@ -41,14 +41,22 @@ class ConstructVote extends Component {
     }))
   }
   setName() {
-    this.setState({
-      nameSet: !this.state.nameSet
-    })
+    if (this.state.name.length > 5 && this.state.name.length < 61) {
+      this.setState({
+        nameSet: !this.state.nameSet
+      })
+    } else {
+      this.props.getMessages({'msg': 'The vote name must be at least 5 characters and no longer than 30 characters.'}, null, null, 'constructVote');
+    }
   }
   setDesc() {
-    this.setState({
-      descSet: !this.state.descSet
-    })
+    if (this.state.description.length > 9 && this.state.description.length < 101) {
+      this.setState({
+        descSet: !this.state.descSet
+      })
+    } else {
+      this.props.getMessages({'msg': 'The vote description must be at least 10 characters and no more than 100 characters.'}, null, null, 'constructVote');
+    }
   }
   goBack() {
     if (this.state.descSet) {
@@ -82,7 +90,11 @@ class ConstructVote extends Component {
   }
 
   componentDidMount() {
-
+    if (this.props.message.type === 'constructVote' || this.props.message.type === 'loginSuccess' || this.props.message.type === 'regSuccess') {
+      return
+    }else {
+      this.props.clearMessages();
+    }
   }
 
 
@@ -126,7 +138,8 @@ ConstructVote.propTypes = {
   vote: propTypes.object.isRequired,
   message: propTypes.object.isRequired,
   auth: propTypes.object.isRequired,
-  getMessages: propTypes.func.isRequired
+  getMessages: propTypes.func.isRequired,
+  clearMessages : propTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
@@ -135,4 +148,4 @@ const mapStateToProps = (state) => ({
   message: state.messageObject
 })
 
-export default connect(mapStateToProps, { voteInfo, getMessages })(ConstructVote);
+export default connect(mapStateToProps, { voteInfo, getMessages, clearMessages })(ConstructVote);

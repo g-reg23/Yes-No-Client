@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../App.css';
 import { connect } from 'react-redux';
-import { getPrivateVotes } from '../actions/privateActions'
+import { getPrivateVotes, addPrivateVote } from '../actions/privateActions'
 import propTypes from 'prop-types'
-import { addPrivateVote } from '../actions/privateActions';
+import { clearMessages } from '../actions/messageActions';
 import PieChart from './activeVoteComponents/PieChart';
 import NoButton from './noButton'
 import YesButton from './yesButton';
-import { Container, Row, Col, Card, CardBody, Alert } from 'reactstrap';
+import { Container, Row, Col, Card, CardBody, Alert, Button } from 'reactstrap';
 import icon from '../images/027-global-voting.svg';
 import EndTimer from './endTimer';
-import VoterList from './voterList'
+import VoterList from './voterList';
+import { Link } from 'react-router-dom';
 
 class PrivateVote extends Component {
   constructor(props) {
@@ -38,6 +39,9 @@ class PrivateVote extends Component {
     thisVote.voter = this.props.auth.username;
     this.props.addPrivateVote(thisVote);
   }
+  clearMessage = () => {
+    this.props.clearMessages();
+  }
   getTheVoters = () => {
     let list;
     if (this.props.private.vote.loaded === true) {
@@ -53,13 +57,27 @@ class PrivateVote extends Component {
       id: this.props.auth.private.id,
     }
     this.props.getPrivateVotes(data);
+    if (this.props.message.type === 'loginSuccess' || this.props.message.type === 'regSuccess' || 'privateVote' || 'logoutSuccess') return
+    else this.props.clearMessages();
+  }
+  componentDidUpdate() {
+    if (this.props.message.status === 200) {
+      this.clearMessage();
+    }
   }
   render() {
+    let today = new Date();
+    let cool = new Date(this.props.auth.private.coolDown);
+    let message = cool > today && new Date(this.props.private.vote.endDate < today) ?
+      <Alert color='success' align='center'>You must wait for the cool down period to end in order to make another Private Vote.<EndTimer end={this.props.auth.private.coolDown} color='black'/></Alert> :
+      <Alert color='success' align='center'>Make sure to vote before time runs out. After the vote expires, you will have a 1 day cool down period before you can do another Private Vote.</Alert>;
     let alert = this.props.message.msg !== '' ?
     <Alert color='success' align='center'>{this.props.message.msg}</Alert> : null;
     return (
       <div>
         <Container>
+          {message}
+          <Link align='center' className='nav-link navLink dropdownItem' to='/privateArchive'><Button>View My Past Private Votes</Button></Link>
           {alert}
           <Row>
             <Col lg={6}>
@@ -73,7 +91,7 @@ class PrivateVote extends Component {
                     <Col><NoButton voteId={this.props.private.vote._id} noVote={this.noVote.bind(this)} index='0'/></Col>
                   </Row>
                 </Container><hr />
-                {!this.props.private.loaded ? <p>No Time Remaining</p> : <EndTimer end={this.props.private.vote.endDate} /> }
+                {!this.props.private.loaded ? <p>No Time Remaining</p> : <EndTimer end={this.props.private.vote.endDate} color='white'/> }
                 <hr />
                 <CardBody>
                   <p style={{marginBottom:'0'}} className='showCreator'>Created By: {this.props.private.vote.creator}</p><br /><br />
@@ -84,7 +102,9 @@ class PrivateVote extends Component {
             </Col>
             <Col lg={6}></Col>
           </Row>
+          {alert}
         </Container>
+
       </div>
     )
   }
@@ -105,4 +125,4 @@ const mapStateToProps = (state) => ({
   private: state.privateObject
 })
 
-export default connect(mapStateToProps, {getPrivateVotes, addPrivateVote})(PrivateVote);
+export default connect(mapStateToProps, {getPrivateVotes, addPrivateVote, clearMessages})(PrivateVote);

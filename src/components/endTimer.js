@@ -37,8 +37,22 @@ class EndTimer extends Component {
     clearInterval(this.state.intervalId);
   }
   render() {
+    let color = this.props.color;
+    let days = Math.floor(this.state.seconds/86400);
+    let hours = Math.floor(this.state.seconds%(3600*24)/3600)
+    let minutes = Math.floor(this.state.seconds%3600/60);
+    let seconds = Math.floor(this.state.seconds%60);
+    let day = days === 1 ? ' ' + days + ' day, '
+      : days === 0 ? ''
+      : days + ' days, ';
+    let hour = hours === 1 ? hours + ' hour, '
+      : hours + ' hours, '
+    let minute = minutes === 1 ? minutes + ' minute, '
+      : minutes + ' minutes, ';
+    let second = seconds === 1 ? seconds + ' second.'
+      : seconds + ' seconds.'
     return(
-      <p style={{color: 'white'}}><strong>Time Remaining:</strong> {Math.floor(this.state.seconds%(3600*24)/3600)} hours, {Math.floor(this.state.seconds%3600/60)} minutes, {Math.floor(this.state.seconds%60)} seconds.</p>
+      <p align='center' style={{color: `${color}`}}><strong>Time Remaining:</strong> {day}{hour}{minute}{second}</p>
     )
   }
 }

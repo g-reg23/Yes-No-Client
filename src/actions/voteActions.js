@@ -13,6 +13,7 @@ export const getVotes = () => dispatch => {
         type: GET_VOTES,
         payload: res.data
       })
+      dispatch(getMessages({'msg': 'Active Votes loaded!'}, 200, 'success', 'votesLoaded'))
     })
     .catch(error => {
       dispatch(getMessages(error.response.data, error.response.status))
