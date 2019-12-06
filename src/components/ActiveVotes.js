@@ -53,10 +53,10 @@ class ActiveVotes extends Component {
         thisVote.userId = this.props.auth._id;
         this.props.addVote(thisVote);
       }else {
-        this.props.getMessages({'msg': 'You may only vote once.'}, thisVote._id , 'error', 'yesno');
+        this.props.getMessages({'msg': 'You may only vote once.'}, thisVote._id , 'danger', 'yesno');
       }
     } else {
-      this.props.getMessages({'msg': 'You must log in first.'}, thisVote._id , 'error', 'yesno');
+      this.props.getMessages({'msg': 'You must log in first.'}, thisVote._id , 'danger', 'yesno');
     }
   }
   noVote(id) {

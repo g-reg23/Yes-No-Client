@@ -55,8 +55,8 @@ class ShowVote extends Component {
             <p className='showName' align='center'>{this.props.vote.info.name}</p>
             <Container>
               <Row style={{margin:'5% 0 0 0'}}>
-                <Col><img alt='yes vote icon' style={{float:'right', width:'17%'}} src={yes} className='yes_no_buttons yesVote' /></Col>
-                <Col><img alt='no vote icon' src={no} style={{width:'17%'}} className='yes_no_buttons noVote' /></Col>
+                <Col><img alt='yes vote icon' style={{float:'right'}} src={yes} className='yes_no_buttons yesVote showButtons' /></Col>
+                <Col><img alt='no vote icon' src={no} className='yes_no_buttons noVote showButtons' /></Col>
               </Row>
             </Container><hr />
             <CardBody>

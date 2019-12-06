@@ -192,7 +192,7 @@ a:hover {
 }
 .headingDiv {
   padding: 2%;
-  margin-bottom: 5%;
+  margin: 10% 2% 5% 2%;
 }
 /* introDiv section:nth-child(even) {
   background: slategray;
@@ -537,6 +537,9 @@ a:hover {
   .yes_no_buttons {
     width: 25%;
   }
+  .showButtons {
+    width: 18%;
+  }
   .topDiv {
     padding: 10% 0 8% 0;
   }
@@ -558,6 +561,9 @@ a:hover {
   .yes_no_buttons {
     width: 22%;
   }
+  .showButtons {
+    width: 15%;
+  }
   .topDiv {
     padding: 7% 0 8% 0;
   }
@@ -571,6 +577,9 @@ a:hover {
 @media only screen and (min-width:2060px) {
   .yes_no_buttons {
     width: 15%;
+  }
+  .showButtons {
+    width: 10%;
   }
   .topDiv {
     padding: 4% 0 6% 0;
