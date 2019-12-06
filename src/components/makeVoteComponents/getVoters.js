@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../../App.css';
 import { Card, CardBody,
-  CardTitle, Button } from 'reactstrap';
+  CardTitle, Button, Alert } from 'reactstrap';
 
 
 
@@ -33,39 +33,76 @@ class GetVoter extends Component {
     this.setState({voters: newList})
   }
   onAdd(e){
-    let voter = {
-      name: this.state.name,
-      number: this.state.number,
-      email: this.state.email
+    if (this.state.voters.length > 0) {
+      for (let i=0; i<this.state.voters.length; i++) {
+        if (this.state.name === this.state.voters[i].name) {
+          this.props.error('name');
+          return;
+        } else if (this.state.email === this.state.voters[i].email) {
+          this.props.error('email');
+          return;
+        } else if (this.state.number === this.state.voters[i].number) {
+          this.props.error('number');
+          return;
+        }
+      }
     }
-    let newList = this.state.voters;
-    newList.push(voter);
-    this.setState({
-      voters: newList,
-      name: '',
-      number: '',
-      email: ''
-    });
+
+    let re = /\S+@\S+\.\S+/;
+    if (this.state.name.length > 3 && this.state.name.length < 16) {
+      if (re.test(this.state.email)) {
+        if (this.state.number.toString().length === 10) {
+          let voter = {
+            name: this.state.name,
+            number: this.state.number,
+            email: this.state.email
+          }
+          let newList = this.state.voters;
+          newList.push(voter);
+          this.setState({
+            voters: newList,
+            name: '',
+            number: '',
+            email: ''
+          });
+          this.props.clear();
+        } else {
+          this.props.error('phoneLength');
+        }
+      }else {
+        this.props.error('notEmail');
+      }
+    } else {
+      this.props.error('nameLength');
+    }
 
   }
+
   submit() {
-    this.props.submitVote(this.state.voters);
+    if (this.state.voters.length < 2 || this.state.voters.length > 10) {
+      this.props.error('voters')
+      return;
+    } else {
+      this.props.submitVote(this.state.voters);
+    }
   }
 
   render() {
+    let innerAlert = this.props.alert.id !== 'getVoterError' ? null :
+     <Alert color={this.props.alert.type} align='center'>{this.props.alert.msg}</Alert>
     let voters = this.state.voters.length > 0 ? '' : 'No current voters added';
     let voterDisplay =  this.state.voters.length > 0 ? this.state.voters.map((votr, i) => <li className='voterListItem' key={i} align='center' value={votr.voterId}><strong>{votr.name}  {votr.number} {votr.email}</strong><span onClick={this.onClear.bind(this)} className='clearNumber'>Clear</span></li>) : '';
-    // let nameState = <p className='voteInfoP voteName' style={{fontSize:'2em'}}><strong>{this.props.votes.vote.name}</strong></p>
     return (
       <Card className='showCard' body >
         <h1 className='infoTitle'><u>Voter Information</u></h1>
         <CardBody>
           <p>{voters}</p>
-          <CardTitle style={{fontSize:'1.25rem'}}>Add voters name and one or both of valid US phone number, and/or email address.</CardTitle>
+          <CardTitle style={{fontSize:'1.25rem'}}>Add voters name, valid US phone number, and email address.</CardTitle>
           <hr className='my-2' />
           <ol className='getVoterList'>
             {voterDisplay}
           </ol>
+          {innerAlert}
           <hr className='my-2' />
           <input className='textInput' type='text' placeholder='Voter Name' name='name' value={this.state.name} onChange={this.handleChange}/>
           <input className='textInput' type="number" name='number' onChange={this.handleChange} value={this.state.number} pattern="[0-9]{3} [0-9]{3} [0-9]{4}" maxLength="12" placeholder='888 888 8888'  title="Ten digits code" required />

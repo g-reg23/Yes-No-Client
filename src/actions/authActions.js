@@ -16,7 +16,7 @@ export const register = (info) => dispatch => {
       dispatch(getMessages({'msg': 'Registration Success!! Please verify your email to login.'}, null, 'success', 'regSuccess'))
     })
     .catch(error => {
-      dispatch(getMessages(error.response.data, error.response.status, 'error', null));
+      dispatch(getMessages(error.response.data, error.response.status, 'warning', 'regError'));
     })
 };
 
@@ -33,7 +33,7 @@ export const login = (info) => dispatch => {
     })
 
     .catch(error => {
-      dispatch(getMessages(error.response.data, error.response.status, 'error', 'modal'))
+      dispatch(getMessages(error.response.data, error.response.status, 'warning', 'modal'))
     })
 }
 
@@ -53,7 +53,7 @@ export const verifyEmail = (name, hash, id) => dispatch => {
     })
 
     .catch(error => {
-      dispatch(getMessages(error.response.data, error.response.status, 'error', null))
+      dispatch(getMessages(error.response.data, error.response.status, 'danger', null))
     })
 }
 
@@ -93,7 +93,7 @@ export const updateProfile = (profile) => dispatch => {
     })
     .catch(error => {
 
-      dispatch(getMessages(error.response.data, error.response.status, 'error', 'modal' ))
+      dispatch(getMessages(error.response.data, error.response.status, 'warning', 'modal' ))
     })
  }
 
@@ -113,7 +113,7 @@ export const updateProfile = (profile) => dispatch => {
       dispatch(getMessages({'msg': 'You have successfully deleted your account, you are now logged out. Come back anytime, we good :)'}))
     })
     .catch(error => {
-      dispatch(getMessages(error.response.data, error.response.status, 'error', 'modal'))
+      dispatch(getMessages(error.response.data, error.response.status, 'warning', 'modal'))
     })
  }
 
@@ -148,7 +148,7 @@ export const forgotPassword = email => dispatch => {
       dispatch(getMessages(res.data, 'client', 'success', null))
     })
     .catch(err => {
-      dispatch(getMessages(err.response.data, 'client', 'success', null))
+      dispatch(getMessages(err.response.data, 'client', 'warning', null))
     })
 
 }
@@ -165,7 +165,7 @@ export const resetPass = (data, id) => dispatch => {
       dispatch(getMessages(res.data, 'client', 'success', 'resetSuccess'))
     })
     .catch(err => {
-      dispatch(getMessages(err.response.data, 'client', 'success', 'resetError'));
+      dispatch(getMessages(err.response.data, 'client', 'warning', 'resetError'));
     })
 }
 
@@ -185,6 +185,6 @@ export const resetPass = (data, id) => dispatch => {
      })
      .catch(error => {
        dispatch({type: LOGOUT});
-       dispatch(getMessages(error.response.data, error.response.status, 'error', null))
+       dispatch(getMessages(error.response.data, error.response.status, 'info', 'noToke'))
      })
  }

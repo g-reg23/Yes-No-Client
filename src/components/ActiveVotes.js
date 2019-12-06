@@ -74,10 +74,10 @@ class ActiveVotes extends Component {
         thisVote.userId = this.props.auth._id;
         this.props.addVote(thisVote);
       }else {
-        this.props.getMessages({'msg': 'You may only vote once.'}, thisVote._id , 'error', 'yesno');
+        this.props.getMessages({'msg': 'You may only vote once.'}, thisVote._id , 'danger', 'yesno');
       }
     } else {
-      this.props.getMessages({'msg': 'You must log in first.'}, thisVote._id , 'error', 'yesno');
+      this.props.getMessages({'msg': 'You must log in first.'}, thisVote._id , 'danger', 'yesno');
     }
   }
   handleDelete(id) {
@@ -89,7 +89,7 @@ class ActiveVotes extends Component {
   renderMessage() {
     if (this.props.message.id === 'yesno') {
       return (
-        <Alert align='center' color='success'>{this.props.message.msg}</Alert>
+        <Alert align='center' color={this.props.message.id}>{this.props.message.msg}</Alert>
       )
     }
   }
@@ -118,7 +118,7 @@ class ActiveVotes extends Component {
         </Card>
       </Col>) : null;
     let alert = this.props.message.msg !== '' && this.props.message.id !== 'modal' && this.props.message.id !== 'yesno' ?
-    <Alert color='success' align='center'>{this.props.message.msg}</Alert> : null;
+    <Alert color={this.props.message.type} align='center'>{this.props.message.msg}</Alert> : null;
     return(
       <Spring from={{ opacity: 0 }} to={{ opacity: 1}}>
         {props => (

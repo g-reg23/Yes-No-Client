@@ -54,7 +54,7 @@ class Archive extends Component {
           </Col>
         </Row>)
     let alert = this.props.message.msg !== '' && this.props.message.id !== 'modal' && this.props.message.id !== 'yesno' ?
-    <Alert color='success' align='center'>{this.props.message.msg}</Alert> : null;
+    <Alert color={this.props.message.type} align='center'>{this.props.message.msg}</Alert> : null;
     return(
       <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
         {props => (

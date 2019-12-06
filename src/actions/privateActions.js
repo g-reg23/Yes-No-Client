@@ -18,10 +18,10 @@ export const getPrivateVotes = data => dispatch => {
           type: GET_PRIVATE_VOTES,
           payload: res.data
         })
-        dispatch(getMessages({'msg': 'Private vote loaded!!'}, 200, 'success', null));
+        dispatch(getMessages({'msg': 'Private vote loaded!!'}, 200, 'success', 'privVoteLoad'));
       } else {
         dispatch(returnUser(res.data))
-        dispatch(getMessages({'msg': 'Your latest private vote has expired. Please make a new vote, or to view older votes, click Archive under the Private tab.'}), 200)
+        dispatch(getMessages({'msg': 'Your latest private vote has expired. Please make a new vote, or to view older votes, click Archive under the Private tab.'}), 200, 'danger', 'PrivVoteNoLoad')
       }
     })
     .catch(error => {
@@ -39,7 +39,7 @@ export const getPrivateView = id => dispatch => {
       dispatch(getMessages({'msg': 'Private vote loaded!!'}), 200, 'success');
     })
     .catch(error => {
-      dispatch(getMessages(error.response.data, error.response.status))
+      dispatch(getMessages(error.response.data, error.response.status), 'warning', 'PrivVoteNoLoad')
     })
 }
 
@@ -60,7 +60,7 @@ export const fetchPastPrivateVotes = id => dispatch => {
       dispatch(getMessages({'msg': 'Your past private votes were loaded!!'}, 'success'))
     })
     .catch(error => {
-      dispatch(getMessages(error.response.data, error.response.status))
+      dispatch(getMessages(error.response.data, error.response.status), 'warning', 'pastVotesNoLoad')
     })
 
 }
@@ -78,10 +78,10 @@ export const addPrivateVote = vote => dispatch => {
         type: ADD_PRIVATE_VOTES,
         payload: res.data,
       })
-      dispatch(getMessages({'msg': 'Vote was successfully added!'}, null, 'success'))
+      dispatch(getMessages({'msg': 'Vote was successfully added!'}, null, 'success', 'addPrivVote'))
     })
     .catch(error => {
-      dispatch(getMessages(error.response.data, error.response.status))
+      dispatch(getMessages(error.response.data, error.response.status, 'secondary', 'addPrivVote'))
     })
 
 }
@@ -100,7 +100,7 @@ export const postPrivateVote = (newVote) => dispatch => {
         dispatch(getMessages({'msg': 'Your private vote was stored and messages were sent to all members of the vote.'}, 200, 'success', null))
       })
       .catch(error => {
-        dispatch(getMessages(error.response.data, 400, 'error'))
+        dispatch(getMessages(error.response.data, null, 'secondary', 'constructPrivateServer'))
       })
 }
 

@@ -51,7 +51,7 @@ class LoginModal extends Component {
         logPass: '',
       })
     }else {
-      this.props.getMessages({'msg': 'Username and password must be at least 3 characters.'}, 'client', 'error', 'modal')
+      this.props.getMessages({'msg': 'Username and password must be at least 3 characters.'}, 'client', 'danger', 'modal')
     }
   }
   forgotModal = () => {
@@ -73,7 +73,7 @@ class LoginModal extends Component {
       this.cancelForgotModal();
       this.setState({emailName: ''})
     } else {
-      this.props.getMessages({'msg': 'Please submit a valid email address.'}, 'client', 'error', 'modal')
+      this.props.getMessages({'msg': 'Please submit a valid email address.'}, 'client', 'danger', 'modal')
     }
   }
   logout() {
@@ -96,7 +96,7 @@ class LoginModal extends Component {
     }
   }
   render() {
-    let modAlert = this.props.message.id === 'modal' ? <Alert color='warning'>{this.props.message.msg}</Alert> : null;
+    let modAlert = this.props.message.id === 'modal' ? <Alert color={this.props.message.type}>{this.props.message.msg}</Alert> : null;
     const auth = this.props.auth.isAuthenticated === false ? <Link className='nav-link navLink' onClick={this.loginModal} to='#'>Login</Link> :
     <Link to='#' className= 'nav-link navLink' onClick={this.logout}>Logout</Link>;
     return (

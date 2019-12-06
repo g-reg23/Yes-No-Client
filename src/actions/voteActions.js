@@ -16,7 +16,7 @@ export const getVotes = () => dispatch => {
       dispatch(getMessages({'msg': 'Active Votes loaded!'}, 200, 'success', 'votesLoaded'))
     })
     .catch(error => {
-      dispatch(getMessages(error.response.data, error.response.status))
+      dispatch(getMessages(error.response.data, error.response.status, 'secondary', 'votesNoLoad'))
     })
 }
 
@@ -38,7 +38,7 @@ export const postVote = (newVote) => dispatch => {
       dispatch(getMessages({'msg': 'Your vote was successfully stored!'}, null, 'success', 'votePosted'))
     })
     .catch(error => {
-      dispatch(getMessages(error.response.data, 400, 'error'))
+      dispatch(getMessages(error.response.data, 400, 'danger', 'votePostError'))
     })
 }
 
@@ -93,7 +93,7 @@ export const addVote = vote => dispatch => {
      dispatch(getMessages({'msg': 'Your vote was added!!'}, vote._id, 'success', 'yesno'))
    })
    .catch(err => {
-     dispatch(getMessages(err.response.data, vote._id, 'error', 'yesno'))
+     dispatch(getMessages(err.response.data, vote._id, 'danger', 'yesno'))
    })
 
 }

@@ -36,7 +36,7 @@ class Verify extends Component {
     if (this.state.loaded) {
        return <Redirect to='/' fromVerify={true} />;
      }
-    let message = this.props.message.msg !== '' && this.props.message.id !== 'modal' && this.props.message.id !== 'yesno' ? <Alert align='center' color='success'>{this.props.message.msg}</Alert> : null
+    let message = this.props.message.msg !== '' && this.props.message.id !== 'modal' && this.props.message.id !== 'yesno' ? <Alert align='center' color={this.props.message.type}>{this.props.message.msg}</Alert> : null
     return (
           <div>
             <FrontIcon view='/'/>

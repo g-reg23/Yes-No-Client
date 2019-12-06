@@ -1,19 +1,12 @@
 import React, { Component } from 'react';
-// import { Button } from 'reactstrap';
 import { Card, CardBody,
-  CardTitle, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-// import { CSSTransition, TransitionGroup } from 'react-transition-group';
+  CardTitle, Button, Modal, ModalHeader, ModalBody, ModalFooter, Alert } from 'reactstrap';
 import '../../App.css';
 import { connect } from 'react-redux';
 import { voteInfo } from '../../actions/voteActions';
 import { getMessages, clearMessages } from '../../actions/messageActions';
 import propTypes from 'prop-types';
 import { Tween } from 'react-gsap';
-
-
-
-
-
 class ConstructVote extends Component {
   constructor(props) {
     super(props);
@@ -41,21 +34,25 @@ class ConstructVote extends Component {
     }))
   }
   setName() {
-    if (this.state.name.length > 5 && this.state.name.length < 61) {
-      this.setState({
-        nameSet: !this.state.nameSet
-      })
-    } else {
-      this.props.getMessages({'msg': 'The vote name must be at least 5 characters and no longer than 30 characters.'}, null, null, 'constructVote');
-    }
+    if (this.props.auth.isAuthenticated) {
+      if (this.state.name.length > 5 && this.state.name.length < 61) {
+        this.setState({
+          nameSet: !this.state.nameSet
+        })
+        this.props.clearMessages();
+      } else {
+        this.props.getMessages({'msg': 'The vote name must be at least 5 characters and no longer than 30 characters.'}, null, 'danger', 'constructVote');
+      }
+    } else this.props.getMessages({'msg': 'You must log in first.'}, null, 'danger', 'login')
   }
   setDesc() {
     if (this.state.description.length > 9 && this.state.description.length < 101) {
       this.setState({
         descSet: !this.state.descSet
       })
+      this.props.clearMessages();
     } else {
-      this.props.getMessages({'msg': 'The vote description must be at least 10 characters and no more than 100 characters.'}, null, null, 'constructVote');
+      this.props.getMessages({'msg': 'The vote description must be at least 10 characters and no more than 100 characters.'}, null, 'danger', 'constructVote');
     }
   }
   goBack() {
@@ -84,13 +81,13 @@ class ConstructVote extends Component {
         }else {this.toggle()}
       }else{this.toggle()}
     } else {
-      this.props.getMessages({'msg': 'You must log in first'}, 'client', 'error', 'login')
+      this.props.getMessages({'msg': 'You must log in first'}, 'client', 'danger', 'login')
     }
 
   }
 
   componentDidMount() {
-    if (this.props.message.type === 'constructVote' || this.props.message.type === 'loginSuccess' || this.props.message.type === 'regSuccess') {
+    if (this.props.message.id === 'constructVote' || this.props.message.id === 'loginSuccess' || this.props.message.id === 'regSuccess') {
       return
     }else {
       this.props.clearMessages();
@@ -99,23 +96,31 @@ class ConstructVote extends Component {
 
 
   render() {
+    let innerAlert = this.props.message.id !== 'constructVote' ? null :
+     <Alert color={this.props.message.type} align='center'>{this.props.message.msg}</Alert>
+
     let name = this.state.nameSet === false ?
       <Tween duration={3} from={{ opacity:0 }}><div className='inputDiv'><input className='textInput' style={{marginTop:'3%'}} name='name' type='text' placeholder='Vote Question' onChange={this.handleChange}/><div className='centerButtonRow'><Button color='primary' className='setButton' onClick={this.setName}>SET</Button><br /></div></div></Tween> :
       <Tween duration={3} from={{ opacity:0 }}><div className='inputDiv'><div><textarea className='textInput' style={{fontSize:'.85em', height:'5em'}} name='description' type='text' placeholder='Description/Additional Information' onChange={this.handleChange}></textarea>
       <div className='centerButtonRow'><Button color='primary' className='setButton' onClick={this.setDesc}>SET</Button><Button color='primary' className='goBackButton' onClick={this.goBack}>Go Back</Button></div></div><div><p align='center' className='voteNameHead'>Vote Name</p><p className='voteNameTrue' align='center'>{this.state.name}</p></div></div></Tween>
+
     let intro1 = this.state.nameSet === false ? <CardTitle className='voteInfoHeader'>Please enter the question to be voted on in the box below. It should be a simple yes/no question. Then click the Set button</CardTitle> :
       <CardTitle className='voteInfoHeader'>Now you may enter any additional details and a brief description of the vote and enter the Set button.</CardTitle>
+
     let finalReview =<div><CardTitle className='voteInfoHeader'>Click save to view your vote before submitting. Otherwise click Go Back.</CardTitle>
       <p align='center' className='voteNameHead'>Vote Name</p><p className='voteNameTrue' align='center'>{this.state.name}</p>
       <p align='center' className='voteNameHead'>Vote Description</p><p className='voteNameTrue' align='center'>{this.state.description}</p>
       <div className='centerButtonRow'><Button style={{marginTop:'5%'}} onClick={this.onSubmit} color='primary' type='submit' value='Submit'><span>Save</span></Button><Button color='primary' className='goBackButton' onClick={this.goBack}>Go Back</Button></div></div>
+
     let show = this.state.nameSet === true && this.state.descSet === true ? finalReview : name;
+
     return (
       <div>
           <Card className='innerCard' body>
             <h1 className='infoTitle'><u>Vote Information</u></h1>
             <CardBody>
               {this.state.nameSet === true && this.state.descSet === true ? null : intro1}
+              {innerAlert}
               <hr className='my-2' />
               {show}
             </CardBody>

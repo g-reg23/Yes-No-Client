@@ -20,8 +20,8 @@ class MakeVote extends Component {
   }
   render() {
     let voteInfoCard = this.props.vote.info.saved === false ? <ConstructVote /> : <ShowVote />;
-    let alert = this.props.message.msg !== '' && this.props.message.id !== 'modal'  && this.props.message.id !== 'yesno' ?
-    <Alert align='center' color='success'>{this.props.message.msg}</Alert> : null;
+    let alert = this.props.message.msg.length >= 0 || this.props.message.id === 'constructVote' ? null :
+    <Alert align='center' color={this.props.message.type}>{this.props.message.msg}</Alert>;
     return (
       <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
         {props => (
@@ -34,7 +34,6 @@ class MakeVote extends Component {
                     {alert}
                     {voteInfoCard}
                     <hr /><br />
-                    {alert}
                   </Col>
                 </Row>
               </Container>

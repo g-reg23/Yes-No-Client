@@ -39,13 +39,13 @@ class ResetPass extends Component  {
       })
       this.props.clearMessages();
     } else {
-      this.props.getMessages({'msg': 'Both passwords must match'}, 'client', 'error', null)
+      this.props.getMessages({'msg': 'Both passwords must match'}, 'client', 'danger', null)
     }
   }
 
   render() {
     let alert = this.props.message.msg !== '' && this.props.message.id !== 'modal'  && this.props.message.id !== 'yesno' ?
-    <Alert align='center' color='success'>{this.props.message.msg}</Alert> : null;
+    <Alert align='center' color={this.props.message.type}>{this.props.message.msg}</Alert> : null;
     return (
       <div>
         <FrontIcon view='/'/>

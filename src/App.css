@@ -169,6 +169,7 @@ a:hover {
 }
 .editButton, .subButton {
   margin:8% 0 0 3%;
+  font-size: 1.25rem;
 }
 .showName {
   color: whitesmoke;
@@ -188,6 +189,10 @@ a:hover {
   color: whitesmoke;
   font-weight: 435;
   text-align: center;
+}
+.headingDiv {
+  padding: 2%;
+  margin-bottom: 5%;
 }
 /* introDiv section:nth-child(even) {
   background: slategray;

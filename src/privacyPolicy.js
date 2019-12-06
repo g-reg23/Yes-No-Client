@@ -4,11 +4,13 @@ import { Spring } from 'react-spring/renderprops';
 import { connect } from 'react-redux';
 import {Alert} from 'reactstrap';
 import propTypes from 'prop-types';
+import { clearMessages } from './actions/messageActions'
 
 class PrivacyPolicy extends Component {
 
   componentDidMount() {
     window.scroll(0,0)
+    this.props.clearMessages();
   }
 
   render() {
@@ -141,4 +143,4 @@ const mapStateToProps = (state) => ({
   message: state.messageObject,
 })
 
-export default connect(mapStateToProps, {})(PrivacyPolicy);
+export default connect(mapStateToProps, {clearMessages})(PrivacyPolicy);

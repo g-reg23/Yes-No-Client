@@ -44,10 +44,12 @@ class ShowVote extends Component {
     return (
       <div>
         <h3 style={{fontWeight:'700'}} align='center'>Vote Review</h3>
-        <h3 style={{fontWeight:'500', marginTop: '3.5%', textAlign: 'center'}}>Click Submit if you are ready to submit this vote to the public, click Private to add contacts and make a provate vote, or  click edit to go back and work on the vote.</h3>
+        <h3 style={{fontWeight:'500', marginTop: '3.5%', textAlign: 'center'}}>Click Submit if you are ready to submit this vote to the public, or  click edit to go back and work on the vote.</h3>
+        <hr />
         <div style={{display:'flex', justifyContent:'center', marginBottom:'2%'}}>
           <Button className='subButton' onClick={this.onSubmit} size='md' color='primary'>Submit</Button>
-          <Button className='editButton' onClick={this.onEdit} size='md' >Edit</Button></div>
+          <Button className='editButton' onClick={this.onEdit} size='md' >Edit Vote</Button>
+        </div>
         <Col>
           <Card className='showCard' body>
             <p className='showName' align='center'>{this.props.vote.info.name}</p>

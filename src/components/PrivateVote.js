@@ -71,8 +71,10 @@ class PrivateVote extends Component {
     let message = cool > today && new Date(this.props.private.vote.endDate < today) ?
       <Alert color='success' align='center'>You must wait for the cool down period to end in order to make another Private Vote.<EndTimer end={this.props.auth.private.coolDown} color='black'/></Alert> :
       <Alert color='success' align='center'>Make sure to vote before time runs out. After the vote expires, you will have a 1 day cool down period before you can do another Private Vote.</Alert>;
-    let alert = this.props.message.msg !== '' ?
-    <Alert color='success' align='center'>{this.props.message.msg}</Alert> : null;
+    let alert = this.props.message.msg === '' || this.props.message.id === 'addPrivVote' ? null :
+    <Alert color={this.props.message.type} align='center'>{this.props.message.msg}</Alert>;
+    let innerAlert = this.props.message.id === 'addPrivVote' ?
+    <Alert color={this.props.message.type} align='center'>{this.props.message.msg}</Alert> : null;
     return (
       <div>
         <Container>
@@ -85,6 +87,7 @@ class PrivateVote extends Component {
                 <img width='20%' src={icon} alt='vote icon'style={{marginLeft:'40%'}}  />
                 <p className='showName' align='center' style={{fontSize: '2rem'}}>{this.props.private.vote.name}</p>
                 <p align='center' className='showDesc'>{this.props.private.vote.desc}</p>
+                {innerAlert}
                 <Container>
                   <Row>
                     <Col><YesButton voteId={this.props.private.vote._id} yesVote={this.yesVote.bind(this)} index='0'/></Col>

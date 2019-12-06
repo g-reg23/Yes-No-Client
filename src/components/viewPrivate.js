@@ -49,18 +49,21 @@ class PrivateVote extends Component {
   }
   render() {
     // const values = queryString.parse(this.props.location.search)
-    let alert = this.props.message.msg !== '' ?
-    <Alert color='success' align='center'>{this.props.message.msg}</Alert> : null;
+    let alert = this.props.message.msg !== '' || this.props.message.id !== 'addPrivVote' ?
+    <Alert color={this.props.message.type} align='center'>{this.props.message.msg}</Alert> : null;
+    let innerAlert = this.props.message.id === 'addPrivVote' ?
+    <Alert color={this.props.message.type} align='center'>{this.props.message.msg}</Alert> : null;
     return (
       <div>
         <FrontIcon view='private'/>
+        {alert}
         <Container>
           <Row>
             <Col lg={6}>
               <Card className='showCard' body>
                 <p className='showName' align='center'>{this.props.private.vote.name}</p>
                 <p align='center' className='showDesc'>{this.props.private.vote.desc}</p>
-                {alert}
+                {innerAlert}
                 <Container>
                   <Row>
                     <Col><YesButton voteId={this.props.private.vote._id} yesVote={this.yesVote.bind(this)} index='0'/></Col>

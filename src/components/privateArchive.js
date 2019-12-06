@@ -29,8 +29,8 @@ class PrivateArchive extends Component {
   }
   render() {
     let alert = this.props.message.msg !== '' ?
-    <Alert color='success' align='center'>{this.props.message.msg}</Alert> : null;
-    let votes = this.props.private.past.length === 0 ? <div><h1>Whoa, nothing to see here!! :) You have not made a private vote yet.</h1></div> :
+    <Alert color={this.props.message.type} align='center'>{this.props.message.msg}</Alert> : null;
+    let votes = this.props.private.past.length === 0 ? <div><h3>Whoa, nothing to see here!! :) You have not made a private vote yet.</h3></div> :
       this.props.private.past.map((v, index) =>
         <Col key={v._id} lg={6}>
           <Privy vote={v} />
@@ -41,12 +41,21 @@ class PrivateArchive extends Component {
         {props => (
           <div style={props}>
             <FrontIcon view={'privateArchive'}/>
+            <hr />
             <Container>
               {alert}
-              <Link align='center' className='nav-link navLink dropdownItem' to='/private'><Button>My Current Private Votes</Button></Link>
-              <Link align='center' className='nav-link navLink dropdownItem' to='/active'><Button>View Public Votes</Button></Link>
               <Row>
                 {votes}
+              </Row>
+            </Container>
+            <Container>
+              <Row>
+                <Col>
+                  <Link align='center' className='nav-link navLink dropdownItem' to='/private'><Button>Make A Private Vote</Button></Link>
+                </Col>
+                <Col>
+                  <Link align='center' className='nav-link navLink dropdownItem' to='/active'><Button>View Public Votes</Button></Link>
+                </Col>
               </Row>
             </Container>
           </div>
