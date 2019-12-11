@@ -72,7 +72,7 @@ class LandingPage extends Component {
                   <p className='subsectBody'>All public votes at YessNo have a limited voting period, 500 votes. After that they are stored in the archive. To participate in currently active votes, click Vote. Or browse the archive to see all that made it to 500!</p>
                   <div align='center'>
                     <Link to='/active' className='subsectButton'>Vote</Link>
-                    <Link to='/active' className='subsectButton'>Archive</Link>
+                    <Link to='/archive' className='subsectButton'>Archive</Link>
                   </div>
                 </Col>
               </Row>

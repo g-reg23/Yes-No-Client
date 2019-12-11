@@ -43,7 +43,7 @@ class ConstructVote extends Component {
       } else {
         this.props.getMessages({'msg': 'The vote name must be at least 5 characters and no longer than 30 characters.'}, null, 'danger', 'constructVote');
       }
-    } else this.props.getMessages({'msg': 'You must log in first.'}, null, 'danger', 'login')
+    } else this.props.getMessages({'msg': 'You must log in first.'}, null, 'danger', 'constructVote')
   }
   setDesc() {
     if (this.state.description.length > 9 && this.state.description.length < 101) {
