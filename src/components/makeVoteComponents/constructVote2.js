@@ -116,7 +116,7 @@ class ConstructVote extends Component {
 
     return (
       <div>
-          <Card className='innerCard' body>
+          <Card className='innerCard accent-color-four white-text' body>
             <h1 className='infoTitle'><u>Vote Information</u></h1>
             <CardBody>
               {this.state.nameSet === true && this.state.descSet === true ? null : intro1}

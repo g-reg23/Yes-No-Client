@@ -56,8 +56,8 @@ class PrivateVote extends Component {
     return (
       <div>
         <FrontIcon view='private'/>
-        {alert}
         <Container>
+          {alert}
           <Row>
             <Col lg={6}>
               <Card className='showCard' body>

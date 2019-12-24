@@ -53,7 +53,7 @@ export const verifyEmail = (name, hash, id) => dispatch => {
     })
 
     .catch(error => {
-      dispatch(getMessages(error.response.data, error.response.status, 'danger', null))
+      dispatch(getMessages(error.response.data, error.response.status, 'warning', null))
     })
 }
 
@@ -185,6 +185,6 @@ export const resetPass = (data, id) => dispatch => {
      })
      .catch(error => {
        dispatch({type: LOGOUT});
-       dispatch(getMessages(error.response.data, error.response.status, 'info', 'noToke'))
+       dispatch(getMessages(error.response.data, error.response.status, 'warning', 'noToke'))
      })
  }

@@ -1,6 +1,7 @@
 body {
   background: white;
   font-family: 'Montserrat', sans-serif;
+  line-height: 145%;
 }
 a {
   color: white;
@@ -10,6 +11,7 @@ a:hover {
   text-decoration: none;
   color: white;
 }
+
 .App {
   display: flex;
   align-items: left;
@@ -27,7 +29,8 @@ a:hover {
   border-radius: .5rem;
   font-weight: 600;
   font-size: 1.25rem;
-  background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%);
+  /* background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%); */
+  background: #4CAF50;
   color: white;
   box-shadow: 1px 1px 1px;
   margin-bottom: 2%;
@@ -60,6 +63,11 @@ a:hover {
 .dropdownItem:hover {
   color: black;
 }
+.navLink:hover {
+  color:black;
+  background: white;
+  border-radius: .5rem;
+}
 .topIcons {
   width: 50%;
 }
@@ -71,16 +79,41 @@ a:hover {
   background: #1a2932;
 }
 .navbarBrand:hover {
-  color:white;
+  color:black;
   text-decoration: underline;
 }
 
 .topDiv {
-  background-size: contain;
   padding: 16% 0 8% 0;
   background-image: url('images/prism.png');
+  /* background-image: url('images/crowd-participating-at-event.jpg'); */
+  /* background-image: url('images/396.jpg'); */
   margin-bottom: 3.5%;
+  position: relative;
   /* background-image: linear-gradient(#b8b1e7, #3e309c); */
+}
+.yesNoImage {
+  margin-top: -1%;
+  width: 100%;
+  opacity:.95;
+}
+/* .routeTitle {
+  color: black;
+  position: absolute;
+  top:18%;
+  left: 20%;
+  text-align:center;
+} */
+.routeTitle {
+
+}
+.mainTitle {
+  font-size: 2rem;
+  font-weight:700;
+}
+.subTitle {
+  font-size: 1.25rem;
+  font-weight: 850;
 }
 .average, .total {
   color: whitesmoke;
@@ -130,6 +163,7 @@ a:hover {
   margin-top: 5%;
   width: 80%;
   margin-left: 10%;
+  background:white;
 }
 .middleDiv {
   background: slateblue;
@@ -223,6 +257,8 @@ a:hover {
 }
 .voteIconDiv {
   background-image: url('images/prism.png');
+  background-repeat: no-repeat;
+  background-size: cover;
   padding-bottom: 10%;
   padding-top: 4%;
   margin-top: 8%;
@@ -413,13 +449,16 @@ a:hover {
   margin: 5%;
   border-radius: 8.5em;
 }
+.linkButton {
+  background: #5a84cd;
+}
+.linkButton:hover {
+  background: #30589c;
+}
 .centerPic {
   margin-top: 5%;
   margin-left: 35%;
   margin-right: 35%;
-}
-.routeTitle {
-  font-size: 1rem;
 }
 /* .pieChart {
   margin: -15%;
@@ -469,12 +508,44 @@ a:hover {
   width: 60%;
   margin-left: 20%;
 }
+.nav-link {
+  width: 50%;
+  padding-left: 2%;
+  white-space: nowrap;
+}
+
+/* Color Palette */
+
+.dark-primary-color    { background: #4b39bb; }
+.default-primary-color { background: #6a5acd; }
+.light-primary-color   { background: #8d81d9; }
+.text-primary-color    { color: #212121; }
+.nav-color             {background: #8e8c9b}
+.secondary-text-color  { color: #757575; }
+.divider-color         { border-color: #BDBDBD; }
+.accent-color          { background: #84cd5a; }
+.accent-color-two      {background: #cd6a5a}
+.accent-color-three    {background: #5abdcd}
+/* Analogous Colors */
+.accent-color-five     {background: #5a84cd}
+.accent-color-six      {background: #a45acd}
+/* Complimentary Color */
+.accent-color-seven    {background: #bdcd5a}
+.white-text            {color: white}
+.smoke-text            {color:whitesmoke}
 
 /* Media query for Medium Moblie */
 @media only screen and (min-width:375px) {
   .yes_no_buttons {
     width: 43%;
   }
+  .yesNoImage {
+    margin-top: -3%;
+  }
+  /* .routeTitle {
+    left:25%;
+    top:15%;
+  } */
 }
 /* Media query for large mobile */
 @media only screen and (min-width:425px) {
@@ -484,6 +555,38 @@ a:hover {
   .CTAButton {
     width:40%;
   }
+  .yesNoImage {
+    margin-top: -5%;
+  }
+  .mainTitle {
+    font-size: 2.5rem;
+  }
+  /* .routeTitle {
+    left:28%;
+  } */
+  .subTitle {
+    font-size:1.4rem;
+  }
+}
+@media only screen and (min-width:475px) {
+  .yesNoImage {
+    margin-top: -6%;
+  }
+  .mainTitle {
+    font-size: 2.6rem;
+  }
+  /* .routeTitle {
+    left:30%;
+    top: 12%;
+  } */
+  .subTitle {
+    font-size:1.45rem;
+  }
+}
+@media only screen and (min-width:575px) {
+  .yesNoImage {
+    margin-top: -7%;
+  }
 }
 @media only screen and (min-width:625px) {
   .yes_no_buttons {
@@ -492,6 +595,18 @@ a:hover {
   .textInput {
     width: 78%;
     margin-left: 11%;
+  }
+  .yesNoImage {
+    margin-top: -9%;
+  }
+  .mainTitle {
+    font-size: 2.8rem;
+  }
+.routeTitle {
+    margin-top:10%;
+  }
+  .subTitle {
+    font-size:1.6rem;
   }
 }
 /* Media query for regular tablet */
@@ -520,6 +635,25 @@ a:hover {
   .textInput {
     width: 86%;
     margin-left: 7%;
+  }
+  .nav-link {
+    width: 100%;
+  }
+  .yesNoImage {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 2%;
+    border-radius:1.5%;
+  }
+  /* .routeTitle {
+    top:18%;
+    left:34%;
+  } */
+  .mainTitle {
+    font-size: 3rem;
+  }
+  .subTitle {
+    font-size: 1.8rem;
   }
 }
 /* @media only screen and (min-width:990px) {

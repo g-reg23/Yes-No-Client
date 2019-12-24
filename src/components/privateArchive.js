@@ -45,17 +45,17 @@ class PrivateArchive extends Component {
             <Container>
               {alert}
               <Row>
-                {votes}
+                <Col>
+                  <Link align='center' className='nav-link navLink dropdownItem' to='/private'><Button className='accent-color-five'>Make A Private Vote</Button></Link>
+                </Col>
+                <Col>
+                  <Link align='center' className='nav-link navLink dropdownItem' to='/active'><Button className='accent-color-five'>View Public Votes</Button></Link>
+                </Col>
               </Row>
             </Container>
             <Container>
               <Row>
-                <Col>
-                  <Link align='center' className='nav-link navLink dropdownItem' to='/private'><Button>Make A Private Vote</Button></Link>
-                </Col>
-                <Col>
-                  <Link align='center' className='nav-link navLink dropdownItem' to='/active'><Button>View Public Votes</Button></Link>
-                </Col>
+                {votes}
               </Row>
             </Container>
           </div>

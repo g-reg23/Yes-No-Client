@@ -66,37 +66,34 @@ class Navi extends Component {
   render() {
     return (
         <div>
-          <Navbar style={{background:'#d3d3d3', color:'#262626'}} expand='md' className='mb-5s sticky'>
+          <Navbar expand='md' className='mb-5s sticky nav-color nav-color'>
               <Container>
-                <Link className='navbar-brand' style={{color:'#262626', fontWeight:'550' }} to='#'>
+                <Link className='navbar-brand white-text' to='#'>
                   YessNo
                 </Link>
                 <NavbarToggler onClick={this.toggle} className='navbar-light' />
                 <Collapse isOpen={this.state.isOpen} navbar>
                   <Nav className='ml-auto' navbar>
                     <Dropdown isOpen={this.state.privateOpen} toggle={this.privateToggle} onMouseOver={this.privMouseEnter} onMouseLeave={this.privMouseLeave}>
-                      <DropdownToggle nav caret className='navLink'>
+                      <DropdownToggle nav caret className='navLink white-text'>
                         Private
                       </DropdownToggle>
-                      <DropdownMenu>
-                        <DropdownItem><Link className='nav-link navLink dropdownItem' to='/private' onClick={this.toggle}>Active</Link></DropdownItem>
-                        <DropdownItem />
-                        <DropdownItem><Link className='nav-link navLink dropdownItem' to='/privateArchive' onClick={this.toggle}>Archive</Link></DropdownItem>
+                      <DropdownMenu className='nav-color'>
+                        <Link className='nav-link navLink dropdownItem white-text' to='/private' onClick={this.toggle} style={{paddingLeft:'4%'}}>Active</Link>
+                        <Link className='nav-link navLink dropdownItem white-text' to='/privateArchive' onClick={this.toggle} style={{paddingLeft:'4%'}}>Archive</Link>
                       </DropdownMenu>
                     </Dropdown>
                     <Dropdown isOpen={this.state.publicOpen} toggle={this.publicToggle} onMouseOver={this.pubMouseEnter} onMouseLeave={this.pubMouseLeave}>
-                      <DropdownToggle nav caret className='navLink'>
+                      <DropdownToggle nav caret className='navLink white-text'>
                         Public
                       </DropdownToggle>
-                      <DropdownMenu>
-                        <DropdownItem><Link className='nav-link navLink dropdownItem' to='/makevote' onClick={this.toggle}>Build</Link></DropdownItem>
-                        <DropdownItem />
-                        <DropdownItem><Link className='nav-link navLink dropdownItem' to='/active'  onClick={this.toggle}>Active</Link></DropdownItem>
-                        <DropdownItem />
-                        <DropdownItem><Link className='nav-link navLink dropdownItem' to='/archive' onClick={this.toggle}>Archive</Link></DropdownItem>
+                      <DropdownMenu className='nav-color'>
+                        <Link className='nav-link navLink dropdownItem white-text' to='/makevote' onClick={this.toggle} style={{paddingLeft:'4%'}}>Build</Link>
+                        <Link className='nav-link navLink dropdownItem white-text' to='/active'  onClick={this.toggle} style={{paddingLeft:'4%'}}>Active</Link>
+                        <Link className='nav-link navLink dropdownItem white-text' to='/archive' onClick={this.toggle} style={{paddingLeft:'4%'}}>Archive</Link>
                       </DropdownMenu>
                     </Dropdown>
-                    <Link className='nav-link navLink' to='/' onClick={this.toggle}>Home</Link>
+                    <Link className='nav-link navLink white-text' to='/' onClick={this.toggle}>Home</Link>
                     <RegisterModal handleClick={this.toggle} colState={this.state.isOpen} />
                     <LoginModal handleClick={this.toggle} colState={this.state.isOpen}/>
                   </Nav>

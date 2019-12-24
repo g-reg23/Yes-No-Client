@@ -77,7 +77,7 @@ class ProfileModal extends Component {
     null
     return (
         <div>
-            <Link className='nav-link navLink navUsername' onClick={this.profModal} to='#'>{this.props.auth.username}</Link>
+            <Link className='nav-link navLink navUsername white-text' onClick={this.profModal} to='#'>{this.props.auth.username}</Link>
             {this.props.auth.facebook === true ? <img src={this.props.auth.pic.url} height='30' alt='profilePic' /> : null}
             {this.props.auth.google === true ? <img src={this.props.auth.pic} height='30' alt='profilePic' /> : null}
             <Modal isOpen={this.state.profMod} toggle={this.profModal} className='register-modal' centered style={{marginTop:'3.5%'}}>

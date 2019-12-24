@@ -79,7 +79,7 @@ class PrivateVote extends Component {
       <div>
         <Container>
           {message}
-          <Link align='center' className='nav-link navLink dropdownItem' to='/privateArchive'><Button>View My Past Private Votes</Button></Link>
+          <Link align='center' className='nav-link navLink dropdownItem' to='/privateArchive'><Button className='linkButton'>View My Past Private Votes</Button></Link>
           {alert}
           <Row>
             <Col lg={6}>

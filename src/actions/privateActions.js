@@ -57,10 +57,10 @@ export const fetchPastPrivateVotes = id => dispatch => {
         type: FETCH_PAST_PRIVATE,
         payload: res.data
       })
-      dispatch(getMessages({'msg': 'Your past private votes were loaded!!'}, 'success'))
+      dispatch(getMessages({'msg': 'Your past private votes were loaded!!'}, null, 'success', ''))
     })
     .catch(error => {
-      dispatch(getMessages(error.response.data, error.response.status), 'warning', 'pastVotesNoLoad')
+      dispatch(getMessages(error.response.data, error.response.status, 'warning', 'pastVotesNoLoad'));
     })
 
 }

@@ -18,6 +18,11 @@ class MakeVote extends Component {
     if (this.props.message.type === 'loginSuccess' || this.props.message.type === 'regSuccess' || 'makeVote') return
     else this.props.clearMessages();
   }
+  componentDidUpdate() {
+    if (this.props.message.id === 'votePosted') {
+
+    }
+  }
   render() {
     let voteInfoCard = this.props.vote.info.saved === false ? <ConstructVote /> : <ShowVote />;
     let alert = this.props.message.msg.length >= 0 || this.props.message.id === 'constructVote' ? null :

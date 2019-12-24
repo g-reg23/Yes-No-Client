@@ -126,17 +126,16 @@ class ActiveVotes extends Component {
             <FrontIcon view='activeVotes' />
             <div className='introDiv'>
               <Container>
+                {alert}
                 <Row>
                   <Col>
-                    <Link align='center' className='nav-link navLink dropdownItem' to='/archive'><Button>View Archived Public Votes</Button></Link>
+                    <Link align='center' className='nav-link navLink dropdownItem' to='/archive'><Button className='linkButton'>View Archived Public Votes</Button></Link>
                   </Col>
                   <Col>
-                    <Link align='center' className='nav-link navLink dropdownItem' to='/private'><Button>My Current Private Votes</Button></Link>
+                    <Link align='center' className='nav-link navLink dropdownItem' to='/private'><Button className='linkButton'>My Current Private Votes</Button></Link>
                   </Col>
                 </Row>
               </Container>
-              <hr />
-              {alert}
               <Container>
                 <Row>
                   {votes}
