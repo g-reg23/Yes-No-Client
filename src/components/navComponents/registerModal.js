@@ -55,7 +55,7 @@ class RegisterModal extends Component {
               this.props.register(info);
               this.registerModal();
             } else {
-              this.props.getMessages({'msg': 'Username must be at least 2 characters long and no longer than 20 characters.'}, 'client', 'danger', 'modal')
+              this.props.getMessages({'msg': 'Username must be at least 2 characters long and no longer than 20 characters.'}, 'client', 'danger', '')
             }
           } else {
             this.props.getMessages({'msg': 'Your password must contain 1 uppercase letter, 1 lowercase letter, and 1 number.'}, 'client', 'danger', 'modal')

@@ -22,6 +22,7 @@ export const register = (info) => dispatch => {
 
 // LOGIN. DISPATCH AUTH REDUCER AND SUCCESS MESSAGE ON SUCCESS. ERROR MESSAGE IF UNSUCCESSFUL
 export const login = (info) => dispatch => {
+  console.log('hi');
   const body = JSON.stringify(info);
   axios.post('/api/auth', body, config)
     .then(res => {

@@ -43,7 +43,8 @@ class LoginModal extends Component {
     if (this.state.logName.length >= 3 && this.state.logPass.length >= 3) {
       const info = {
         username: this.state.logName,
-        password: this.state.logPass
+        password: this.state.logPass,
+        flag: false,
       }
       this.props.login(info);
       this.setState({
@@ -96,6 +97,14 @@ class LoginModal extends Component {
       }
     }
   }
+  loginGuest = () => {
+    let user = {
+      username: 'GuestAccount',
+      password: 'datpassword',
+      flag: true
+    }
+    this.props.login(user);
+  }
   render() {
     let modAlert = this.props.message.id === 'modal' ? <Alert color={this.props.message.type}>{this.props.message.msg}</Alert> : null;
     const auth = this.props.auth.isAuthenticated === false ? <Link className='nav-link navLink white-text' onClick={this.loginModal} to='#'>Login</Link> :
@@ -116,6 +125,13 @@ class LoginModal extends Component {
                 <Button color="danger" onClick={this.loginModal}>Cancel</Button>
               </ModalFooter>
               <a href='#' align='center' onClick={this.forgotModal} style={{fontStyle:'bold', color:'blue', padding:'3%', paddingRight:'5%', cursor:'pointer'}}>Forgot Your Password? Click Here</a>
+              <p style={{margin:'3%'}}>Alternatively, you may log in with the guest account. Please understand this is a shared account
+              and being used for testing purposes. If the account has already voted in any vote you will not be able to
+              add your vote. Similarly if someone has used this account for a private vote, you will have to wait for the
+              cooldown period to end in order to start your own private vote.</p>
+              <ModalFooter style={{background:'lightgray'}}>
+                <Button color='primary' onClick={this.loginGuest}>Guest</Button>
+              </ModalFooter>
             </Modal>
             <Modal isOpen={this.state.forgotMod} toggle={this.forgotModal} className='login-modal' centered style={{marginTop:'3.5%'}}>
               <h3 className='mt-5' align='center'>Password Reset</h3>
