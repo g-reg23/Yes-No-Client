@@ -23,24 +23,37 @@ a:hover {
   display:flex;
   justify-content: center;
 }
-.CTAButton, .subsectButton {
+.CTAButton, .subsectButton, .subsectButtonOdd {
   border: none;
   padding: 3% 5%;
   border-radius: .5rem;
   font-weight: 600;
   font-size: 1.25rem;
   /* background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%); */
-  background: #4CAF50;
+  background: #cd6a5a;
   color: white;
   box-shadow: 1px 1px 1px;
   margin-bottom: 2%;
   margin-top: 10%;
   cursor: pointer;
 }
+.subsectButtonOdd {
+  background: #84cd5a;
+}
+.CTAButton:hover, .subsectButton:hover {
+  background:white;
+  color:#cd6a5a;
+  border: .5px solid #cd6a5a;
+}
+.subsectButtonOdd:hover{
+  background:white;
+  color:#84cd5a;
+  border: .5px solid #84cd5a;
+}
 .CTAButton {
   width: 50%;
 }
-.subsectButton {
+.subsectButton, .subsectButtonOdd {
   width: 50%;
 }
 .navDiv {
@@ -251,6 +264,12 @@ a:hover {
 }
 .introDiv {
   padding: 4%;
+  margin-top: 5%;
+  margin-bottom: 7%;
+}
+.
+.voteDiv {
+  margin-top: 10%;
 }
 .voteInfoContainer {
   margin-bottom: 6%;
@@ -450,10 +469,12 @@ a:hover {
   border-radius: 8.5em;
 }
 .linkButton {
-  background: #5a84cd;
+  background: #30589c;
 }
 .linkButton:hover {
-  background: #30589c;
+  background: white;
+  color: #30589c;
+  border: .5px solid #30589c;
 }
 .centerPic {
   margin-top: 5%;

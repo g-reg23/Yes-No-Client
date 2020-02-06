@@ -42,7 +42,7 @@ class LandingPage extends Component {
             <FrontIcon view='/'/>
             <Container id='about'>
             {message}
-              <Tween duration={2} from={{transform:'rotate(180deg)'}}><div style={{marginBottom:'3%'}} align='center'><Link to='/active' className='CTAButton accent-color-two'>Vote!</Link></div></Tween>
+              <Tween duration={2} from={{transform:'rotate(180deg)'}}><div style={{marginBottom:'3%'}} align='center'><Link to='/active' className='CTAButton'>Vote!</Link></div></Tween>
               <Row>
                 <Col className='subsectDiv firstSub divider-color primary-text-color' md={4}>
                   <p className='subsectTitle'>Private Votes</p>
@@ -61,7 +61,7 @@ class LandingPage extends Component {
                   </div>
                   <p style={{color:'whitesmoke'}} className='subsectBody'>At YessNo anyone can put out a simple yes/no vote to the entire internet. Anytime you have an interesting question to vote on, just follow the simple instructions and you can have a vote up in minutes.</p>
                   <div align='center'>
-                    <Link to='/makevote' className='subsectButton accent-color'>Public</Link>
+                    <Link to='/makevote' className='subsectButtonOdd accent-color'>Public</Link>
                   </div>
                 </Col>
                 <Col className='subsectDiv divider-color primary-text-color' md={4}>

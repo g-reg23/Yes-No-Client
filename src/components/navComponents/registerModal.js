@@ -42,14 +42,27 @@ class RegisterModal extends Component {
     if(this.state.regPass === this.state.regVPass) {
       // Simple email regex for frontend validation.
       let re = /\S+@\S+\.\S+/;
+      let passre = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/
       if (re.test(this.state.regEmail)) {
-        let info = {
-          username: this.state.regName,
-          email: this.state.regEmail,
-          password: this.state.regPass
+        if (this.state.regPass === this.state.regVPass) {
+          if (passre.test(this.state.regPass)){
+            if (this.state.regName.length > 1 && this.state.regName.length <= 21) {
+              let info = {
+                username: this.state.regName,
+                email: this.state.regEmail,
+                password: this.state.regPass
+              }
+              this.props.register(info);
+              this.registerModal();
+            } else {
+              this.props.getMessages({'msg': 'Username must be at least 2 characters long and no longer than 20 characters.'}, 'client', 'danger', 'modal')
+            }
+          } else {
+            this.props.getMessages({'msg': 'Your password must contain 1 uppercase letter, 1 lowercase letter, and 1 number.'}, 'client', 'danger', 'modal')
+          }
+        } else {
+          this.props.getMessages({'msg': 'Passwords must match.'}, 'client', 'danger', 'modal')
         }
-        this.props.register(info);
-        this.registerModal();
       } else {
         this.props.getMessages({'msg': 'Email must be in standard email format.'}, 'client', 'danger', 'modal')
       }

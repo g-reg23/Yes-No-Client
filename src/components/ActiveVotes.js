@@ -136,7 +136,7 @@ class ActiveVotes extends Component {
                   </Col>
                 </Row>
               </Container>
-              <Container>
+              <Container className='voteDiv'>
                 <Row>
                   {votes}
                 </Row>

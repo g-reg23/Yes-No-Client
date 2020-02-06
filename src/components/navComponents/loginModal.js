@@ -84,6 +84,7 @@ class LoginModal extends Component {
       social = false
     }
     this.props.logout(social);
+    this.props.handleClick();
   }
   handleLogChange = e => {
     this.setState({[e.target.name]: e.target.value})
