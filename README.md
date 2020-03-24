@@ -1,5 +1,7 @@
-Front end for Vote-Yes-No. React with redux. Currently learning the full stack. Backend is node, express, mongo,
-seperate repo titled Vote-Yes-No.
+Front end for Vote-Yes-No. React with redux. Backend is node, express, mongo,
+seperate private repo.
+
+You may view and use the app at [yessno.tk](https://yessno.tk)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
