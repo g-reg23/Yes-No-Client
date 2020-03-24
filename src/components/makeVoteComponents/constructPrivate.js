@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-// import { Button } from 'reactstrap';
 import { Card, CardBody,
-  CardTitle, Button, Modal, ModalHeader, ModalBody, ModalFooter, Alert } from 'reactstrap';
-// import { CSSTransition, TransitionGroup } from 'react-transition-group';
+  CardTitle, Button, Alert } from 'reactstrap';
 import '../../App.css';
 import { connect } from 'react-redux';
 import { privInfo } from '../../actions/privateActions';

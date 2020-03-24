@@ -7,8 +7,7 @@ import { connect } from 'react-redux';
 import { login, logout, forgotPassword } from '../../actions/authActions';
 import { getMessages, clearMessages } from '../../actions/messageActions';
 import propTypes from 'prop-types';
-import Facebook from './facebook'
-import Google from './google'
+
 
 class LoginModal extends Component {
   constructor(props) {
@@ -124,7 +123,7 @@ class LoginModal extends Component {
                 <Button color="primary" onClick={this.submitLog}>Submit</Button>
                 <Button color="danger" onClick={this.loginModal}>Cancel</Button>
               </ModalFooter>
-              <a href='#' align='center' onClick={this.forgotModal} style={{fontStyle:'bold', color:'blue', padding:'3%', paddingRight:'5%', cursor:'pointer'}}>Forgot Your Password? Click Here</a>
+              <button align='center' onClick={this.forgotModal} style={{fontStyle:'bold', color:'blue', padding:'3%', paddingRight:'5%', cursor:'pointer', border:'none', background:'transparent'}}>Forgot Your Password? Click Here</button>
               <p style={{margin:'3%'}}>Alternatively, you may log in with the guest account. Please understand this is a shared account
               and being used for testing purposes. If the account has already voted in any vote you will not be able to
               add your vote. Similarly if someone has used this account for a private vote, you will have to wait for the
