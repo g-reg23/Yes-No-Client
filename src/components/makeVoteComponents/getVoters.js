@@ -49,7 +49,7 @@ class GetVoter extends Component {
     }
 
     let re = /\S+@\S+\.\S+/;
-    if (this.state.name.length > 2 && this.state.name.length < 16) {
+    if (this.state.name.length >= 2 && this.state.name.length < 16) {
       if (re.test(this.state.email)) {
         if (this.state.number.toString().length === 10) {
           let voter = {
@@ -79,7 +79,7 @@ class GetVoter extends Component {
   }
 
   submit() {
-    if (this.state.voters.length < 2 || this.state.voters.length > 10) {
+    if (this.state.voters.length < 1 || this.state.voters.length > 10) {
       this.props.error('voters')
       return;
     } else {

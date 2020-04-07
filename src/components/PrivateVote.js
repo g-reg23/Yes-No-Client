@@ -79,11 +79,12 @@ class PrivateVote extends Component {
       <div>
         <Container>
           {message}
-          <Link align='center' className='nav-link navLink dropdownItem' to='/privateArchive'><Button className='linkButton'>View My Past Private Votes</Button></Link>
+          <div className='linkDiv'>
+            <Link className='links' to='/privateArchive'><Button className='linkButton'>View My Past Private Votess</Button></Link>
+          </div>
           {alert}
-          <Row>
-            <Col lg={6}>
-              <Card className='showCard' body>
+          <hr />
+              <Card className='privShowCard' body>
                 <img width='20%' src={icon} alt='vote icon'style={{marginLeft:'40%'}}  />
                 <p className='showName' align='center' style={{fontSize: '2rem'}}>{this.props.private.vote.name}</p>
                 <p align='center' className='showDesc'>{this.props.private.vote.desc}</p>
@@ -102,9 +103,6 @@ class PrivateVote extends Component {
                   <VoterList voters={this.props.private.vote.voters} />
                 </CardBody>
               </Card>
-            </Col>
-            <Col lg={6}></Col>
-          </Row>
           {alert}
         </Container>
 

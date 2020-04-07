@@ -63,16 +63,10 @@ class Archive extends Component {
             <div className='introDiv'>
               {alert}
               <hr />
-              <Container>
-                <Row>
-                  <Col>
-                    <Link align='center' className='nav-link navLink dropdownItem' to='/active'><Button className='linkButton'>View Public Votes</Button></Link>
-                  </Col>
-                  <Col>
-                    <Link align='center' className='nav-link navLink dropdownItem' to='/private'><Button className='linkButton'>My Current Private Votes</Button></Link>
-                  </Col>
-                </Row>
-              </Container>
+              <div className='linkDiv'>
+                <Link align='center' className='links' to='/active'><Button className='linkButton'>View Public Votes</Button></Link>
+                <Link align='center' className='links' to='/private'><Button className='linkButton'>My Current Private Votes</Button></Link>
+              </div>>
               <hr />
               <Container>
                 {votes}

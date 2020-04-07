@@ -42,17 +42,13 @@ class PrivateArchive extends Component {
           <div style={props}>
             <FrontIcon view={'privateArchive'}/>
             <hr />
-            <Container>
+            <div className='openDiv'>
               {alert}
-              <Row>
-                <Col>
-                  <Link align='center' className='nav-link navLink dropdownItem' to='/private'><Button className='accent-color-five'>Make A Private Vote</Button></Link>
-                </Col>
-                <Col>
-                  <Link align='center' className='nav-link navLink dropdownItem' to='/active'><Button className='accent-color-five'>View Public Votes</Button></Link>
-                </Col>
-              </Row>
-            </Container>
+              <div className='linkDiv'>
+                <Link className='links' align='center' to='/private'><Button className='linkButton'>Make A Private Vote</Button></Link>
+                <Link className='links' align='center' to='/active'><Button className='linkButton'>View Public Votes</Button></Link>
+              </div>
+            </div>
             <Container>
               <Row>
                 {votes}

@@ -12,14 +12,12 @@ import PrivateArchive from './components/privateArchive';
 import ResetPass from './components/resetPass';
 import ViewPrivate from './components/viewPrivate';
 import LandingPage from './components/landingPage'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import store from './store';
 import Verify from './components/verify';
 import { Provider } from 'react-redux';
 import { checkToke } from './actions/authActions';
-import PrivacyPolicy from './privacyPolicy'
-import { Link } from 'react-router-dom';
-
+import PrivacyPolicy from './privacyPolicy';
 
 
 class App extends Component {

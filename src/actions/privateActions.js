@@ -36,7 +36,7 @@ export const getPrivateView = id => dispatch => {
         type: GET_PRIVATE_VOTES,
         payload: res.data
       })
-      dispatch(getMessages({'msg': 'Private vote loaded!!'}), 200, 'success');
+      dispatch(getMessages({'msg': 'Private vote loaded!!'}), 200, 'success', '');
     })
     .catch(error => {
       dispatch(getMessages(error.response.data, error.response.status), 'warning', 'PrivVoteNoLoad')
@@ -102,7 +102,7 @@ export const postPrivateVote = (newVote) => dispatch => {
       .catch(error => {
         dispatch(getMessages(error.response.data, null, 'secondary', 'constructPrivateServer'))
       })
-}
+};
 
 export const resetPrivateInfo = () => {
   return {

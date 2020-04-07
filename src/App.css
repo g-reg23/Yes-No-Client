@@ -204,6 +204,11 @@ a:hover {
   margin: 3% 0 4% 0;
   background: #8376d5;
 }
+.privShowCard {
+  background: #8376d5;
+  max-width: 700px;
+  margin:auto;
+}
 .finalCard {
   background: whitesmoke;
   color: #262626;
@@ -498,6 +503,18 @@ a:hover {
   cursor: pointer;
   text-align: center;
 }
+.linkDiv {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10%
+}
+.links {
+  margin:auto;
+}
+.openDiv {
+  padding:5%;
+}
 /* Transitions */
 
 .fade-enter {
@@ -632,6 +649,9 @@ a:hover {
 }
 /* Media query for regular tablet */
 @media only screen and (min-width:768px) {
+  .privatVoteRow {
+    padding:auto;
+  }
   .yes_no_buttons {
     width: 20%
   }
@@ -702,9 +722,6 @@ a:hover {
     width: 27%;
     padding: 2% 5%;
     margin-top: 7%;
-  }
-  .showCard {
-    width: 100%;
   }
   .textInput {
     width: 90%;

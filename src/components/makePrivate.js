@@ -87,9 +87,10 @@ class MakePrivate extends Component {
     return (
       <div>
         <Container>
-          <Link align='center' className='nav-link navLink dropdownItem' to='/privateArchive'><Button className='linkButton'>View My Past Private Votes</Button></Link>
-          <hr />
           {alert}
+          <div className='linkDiv'>
+            <Link align='center' className='links' to='/privateArchive'><Button className='linkButton'>View My Past Private Votes</Button></Link>
+          </div>
           {form}
           <br />
           <hr /> <br />
