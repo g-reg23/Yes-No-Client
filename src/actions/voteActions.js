@@ -82,6 +82,7 @@ export const addVote = vote => dispatch => {
      'Content-Type': 'application/json',
     }
   }
+  console.log('actions');
   const body = JSON.stringify(vote);
   axios
    .put('/api/votes', body, newConfig)

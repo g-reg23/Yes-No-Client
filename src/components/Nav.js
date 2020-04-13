@@ -15,6 +15,9 @@ import {
   DropdownMenu,
   } from 'reactstrap';
 
+const style = {
+  paddingLeft:'3%',
+}
 
 class Navi extends Component {
   constructor(props) {
@@ -74,25 +77,25 @@ class Navi extends Component {
                 <Collapse isOpen={this.state.isOpen} navbar>
                   <Nav className='ml-auto' navbar>
                     <Dropdown isOpen={this.state.privateOpen} toggle={this.privateToggle} onMouseOver={this.privMouseEnter} onMouseLeave={this.privMouseLeave}>
-                      <DropdownToggle nav caret className='navLink white-text'>
+                      <DropdownToggle nav caret className='nav-link navLink white-text' style={style}>
                         Private
                       </DropdownToggle>
                       <DropdownMenu className='nav-color'>
-                        <Link className='nav-link navLink dropdownItem white-text' to='/private' onClick={this.toggle} style={{paddingLeft:'4%'}}>Active</Link>
-                        <Link className='nav-link navLink dropdownItem white-text' to='/privateArchive' onClick={this.toggle} style={{paddingLeft:'4%'}}>Archive</Link>
+                        <Link className='nav-link navLink dropdownItem white-text' to='/private' onClick={this.toggle} style={style}>Active</Link>
+                        <Link className='nav-link navLink dropdownItem white-text' to='/privateArchive' onClick={this.toggle} style={style}>Archive</Link>
                       </DropdownMenu>
                     </Dropdown>
                     <Dropdown isOpen={this.state.publicOpen} toggle={this.publicToggle} onMouseOver={this.pubMouseEnter} onMouseLeave={this.pubMouseLeave}>
-                      <DropdownToggle nav caret className='navLink white-text'>
+                      <DropdownToggle nav caret className='nav-link navLink white-text' style={style}>
                         Public
                       </DropdownToggle>
                       <DropdownMenu className='nav-color'>
-                        <Link className='nav-link navLink dropdownItem white-text' to='/makevote' onClick={this.toggle} style={{paddingLeft:'4%'}}>Build</Link>
-                        <Link className='nav-link navLink dropdownItem white-text' to='/active'  onClick={this.toggle} style={{paddingLeft:'4%'}}>Active</Link>
-                        <Link className='nav-link navLink dropdownItem white-text' to='/archive' onClick={this.toggle} style={{paddingLeft:'4%'}}>Archive</Link>
+                        <Link className='nav-link navLink dropdownItem white-text' to='/makevote' onClick={this.toggle} style={style}>Build</Link>
+                        <Link className='nav-link navLink dropdownItem white-text' to='/active'  onClick={this.toggle} style={style}>Active</Link>
+                        <Link className='nav-link navLink dropdownItem white-text' to='/archive' onClick={this.toggle} style={style}>Archive</Link>
                       </DropdownMenu>
                     </Dropdown>
-                    <Link className='nav-link navLink white-text' to='/' onClick={this.toggle}>Home</Link>
+                    <Link className='nav-link navLink white-text' to='/' onClick={this.toggle} style={style}>Home</Link>
                     <RegisterModal handleClick={this.toggle} colState={this.state.isOpen} />
                     <LoginModal handleClick={this.toggle} colState={this.state.isOpen}/>
                   </Nav>

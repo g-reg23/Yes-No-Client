@@ -117,11 +117,23 @@ export const updateProfile = (profile) => dispatch => {
     })
  }
 
- export const googleLogin = info => dispatch => {
-   dispatch({
-     type: GOOGLE_LOGIN,
-     payload: info
-   })
+ export const googleLogin = (info) => dispatch => {
+   const body = {
+     profile: info.profileObj,
+     token: info.tokenObj,
+   }
+   console.log(info);
+   axios.post('/api/auth/google', body, config)
+    .then(res => {
+        dispatch({
+           type: GOOGLE_LOGIN,
+           payload: res.data,
+        })
+        dispatch(getMessages({'msg':'You were successfully logged in via Google.'}), '200', 'success', 'loginSuccess');
+    })
+    .catch(error => {
+      dispatch(error.response.data, error.response.status,'danger', '');
+    })
  }
 
 export const facebookLogin = info => dispatch => {

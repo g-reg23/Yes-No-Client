@@ -10,6 +10,9 @@ import ProfileModal from './profile';
 
 import propTypes from 'prop-types';
 
+const style = {
+  paddingLeft:'3%',
+}
 
 
 class RegisterModal extends Component {
@@ -79,7 +82,7 @@ class RegisterModal extends Component {
   }
   render() {
     let modAlert = this.props.message.id === 'modal' ? <Alert color={this.props.message.type}>{this.props.message.msg}</Alert> : null;
-    const reg = !this.props.auth.isAuthenticated ? <Link className='nav-link navLink white-text' onClick={this.registerModal} to='#'>Sign Up</Link>:
+    const reg = !this.props.auth.isAuthenticated ? <Link className='nav-link navLink white-text' onClick={this.registerModal} to='#' style={style}>Sign Up</Link>:
     <ProfileModal handleClick={this.props.handleClick} colState={this.props.colState}/>
     return (
         <div>

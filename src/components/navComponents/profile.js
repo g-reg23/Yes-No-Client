@@ -8,7 +8,9 @@ import { updateProfile, deleteAccount } from '../../actions/authActions';
 import { getMessages, clearMessages } from '../../actions/messageActions';
 import propTypes from 'prop-types';
 
-
+const style = {
+  paddingLeft:'3%',
+}
 
 class ProfileModal extends Component {
   constructor(props) {
@@ -32,27 +34,38 @@ class ProfileModal extends Component {
     deleteAccount: propTypes.func.isRequired
   }
   profModal()  {
-    this.setState({
-      profMod: !this.state.profMod,
-      profName: this.props.auth.username,
-      profEmail: this.props.auth.email,
-    });
-    if (this.props.colState === true) {
-      this.props.handleClick();
+    if (!this.props.auth.google) {
+      this.setState({
+        profMod: !this.state.profMod,
+        profName: this.props.auth.username,
+        profEmail: this.props.auth.email,
+      });
+      if (this.props.colState === true) {
+        this.props.handleClick();
+      }
+    } else {
+      this.setState({profMod:false});
+      this.props.getMessages({'msg': 'Sorry you cannot edit your Google credentials.'}, '', 'warning', '');
+      return;
     }
     // togRegModal();
   }
   updateProfile() {
-    if (this.state.profName.length > 2 && this.state.profEmail.length > 2 && this.state.profPass.length > 2) {
-      let newProfile = {
-        _id: this.props.auth._id,
-        username: this.state.profName,
-        email: this.state.profEmail,
-        password: this.state.profPass,
-      };
-      this.props.updateProfile(newProfile);
+    if (!this.props.auth.google){
+      if (this.state.profName.length > 2 && this.state.profEmail.length > 2 && this.state.profPass.length > 2) {
+        let newProfile = {
+          _id: this.props.auth._id,
+          username: this.state.profName,
+          email: this.state.profEmail,
+          password: this.state.profPass,
+        };
+        this.props.updateProfile(newProfile);
+      } else {
+        this.props.getMessages({'msg': 'All fields must have at least 2 characters'}, null, 'danger', 'modal' )
+      }
     } else {
-      this.props.getMessages({'msg': 'All fields must have at least 2 characters'}, null, 'danger', 'modal' )
+      this.props.getMessages({'msg': 'Sorry you cannot edit your google credentials.'}, null, 'danger', '')
+      return
     }
   }
 
@@ -77,9 +90,7 @@ class ProfileModal extends Component {
     null
     return (
         <div>
-            <Link className='nav-link navLink navUsername white-text' onClick={this.profModal} to='#'>{this.props.auth.username}</Link>
-            {this.props.auth.facebook === true ? <img src={this.props.auth.pic.url} height='30' alt='profilePic' /> : null}
-            {this.props.auth.google === true ? <img src={this.props.auth.pic} height='30' alt='profilePic' /> : null}
+            <Link className='nav-link navLink navUsername white-text' onClick={this.profModal} to='#' style={style}>{this.props.auth.username}</Link>
             <Modal isOpen={this.state.profMod} toggle={this.profModal} className='register-modal' centered style={{marginTop:'3.5%'}}>
               <ModalHeader style={{background:'lightgray'}}>Update Profile</ModalHeader>
               <ModalBody style={{padding:'7% 5% 7% 5%'}}>

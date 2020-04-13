@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getVotes, addVote } from '../actions/voteActions';
 import propTypes from 'prop-types';
@@ -18,7 +17,6 @@ import { Link } from 'react-router-dom';
 class ActiveVotes extends Component {
   constructor(props) {
     super(props);
-    this.handleDelete = this.handleDelete.bind(this);
     this.yesVote = this.yesVote.bind(this);
     this.noVote = this.noVote.bind(this);
     this.scroll = this.scroll.bind(this);
@@ -39,11 +37,10 @@ class ActiveVotes extends Component {
   }
   yesVote(id) {
     let thisVote = this.props.vote.votes.find(vote => vote._id === id);
-    // let newVoter;
     let voted = thisVote.voters.some(voter => voter.user === this.props.auth._id);
     if (this.props.auth.isAuthenticated) {
+      console.log('in first')
       if (!voted) {
-        // thisVote.yes += 1;
         thisVote.type = 'yes';
         thisVote.voters.push({
           user: this.props.auth._id,
@@ -61,7 +58,7 @@ class ActiveVotes extends Component {
   }
   noVote(id) {
     let thisVote = this.props.vote.votes.find(vote => vote._id === id);
-    let voted = thisVote.voters.includes(this.props.auth._id);
+    let voted = thisVote.voters.some(voter => voter.user === this.props.auth._id);
     if (this.props.auth.isAuthenticated) {
       if (!voted) {
         // thisVote.no += 1;
@@ -79,9 +76,6 @@ class ActiveVotes extends Component {
     } else {
       this.props.getMessages({'msg': 'You must log in first.'}, thisVote._id , 'danger', 'yesno');
     }
-  }
-  handleDelete(id) {
-    this.props.deleteVote(id);
   }
   clear = () => {
     this.props.clearMessages();

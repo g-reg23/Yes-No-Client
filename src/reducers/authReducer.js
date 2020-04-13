@@ -63,14 +63,14 @@ export default function(state=authInitialState, action) {
       case VERIFIED_EMAIL:
         return state;
       case GOOGLE_LOGIN:
-        return Object.assign({}, state, {
-          isAuthenticated: true,
-          _id: action.payload.id,
-          username: action.payload.name,
-          email: action.payload.email,
-          google: true,
-          pic: action.payload.imageUrl
-        })
+      return Object.assign({}, state, {
+        isAuthenticated: true,
+        _id: action.payload.user._id,
+        username: action.payload.user.username,
+        email: action.payload.user.email,
+        private: action.payload.user.private,
+        google:true,
+      })
     case UPDATE_PROFILE:
       return Object.assign({}, state, {
         ...state,

@@ -18,7 +18,8 @@ class Google extends Component {
   }
   responseGoogle = (response) => {
     if (!response.error) {
-      this.props.googleLogin(response.profileObj);
+      this.props.googleLogin(response);
+      console.log(response.headers);
     }
 
   }
