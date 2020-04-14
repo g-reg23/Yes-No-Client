@@ -23,6 +23,7 @@ class MakePrivate extends Component {
       voters: voters,
       creator: this.props.auth.username,
       userId: this.props.auth._id,
+      type: this.props.auth.type,
     };
     this.props.postPrivateVote(newVote);
   }
@@ -31,17 +32,11 @@ class MakePrivate extends Component {
   }
   handleError(type) {
     switch (type) {
-      case 'email':
-        this.props.getMessages({'msg': 'Each voter email must be a unique email address.'}, null, 'danger', 'getVoterError');
-        break;
       case 'number':
         this.props.getMessages({'msg': 'Each voter phone number must be a unique value.'}, null, 'danger', 'getVoterError');
         break;
       case 'nameLength':
         this.props.getMessages({'msg': 'The voter name must be at least 4 characters in length and no longer than 10 characters.'}, null, 'danger', 'getVoterError');
-        break;
-      case 'notEmail':
-        this.props.getMessages({'msg': 'The voter email must be in standard email format.'}, null, 'danger', 'getVoterError');
         break;
       case 'phoneLength':
         this.props.getMessages({'msg': 'The voter phone number must be exactly 10 digits.'}, null, 'danger', 'getVoterError');

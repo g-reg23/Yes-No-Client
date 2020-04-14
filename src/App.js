@@ -18,6 +18,7 @@ import Verify from './components/verify';
 import { Provider } from 'react-redux';
 import { checkToke } from './actions/authActions';
 import PrivacyPolicy from './privacyPolicy';
+import {Helmet} from 'react-helmet';
 
 
 class App extends Component {
@@ -35,6 +36,11 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
+            <Helmet>
+              <title>YessNO</title>
+              <meta charSet="utf-8" />
+              <meta name="description" content="A React.js application" />
+            </Helmet>
             <Navi />
             <Switch>
               <Route exact path='/' render={(props)=><LandingPage {...props} state={store.getState()}/>} />

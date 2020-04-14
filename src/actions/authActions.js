@@ -136,12 +136,12 @@ export const updateProfile = (profile) => dispatch => {
     })
  }
 
-export const facebookLogin = info => dispatch => {
-  dispatch({
-    type: FACEBOOK_LOGIN,
-    payload: info
-  })
-}
+// export const facebookLogin = info => dispatch => {
+//   dispatch({
+//     type: FACEBOOK_LOGIN,
+//     payload: info
+//   })
+// }
 export const returnUser = user => dispatch => {
   dispatch({
     type: RETURN_USER,

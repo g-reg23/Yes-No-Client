@@ -39,7 +39,6 @@ class ActiveVotes extends Component {
     let thisVote = this.props.vote.votes.find(vote => vote._id === id);
     let voted = thisVote.voters.some(voter => voter.user === this.props.auth._id);
     if (this.props.auth.isAuthenticated) {
-      console.log('in first')
       if (!voted) {
         thisVote.type = 'yes';
         thisVote.voters.push({
