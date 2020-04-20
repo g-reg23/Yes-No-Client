@@ -81,7 +81,7 @@ export const addPrivateVote = vote => dispatch => {
       dispatch(getMessages({'msg': 'Vote was successfully added!'}, null, 'success', 'addPrivVote'))
     })
     .catch(error => {
-      dispatch(getMessages(error.response.data, error.response.status, 'secondary', 'addPrivVote'))
+      dispatch(getMessages(error.response.data, error.response.status, 'danger', 'addPrivVote'))
     })
 
 }

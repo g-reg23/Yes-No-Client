@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { register } from '../../actions/authActions';
 import { getMessages, clearMessages } from '../../actions/messageActions';
 import ProfileModal from './profile';
+import Google from './google'
 
 import propTypes from 'prop-types';
 
@@ -38,6 +39,13 @@ class RegisterModal extends Component {
     })
     if (this.props.colState === true) {
       this.props.handleClick();
+    }
+  }
+  componentDidUpdate() {
+    if (this.props.auth.isAuthenticated) {
+      if (this.state.registerMod) {
+        this.registerModal();
+      }
     }
   }
 
@@ -99,6 +107,10 @@ class RegisterModal extends Component {
               <ModalFooter style={{background:'lightgray'}}>
                 <Button color="primary" onClick={this.submitReg}>Submit</Button>
                 <Button color="danger" onClick={this.registerModal}>Cancel</Button>
+              </ModalFooter>
+              <h3 className='socialHead' align='center'>Social Login</h3>
+              <ModalFooter className='socialFooter' style={{background:'lightgray'}}>
+                <Google />
               </ModalFooter>
             </Modal>
         </div>

@@ -119,7 +119,7 @@ class LoginModal extends Component {
               <ModalFooter style={{background:'lightgray'}}>
                 <Button color="primary" onClick={this.submitLog}>Submit</Button>
                 <Button color="danger" onClick={this.loginModal}>Cancel</Button>
-              </ModalFooter>s
+              </ModalFooter>
               <button align='right' onClick={this.forgotModal} style={{marginTop:'-8%', fontStyle:'bold', color:'blue', padding:'3%', paddingRight:'5%', cursor:'pointer', border:'none', background:'transparent'}}>Forgot Your Password? Click Here</button>
               <h3 className='socialHead' align='center'>Social Login</h3>
               <ModalFooter className='socialFooter' style={{background:'lightgray'}}>

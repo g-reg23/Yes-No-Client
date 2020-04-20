@@ -11,7 +11,7 @@ import Private from './components/private';
 import PrivateArchive from './components/privateArchive';
 import ResetPass from './components/resetPass';
 import ViewPrivate from './components/viewPrivate';
-import LandingPage from './components/landingPage'
+import LandingPage from './components/landingPage';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import store from './store';
 import Verify from './components/verify';
@@ -37,9 +37,9 @@ class App extends Component {
         <Router>
           <div className="App">
             <Helmet>
-              <title>YessNO</title>
+              <title>YessNo</title>
               <meta charSet="utf-8" />
-              <meta name="description" content="A React.js application" />
+              <meta name="description" content="Yes No voting for the public or for small groups via links in sms messages." />
             </Helmet>
             <Navi />
             <Switch>
