@@ -9,7 +9,11 @@ import { Container, Row, Col, Button, Alert, Card, CardBody } from 'reactstrap';
 import GetVoters from './makeVoteComponents/getVoters';
 import { resetPrivateInfo, postPrivateVote } from '../actions/privateActions'
 import { Link } from 'react-router-dom';
+import yes from '../images/iconfinder_checkmark-24_103184.svg';
+import no from '../images/iconfinder_No_984759.svg';
 import { getMessages, clearMessages } from '../actions/messageActions';
+import PieChart from './activeVoteComponents/PieChart';
+import icon from '../images/027-global-voting.svg';
 
 class MakePrivate extends Component {
 
@@ -59,21 +63,29 @@ class MakePrivate extends Component {
     // if (this.props.auth.isAuthenticated === false) {
     //    this.handleGoBack()
     // }
-    let alert = this.props.message.id === 'constructPrivateServer' ? <Alert color={this.props.message.type} align='center'>{this.props.message.msg}</Alert>
+    let alert = this.props.message.id === 'constructPrivateServer' ? <Alert className={this.props.message.type} align='center'>{this.props.message.msg}</Alert>
       : null
     let form = this.props.private.info.saved === false ? <ConstructPrivate /> :
       <Row>
         <Col lg={6}>
           <h3 className='headingDiv'>Review the vote information below, click Edit to make changes.</h3>
-          <Card style={{background:'aquamarine'}} body>
-            <h1 className='infoTitle'><u>Vote Information</u></h1>
+          <Card className='showCard' body>
+            <img width='20%' src={icon} alt='vote icon'style={{marginLeft:'40%'}}  />
+            <p className='showName' align='center'>{this.props.private.info.name}</p>
+            <p align='center' className='showDesc'>{this.props.private.info.desc}</p>
+            <Container>
+              <Row style={{margin:'5% 0 0 0'}}>
+                <Col><img alt='yes vote icon' style={{float:'right'}} src={yes} className='yes_no_buttons yesVote showButtons' /></Col>
+                <Col><img alt='no vote icon' src={no} className='yes_no_buttons noVote showButtons' /></Col>
+              </Row>
+            </Container><hr />
             <CardBody>
-              <p align='center' className='voteNameHead'>Vote Name</p><p className='voteNameTrue' align='center'>{this.props.private.info.name}</p>
-              <p align='center' className='voteNameHead'>Vote Description</p><p className='voteNameTrue' align='center'>{this.props.private.info.desc}</p>
-              <p align='center' className='voteNameHead'>VoteLength</p><p className='voteNameTrue' align='center'>{this.props.private.info.voteLength}</p>
-              <p align='center'><Button onClick={this.handleGoBack}>Edit</Button></p>
-            </CardBody>
+              <p align='center' className='showLength'>{this.props.private.info.voteLength}</p>
+              <p style={{marginBottom:'0'}} className='showCreator'>Created By: {this.props.auth.username}</p>
+            </CardBody><hr />
+            <PieChart yes={0} no={0} voteId={0}/>
           </Card>
+          <p align='center'><Button onClick={this.handleGoBack}>Edit</Button></p>
         </Col>
         <Col lg={6}>
           {this.props.private.info.saved === true ? <div><h3 className='headingDiv'>Add voters here. Give each voter a unique name, U.S. phone number, and email. You may add anywhere from 2 to 10 voters.</h3><GetVoters submitVote={this.handleSubmit.bind(this)} alert={this.props.message} error={this.handleError.bind(this)} clear={this.handleClear}/></div> : <h3>You must make your vote first, before adding voters.</h3>}
@@ -83,9 +95,6 @@ class MakePrivate extends Component {
       <div>
         <Container>
           {alert}
-          <div className='linkDiv'>
-            <Link align='center' className='links' to='/privateArchive'><Button className='linkButton'>View My Past Private Votes</Button></Link>
-          </div>
           {form}
           <br />
           <hr /> <br />

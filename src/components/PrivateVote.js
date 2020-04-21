@@ -79,9 +79,6 @@ class PrivateVote extends Component {
       <div>
         <Container>
           {message}
-          <div className='linkDiv'>
-            <Link className='links' to='/privateArchive'><Button className='linkButton'>View My Past Private Votess</Button></Link>
-          </div>
           {alert}
           <hr />
               <Card className='privShowCard' body>

@@ -35,7 +35,7 @@ class PieChart extends Component {
     let pie = total > 0 ? <div className='pieDiv' onClick={this.toggle}><h5 className='average'>{avgYes}</h5><h5 style={{textAlign:'center'}} className='total'>{avgNo}</h5><h5 className='total' style={{textAlign:'center'}}>{total} Total Votes</h5><VictoryPie data={[
       {x:'Yes', y: yes},
       {x:'No', y: no }
-    ]} height={200} className='pieChart' labelRadius={55}/><p style={{color:'white'}} className='hidePieChart'><u>Click anywhere in results to hide</u></p></div> : <p onClick={this.toggle} className='clickable'>No votes yet!!</p>
+    ]} height={200} className='pieChart' labelRadius={55}/><p style={{color:'white'}} className='hidePieChart'><u>Click anywhere in results to hide</u></p></div> : <p onClick={this.toggle} className='clickable white'>No votes yet!!</p>
     let click = this.state.showPieChart === false ? <h6 className='clickable' style={{color:'white'}} onClick={this.toggle}><u>View Results</u></h6> : pie;
     return click;
   }

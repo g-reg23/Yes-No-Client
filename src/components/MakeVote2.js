@@ -10,6 +10,7 @@ import propTypes from 'prop-types'
 import { Container, Row, Col, Alert } from 'reactstrap';
 import FrontIcon from './FrontIcon';
 import { Spring } from 'react-spring/renderprops';
+import icon from '../images/027-global-voting.svg';
 
 class MakeVote extends Component {
 

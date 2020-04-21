@@ -83,7 +83,7 @@ class GetVoter extends Component {
     let voters = this.state.voters.length > 0 ? '' : 'No current voters added';
     let voterDisplay =  this.state.voters.length > 0 ? this.state.voters.map((votr, i) => <li className='voterListItem' key={i} align='center' value={votr.voterId}><strong>{votr.name}  {votr.number}</strong><span onClick={this.onClear.bind(this)} className='clearNumber'>Clear</span></li>) : '';
     return (
-      <Card className='showCard' body >
+      <Card className='getVoterCard' body >
         <h1 className='infoTitle'><u>Voter Information</u></h1>
         <CardBody>
           <p>{voters}</p>

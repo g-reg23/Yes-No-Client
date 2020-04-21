@@ -51,7 +51,7 @@ class LandingPage extends Component {
                   </div>
                   <p className='subsectBody'>Build votes for your social circle. If you have a burning question that must be answered quick, make a Private Vote. Each vote member will be sent a link to the vote via text message and email.</p>
                   <div align='center'>
-                    <Link to='/private' className='subsectButton accent-color-two' style={{padding:'2.5% 5% 2.5% 5%'}}>Private</Link>
+                    <Link to='/private' className='subsectButton' style={{padding:'2.5% 5% 2.5% 5%'}}>Private</Link>
                   </div>
                 </Col>
                 <Col className='subsectDiv middleDiv secondary-text-color default-primary-color' md={4}>
@@ -61,7 +61,7 @@ class LandingPage extends Component {
                   </div>
                   <p style={{color:'whitesmoke'}} className='subsectBody'>At YessNo anyone can put out a simple yes/no vote to the entire internet. Anytime you have an interesting question to vote on, just follow the simple instructions and you can have a vote up in minutes.</p>
                   <div align='center'>
-                    <Link to='/makevote' className='subsectButtonOdd accent-color'>Public</Link>
+                    <Link to='/makevote' className='subsectButtonOdd'>Public</Link>
                   </div>
                 </Col>
                 <Col className='subsectDiv divider-color primary-text-color' md={4}>
@@ -71,8 +71,8 @@ class LandingPage extends Component {
                   </div>
                   <p className='subsectBody'>All public votes at YessNo have a limited voting period, 500 votes. After that they are stored in the archive. To participate in currently active votes, click Vote. Or browse the archive to see all that made it to 500!</p>
                   <div align='center'>
-                    <Link to='/active' className='subsectButton accent-color-two'>Vote</Link>
-                    <Link to='/archive' className='subsectButton accent-color-two'>Archive</Link>
+                    <Link to='/active' className='subsectButton'>Vote</Link>
+                    <Link to='/archive' className='subsectButton'>Archive</Link>
                   </div>
                 </Col>
               </Row>

@@ -111,16 +111,16 @@ class LoginModal extends Component {
 
             <Modal isOpen={this.state.loginMod} toggle={this.loginModal} className='login-modal' centered style={{marginTop:'3.5%'}}>
               <h3 className='mt-5' align='center'>Login with YessNo</h3>
-              <ModalBody style={{padding:'7% 5% 7% 5%'}}>
+              <ModalBody>
                 {modAlert}
                 <input placeholder='Username' type='text'  className='textInput' name='logName' value={this.state.logName} onChange={this.handleLogChange} />
                 <input placeholder='Password' type='password'  className='textInput' name='logPass' value={this.state.logPass} onChange={this.handleLogChange} />
               </ModalBody>
+              <button align='right' className='nonButton forgotButton' onClick={this.forgotModal}>Forgot Your Password? Click Here</button>
               <ModalFooter style={{background:'lightgray'}}>
                 <Button color="primary" onClick={this.submitLog}>Submit</Button>
                 <Button color="danger" onClick={this.loginModal}>Cancel</Button>
               </ModalFooter>
-              <button align='right' onClick={this.forgotModal} style={{marginTop:'-8%', fontStyle:'bold', color:'blue', padding:'3%', paddingRight:'5%', cursor:'pointer', border:'none', background:'transparent'}}>Forgot Your Password? Click Here</button>
               <h3 className='socialHead' align='center'>Social Login</h3>
               <ModalFooter className='socialFooter' style={{background:'lightgray'}}>
                 <Google />

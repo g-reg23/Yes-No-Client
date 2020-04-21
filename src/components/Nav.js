@@ -68,7 +68,7 @@ class Navi extends Component {
   render() {
     return (
         <div>
-          <Navbar expand='md' className='mb-5s sticky nav-color nav-color'>
+          <Navbar expand='md' className='mb-5s sticky nav-color'>
               <Container>
                 <Link className='navbar-brand white-text' to='#'>
                   YessNo

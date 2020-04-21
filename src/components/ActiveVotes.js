@@ -82,7 +82,7 @@ class ActiveVotes extends Component {
   renderMessage() {
     if (this.props.message.id === 'yesno') {
       return (
-        <Alert align='center' color={this.props.message.type}>{this.props.message.msg}</Alert>
+        <div align='center' className={this.props.message.type}>{this.props.message.msg}</div>
       )
     }
   }
@@ -111,7 +111,7 @@ class ActiveVotes extends Component {
         </Card>
       </Col>) : null;
     let alert = this.props.message.msg !== '' && this.props.message.id !== 'modal' && this.props.message.id !== 'yesno' ?
-    <Alert color={this.props.message.type} align='center'>{this.props.message.msg}</Alert> : null;
+    <Alert align='center' color={this.props.message.type}>{this.props.message.msg}</Alert> : null;
     return(
       <Spring from={{ opacity: 0 }} to={{ opacity: 1}}>
         {props => (
@@ -120,10 +120,6 @@ class ActiveVotes extends Component {
             <div className='introDiv'>
               <Container>
                 {alert}
-                <div className='linkDiv'>
-                  <Link align='center' className='links' to='/archive'><Button className='linkButton'>View Archived Public Votes</Button></Link>
-                  <Link align='center' className='links' to='/private'><Button className='linkButton'>My Current Private Votes</Button></Link>
-                </div>
               </Container>
               <Container className='voteDiv'>
                 <Row>

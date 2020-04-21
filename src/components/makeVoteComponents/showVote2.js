@@ -8,7 +8,7 @@ import yes from '../../images/iconfinder_checkmark-24_103184.svg';
 import no from '../../images/iconfinder_No_984759.svg';
 import { getMessages, clearMessages } from '../../actions/messageActions';
 import PieChart from '../activeVoteComponents/PieChart';
-
+import icon from '../../images/027-global-voting.svg';
 
 class ShowVote extends Component {
   constructor(props) {
@@ -52,6 +52,7 @@ class ShowVote extends Component {
         </div>
         <Col>
           <Card className='showCard' body>
+            <img width='20%' src={icon} alt='vote icon'style={{marginLeft:'40%'}}  />
             <p className='showName' align='center'>{this.props.vote.info.name}</p>
             <Container>
               <Row style={{margin:'5% 0 0 0'}}>

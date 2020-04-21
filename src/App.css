@@ -1,5 +1,5 @@
 body {
-  background: #f0f5f5;
+  background: whitesmoke;
   font-family: 'Montserrat', sans-serif;
   line-height: 145%;
 }
@@ -24,33 +24,33 @@ a:hover {
   justify-content: center;
 }
 .CTAButton, .subsectButton, .subsectButtonOdd {
-  border: none;
+  border: 1px solid white;
   padding: 3% 5%;
   border-radius: .5rem;
   font-weight: 600;
   font-size: 1.25rem;
   /* background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%); */
-  background: #cd6a5a;
+  background: #6a5acd;
   color: white;
-  box-shadow: 1px 1px 1px;
   margin-bottom: 2%;
   margin-top: 10%;
   cursor: pointer;
   transition: .3s;
 }
 .subsectButtonOdd {
-  background: #84cd5a;
+  background:white;
+  color:#6a5acd;
+  border: 1px #6a5acd solid;
 }
 .CTAButton:hover, .subsectButton:hover {
   background:white;
-  color:#cd6a5a;
-  border: .5px solid #cd6a5a;
-
+  color:#6a5acd;
+  border: 1px #6a5acd solid;
 }
 .subsectButtonOdd:hover{
-  background:white;
-  color:#84cd5a;
-  border: .5px solid #84cd5a;
+  background: #6a5acd;
+  color: white;
+  border:1px solid white
 }
 .CTAButton {
   width: 50%;
@@ -205,7 +205,14 @@ a:hover {
 }
 .showCard {
   margin: 3% 0 4% 0;
-  background: #8376d5;
+  /* background: #8376d5; */
+  /* background: -webkit-linear-gradient(to right, #29323c, #485563);
+  background: linear-gradient(to right, #29323c, #485563); */
+  /* background-color: #0d0a0b;
+  background-image: linear-gradient(315deg, #0d0a0b 0%, #009fc2 74%); */
+  background: #373b44; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #373b44, #4286f4); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #373b44, #4286f4);
 }
 .privShowCard {
   background: #8376d5;
@@ -233,12 +240,14 @@ a:hover {
   margin: 2% 0 2% 0;
   text-align: center;
 }
-.showDesc {
+.showDesc, .showLength {
   color: whitesmoke;
-  margin: 0 0 8% 0;
   font-weight: 570;
   font-size:1.1rem;
   color: white;
+}
+.showDesc {
+  margin-bottom: 8%;
 }
 .showCreator {
   color: whitesmoke;
@@ -328,6 +337,15 @@ a:hover {
   border-radius: .5em;
   border: solid black .1rem;
 } */
+.nonButton {
+  border: none;
+  background: transparent;
+  cursor:pointer;
+}
+.forgotButton {
+  color:blue;
+  font-style: bold;
+}
 .pieDiv {
   cursor: pointer;
 }
@@ -339,7 +357,11 @@ a:hover {
   cursor: pointer;
   height: 15rem;
   overflow-y: scroll;
-  background:#8376d5;
+  background-color: #a399b2;
+  /* background-image: linear-gradient(147deg, #a399b2 0%, #4d4855 74%); */
+  background: #373b44; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #373b44, #4286f4); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #373b44, #4286f4);
 }
 .voterList td {
   width: 4%;
@@ -479,13 +501,15 @@ a:hover {
   border-radius: 8.5em;
 }
 .linkButton {
-  background: #30589c;
+  background: 	 #0a47a9; /* fallback for old browsers */
+  color:white;
+  border: 1px white solid;
   transition: .3s;
 }
 .linkButton:hover {
-  background: white;
-  color: #30589c;
-  border: .5px solid #30589c;
+  background:white;
+  color: 	 #0a47a9; /* fallback for old browsers */
+  border: 1px #	 #0a47a9 solid;
 }
 .centerPic {
   margin-top: 5%;
@@ -513,13 +537,22 @@ a:hover {
   display:flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 10%
+  margin-bottom: 2.5%
 }
 .links {
   margin:auto;
 }
 .openDiv {
   padding:5%;
+}
+/* Message groups */
+
+.success {
+  background:#86dfd9;
+  color:#103c39;
+  border-radius: .5rem;
+  padding:2.5% 5%;
+  text-align:center;
 }
 /* Transitions */
 
@@ -565,6 +598,15 @@ a:hover {
   display:flex;
   justify-content: center;
 }
+.voteInfoCard {
+  background-color: #f3f4f7;
+  background-image: linear-gradient(315deg, #f3f4f7 0%, #caccd1 74%);
+}
+.getVoterCard {
+  background: #D3CCE3;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 
 /* Color Palette */
 
@@ -572,7 +614,11 @@ a:hover {
 .default-primary-color { background: #6a5acd; }
 .light-primary-color   { background: #8d81d9; }
 .text-primary-color    { color: #212121; }
-.nav-color             {background: #8e8c9b}
+/* .nav-color             {background: #8e8c9b} */
+.nav-color {
+  background-color: #a399b2;
+  background-image: linear-gradient(147deg, #a399b2 0%, #4d4855 74%);
+}
 .secondary-text-color  { color: #757575; }
 .divider-color         { border-color: #BDBDBD; }
 .accent-color          { background: #84cd5a; }

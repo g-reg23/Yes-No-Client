@@ -41,19 +41,16 @@ class PrivateArchive extends Component {
         {props => (
           <div style={props}>
             <FrontIcon view={'privateArchive'}/>
-            <hr />
             <div className='openDiv'>
               {alert}
-              <div className='linkDiv'>
-                <Link className='links' align='center' to='/private'><Button className='linkButton'>Make A Private Vote</Button></Link>
-                <Link className='links' align='center' to='/active'><Button className='linkButton'>View Public Votes</Button></Link>
-              </div>
             </div>
+            <hr />
             <Container>
               <Row>
                 {votes}
               </Row>
             </Container>
+            <hr />
           </div>
         )}
       </Spring>
