@@ -82,7 +82,7 @@ class ActiveVotes extends Component {
   renderMessage() {
     if (this.props.message.id === 'yesno') {
       return (
-        <div align='center' className={this.props.message.type}>{this.props.message.msg}</div>
+        <Alert align='center' color={this.props.message.type}>{this.props.message.msg}</Alert>
       )
     }
   }

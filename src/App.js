@@ -18,6 +18,7 @@ import Verify from './components/verify';
 import { Provider } from 'react-redux';
 import { checkToke } from './actions/authActions';
 import PrivacyPolicy from './privacyPolicy';
+import TermsAndConditions from './termsAndConditions';
 import {Helmet} from 'react-helmet';
 
 
@@ -40,6 +41,7 @@ class App extends Component {
               <title>YessNo</title>
               <meta charSet="utf-8" />
               <meta name="description" content="Yes No voting for the public or for small groups via links in sms messages." />
+              <link rel="canonical" href="https://yessno.co" />
             </Helmet>
             <Navi />
             <Switch>
@@ -55,8 +57,20 @@ class App extends Component {
               <Route exact path='/resetPass/:id' component={ResetPass} />
             </Switch>
             <VoteIcon />
-            <div className='footerDiv'>Icons made by <a className='regLink' href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a className='regLink' href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a className='regLink' href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank" rel="noopener noreferrer">CC BY 3.0 US</a>
-            <div className='linkDiv'><Link className='privLink' to='/privacyPolicy'> Our Privacy Policy</Link></div></div>
+            <div className='footerDiv'>
+              <div className='footDiv'>
+                <p className='footP'>Contact us at: <a className='privLink' href='mailto:support@yessno.co'><u>support@yessno.co</u></a></p>
+              </div>
+              <div className='footDiv'>
+                <p className='footP'>Icons made by <a className='regLink' href="http://www.freepik.com/" title="Freepik"><u>Freepik</u></a> from <a className='regLink' href="https://www.flaticon.com/" title="Flaticon"><u>www.flaticon.com</u></a> is licensed by <a className='regLink' href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank" rel="noopener noreferrer"><u>CC BY 3.0 US</u></a></p>
+              </div>
+              <div className='footDiv'>
+                <Link className='privLink footP' to='/privacyPolicy'><u>Our Privacy Policy</u></Link>
+              </div>
+              <div className='footDiv'>
+                <p className='footP'>Copyright &copy;2019. YessNo.co.<br />All rights reserved.</p>
+              </div>
+            </div>
           </div>
         </Router>
       </Provider>
