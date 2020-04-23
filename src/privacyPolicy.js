@@ -29,7 +29,7 @@ class PrivacyPolicy extends Component {
               <p>Effective date: March 13, 2019</p>
 
 
-              <p>YessNo ("us", "we", or "our") operates the https://www.YessNo.com website (the "Service").</p>
+              <p>YessNo ("us", "we", or "our") operates the https://www.YessNo.co and https://www.YessNo.tk websites (the "Service").</p>
 
               <p>This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data. Our Privacy Policy for YessNo.co is created with the help of the <a href="https://www.freeprivacypolicy.com/" style={{color:'blue'}}>Free Privacy Policy website</a>.</p>
 
@@ -124,7 +124,7 @@ class PrivacyPolicy extends Component {
               <h2>Contact Us</h2>
               <p>If you have any questions about this Privacy Policy, please contact us:</p>
               <ul>
-                <li>By email: yessnomail@gmail.com</li>
+                <li>By email: <a className='privLink' href='mailto:support@yessno.co'><u>support@yessno.co</u></a></li>
 
               </ul>
             </div>

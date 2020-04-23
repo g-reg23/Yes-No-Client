@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getVotes, addVote } from '../actions/voteActions';
 import propTypes from 'prop-types';
 import { getMessages, clearMessages } from '../actions/messageActions';
-import { Container, Row, Col, Card, CardBody, Alert, Button } from 'reactstrap';
+import { Container, Row, Col, Card, CardBody, Alert } from 'reactstrap';
 import NoButton from './noButton'
 import YesButton from './yesButton';
 import FrontIcon from './FrontIcon';
@@ -12,7 +12,6 @@ import '../App.css';
 import { Spring } from 'react-spring/renderprops'
 import icon from '../images/027-global-voting.svg';
 import VoterList from './voterList';
-import { Link } from 'react-router-dom';
 
 class ActiveVotes extends Component {
   constructor(props) {

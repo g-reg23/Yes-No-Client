@@ -8,11 +8,10 @@ import { clearMessages } from '../actions/messageActions';
 import PieChart from './activeVoteComponents/PieChart';
 import NoButton from './noButton'
 import YesButton from './yesButton';
-import { Container, Row, Col, Card, CardBody, Alert, Button } from 'reactstrap';
+import { Container, Row, Col, Card, CardBody, Alert } from 'reactstrap';
 import icon from '../images/027-global-voting.svg';
 import EndTimer from './endTimer';
 import VoterList from './voterList';
-import { Link } from 'react-router-dom';
 
 class PrivateVote extends Component {
   constructor(props) {

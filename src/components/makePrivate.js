@@ -8,7 +8,6 @@ import propTypes from 'prop-types'
 import { Container, Row, Col, Button, Alert, Card, CardBody } from 'reactstrap';
 import GetVoters from './makeVoteComponents/getVoters';
 import { resetPrivateInfo, postPrivateVote } from '../actions/privateActions'
-import { Link } from 'react-router-dom';
 import yes from '../images/iconfinder_checkmark-24_103184.svg';
 import no from '../images/iconfinder_No_984759.svg';
 import { getMessages, clearMessages } from '../actions/messageActions';

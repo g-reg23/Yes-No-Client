@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types'
 import { fetchPastPrivateVotes } from '../actions/privateActions'
 import FrontIcon from './FrontIcon';
-import { Container, Row, Col, Alert, Button } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Container, Row, Col, Alert } from 'reactstrap';
 import Privy from './privy';
 import { Spring } from 'react-spring/renderprops';
 import { clearMessages } from '../actions/messageActions';
@@ -30,7 +29,7 @@ class PrivateArchive extends Component {
   render() {
     let alert = this.props.message.msg !== '' ?
     <Alert color={this.props.message.type} align='center'>{this.props.message.msg}</Alert> : null;
-    let votes = this.props.private.past.length === 0 ? <div><h3>Whoa, nothing to see here!! :) You have not made a private vote yet.</h3></div> :
+    let votes = !this.props.auth.isAuthenticated || this.props.private.past.length === 0 ? <div><h3>Whoa, nothing to see here!! :) You have not made a private vote yet.</h3></div> :
       this.props.private.past.map((v, index) =>
         <Col key={v._id} lg={6}>
           <Privy vote={v} />

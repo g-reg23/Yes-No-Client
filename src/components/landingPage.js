@@ -49,7 +49,7 @@ class LandingPage extends Component {
                   <div align='center'>
                     <img alt='computerVoteIcon' src={onlineVote} width='45%' />
                   </div>
-                  <p className='subsectBody'>Build votes for your social circle. If you have a burning question that must be answered quick, make a Private Vote. Each vote member will be sent a link to the vote via text message and email.</p>
+                  <p className='subsectBody'>Build votes for your social circle. If you have a burning question that must be answered quick, make a Private Vote. Each vote member will be immediately sent a link to the vote via SMS text message.</p>
                   <div align='center'>
                     <Link to='/private' className='subsectButton' style={{padding:'2.5% 5% 2.5% 5%'}}>Private</Link>
                   </div>

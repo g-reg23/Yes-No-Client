@@ -44,7 +44,7 @@ class GetVoter extends Component {
       }
     }
 
-    let re = /\S+@\S+\.\S+/;
+    // let re = /\S+@\S+\.\S+/;
     if (this.state.name.length >= 2 && this.state.name.length < 16) {
       if (this.state.number.toString().length === 10) {
         let voter = {

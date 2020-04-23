@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LOGIN_SUCCESS, LOGOUT, UPDATE_PROFILE, FACEBOOK_LOGIN, GOOGLE_LOGIN, RETURN_USER, VERIFIED_EMAIL } from '../actions/types';
+import { LOGIN_SUCCESS, LOGOUT, UPDATE_PROFILE, GOOGLE_LOGIN, RETURN_USER, VERIFIED_EMAIL } from '../actions/types';
 import { getMessages } from '../actions/messageActions';
 const config = { headers: {'Content-Type': 'application/json'}};
 
@@ -189,11 +189,16 @@ export const resetPass = (data, id) => dispatch => {
    }
    axios.get('/api/auth/user', newConfig)
      .then(res => {
-       dispatch({
-         type: LOGIN_SUCCESS,
-         payload: res.data
-       })
-       dispatch(getMessages({'msg': 'You were successfully logged in.'}, 200, 'success', 'loginSuccess'))
+       console.log(res.data.user)
+       if (res.data.user === 'None to speak of' || res.data.user === 'No token') {
+         dispatch(getMessages({'msg':'Please log in to access account'}, res.status, 'warning', 'noToke'))
+       }else {
+         dispatch({
+           type: LOGIN_SUCCESS,
+           payload: res.data
+         })
+         dispatch(getMessages({'msg': 'You were successfully logged in.'}, 200, 'success', 'loginSuccess'));
+      }
      })
      .catch(error => {
        dispatch({type: LOGOUT});
