@@ -68,7 +68,7 @@ class MakePrivate extends Component {
       <Row>
         <Col lg={6}>
           <h3 className='headingDiv'>Review the vote information below, click Edit to make changes.</h3>
-          <Card className='showCard' body>
+          <Card className='showCard darkCadetBlue' body>
             <img width='20%' src={icon} alt='vote icon'style={{marginLeft:'40%'}}  />
             <p className='showName' align='center'>{this.props.private.info.name}</p>
             <p align='center' className='showDesc'>{this.props.private.info.desc}</p>
@@ -93,7 +93,9 @@ class MakePrivate extends Component {
     return (
       <div>
         <Container>
-          {alert}
+          <div className='alertDiv'>
+            {alert}
+          </div>
           {form}
           <br />
           <hr /> <br />

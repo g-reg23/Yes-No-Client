@@ -7,7 +7,6 @@ import { fetchPastPrivateVotes } from '../actions/privateActions'
 import FrontIcon from './FrontIcon';
 import { Container, Row, Col, Alert } from 'reactstrap';
 import Privy from './privy';
-import { Spring } from 'react-spring/renderprops';
 import { clearMessages } from '../actions/messageActions';
 
 
@@ -36,23 +35,19 @@ class PrivateArchive extends Component {
         </Col>
       )
     return (
-      <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
-        {props => (
-          <div style={props}>
-            <FrontIcon view={'privateArchive'}/>
-            <div className='openDiv'>
-              {alert}
-            </div>
-            <hr />
-            <Container>
-              <Row>
-                {votes}
-              </Row>
-            </Container>
-            <hr />
-          </div>
-        )}
-      </Spring>
+      <div>
+        <FrontIcon view={'privateArchive'}/>
+        <div className='alertDiv'>
+          {alert}
+        </div>
+        <hr />
+        <Container>
+          <Row>
+            {votes}
+          </Row>
+        </Container>
+        <hr />
+      </div>
     )
   }
 }

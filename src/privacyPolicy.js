@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import FrontIcon from './components/FrontIcon';
-import { Spring } from 'react-spring/renderprops';
 import { connect } from 'react-redux';
 import {Alert} from 'reactstrap';
 import propTypes from 'prop-types';
@@ -17,9 +16,7 @@ class PrivacyPolicy extends Component {
     let alert = this.props.message.msg !== '' ?
     <Alert color='success' align='center'>{this.props.message.msg}</Alert> : null;
     return (
-      <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
-        {props => (
-          <div style={props}>
+          <div>
             <FrontIcon view='privacyPolicy' />
             <div className='privacyContainer'>
               {alert}
@@ -129,8 +126,6 @@ class PrivacyPolicy extends Component {
               </ul>
             </div>
           </div>
-        )}
-      </Spring>
     )
   }
 }

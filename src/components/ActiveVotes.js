@@ -9,7 +9,6 @@ import YesButton from './yesButton';
 import FrontIcon from './FrontIcon';
 import PieChart from './activeVoteComponents/PieChart';
 import '../App.css';
-import { Spring } from 'react-spring/renderprops'
 import icon from '../images/027-global-voting.svg';
 import VoterList from './voterList';
 
@@ -88,10 +87,11 @@ class ActiveVotes extends Component {
 
   render() {
     // this.scroll();
+    const colors = ['showCard darkCadetBlue','showCard slateblue','showCard darkBlue'];
     let activeVotes = this.props.vote.fetched === true ? this.props.vote.votes.filter(vote => vote.active === true) : null;
     let votes = activeVotes !== null ? activeVotes.map((v, index) =>
       <Col lg={6} key={v._id}>
-        <Card className='showCard' body>
+        <Card className={colors[index%3]} body>
           <img width='20%' src={icon} alt='vote icon'style={{marginLeft:'40%'}}  />
           <p className='showName' align='center'>{v.name}</p>
           <p align='center' className='showDesc'>{v.desc}</p>
@@ -105,31 +105,26 @@ class ActiveVotes extends Component {
           <CardBody>
             <p style={{marginBottom:'0', float: 'none'}} className='showCreator'>Created By: {v.creator}</p><hr />
             <PieChart yes={v.yes} no={v.no} voteId={v.Id}/><hr />
-            <VoterList voters={v.voters} />
+            <VoterList voters={v.voters} background={colors[index%3]}/>
           </CardBody>
         </Card>
       </Col>) : null;
     let alert = this.props.message.msg !== '' && this.props.message.id !== 'modal' && this.props.message.id !== 'yesno' ?
     <Alert align='center' color={this.props.message.type}>{this.props.message.msg}</Alert> : null;
     return(
-      <Spring from={{ opacity: 0 }} to={{ opacity: 1}}>
-        {props => (
-          <div>
-            <FrontIcon view='activeVotes' />
-            <div className='introDiv'>
-              <Container>
-                {alert}
-              </Container>
-              <Container className='voteDiv'>
-                <Row>
-                  {votes}
-                </Row>
-              </Container>
-            </div>
+      <div>
+        <FrontIcon view='activeVotes' />
+        <div className='introDiv'>
+          <div className='alertDiv'>
+            {alert}
           </div>
-          )
-        }
-      </Spring>
+          <Container className='voteDiv'>
+            <Row>
+              {votes}
+            </Row>
+          </Container>
+        </div>
+      </div>
     )
   }
 }

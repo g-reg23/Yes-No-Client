@@ -10,9 +10,7 @@ import { Link } from 'react-router-dom';
 import hacker from '../images/012-hacker.svg';
 import onlineVote from '../images/026-online-voting.svg';
 import vote from '../images/022-vote-2.svg';
-import { Tween } from 'react-gsap';
-import { Spring } from 'react-spring/renderprops';
-import { clearMessages } from '../actions/messageActions';
+import { clearMessages, getMessages } from '../actions/messageActions';
 
 class LandingPage extends Component {
   constructor(props) {
@@ -28,7 +26,7 @@ class LandingPage extends Component {
     }
   }
   componentDidMount() {
-    if (this.props.message.type === 'loginSuccess' || this.props.message.type === 'regSuccess' || this.props.message.type === 'verifySuccess') return
+    if (this.props.message.id === 'loginSuccess' || this.props.message.id === 'regSuccess' || this.props.message.id === 'verifySuccess') return
     else this.props.clearMessages();
   }
 
@@ -36,13 +34,13 @@ class LandingPage extends Component {
     this.scroll();
     let message = this.props.message.msg !== '' && this.props.message.id !== 'modal' && this.props.message.id !== 'yesno' ? <Alert align='center' color={this.props.message.type}>{this.props.message.msg}</Alert> : null
     return (
-      <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
-        {props => (
-          <div style={props}>
+          <div>
             <FrontIcon view='/'/>
             <Container id='about'>
-            {message}
-              <Tween duration={2} from={{transform:'rotate(180deg)'}}><div style={{marginBottom:'3%'}} align='center'><Link to='/active' className='CTAButton'>Vote!</Link></div></Tween>
+              <div className='alertDiv'>
+                {message}
+              </div>
+              <div style={{marginBottom:'3%'}} align='center'><Link to='/active' className='CTAButton'>Vote!</Link></div>
               <Row>
                 <Col className='subsectDiv firstSub divider-color primary-text-color' md={4}>
                   <p className='subsectTitle'>Private Votes</p>
@@ -78,9 +76,6 @@ class LandingPage extends Component {
               </Row>
             </Container>
           </div>
-          )
-        }
-      </Spring>
     )
   }
 }
@@ -96,4 +91,4 @@ const mapStateToProps = (state) => ({
   auth: state.authObject
 })
 
-export default connect(mapStateToProps, {clearMessages})(LandingPage);
+export default connect(mapStateToProps, {clearMessages, getMessages})(LandingPage);

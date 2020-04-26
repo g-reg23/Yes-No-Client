@@ -75,7 +75,7 @@ class PrivateVote extends Component {
                 <CardBody>
                   <p style={{marginBottom:'0'}} className='showCreator'>Created By: {this.props.private.vote.creator}</p><hr />
                   <PieChart yes={this.props.private.vote.yes} no={this.props.private.vote.no} voteId={this.props.private.vote._id} /><hr />
-                  <VoterList voters={this.props.private.vote.voters}/>
+                  <VoterList voters={this.props.private.vote.voters} background='showCard'/>
                 </CardBody>
               </Card>
             </Col>

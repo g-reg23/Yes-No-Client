@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../App.css';
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 import hacker from '../images/012-hacker.svg';
 import onlineVote from '../images/026-online-voting.svg';
 import vote from '../images/022-vote-2.svg';
-import { Tween } from 'react-gsap';
 import queryString from 'query-string';
 import {verifyEmail} from '../actions/authActions'
 
@@ -42,7 +41,7 @@ class Verify extends Component {
             <FrontIcon view='/'/>
             <Container id='about'>
             {message}
-            <Tween duration={2} from={{transform:'rotate(180deg)'}}><div style={{marginBottom:'3%'}} align='center'><Link to='/active' className='CTAButton'>VOTE NOW!</Link></div></Tween>
+            <div style={{marginBottom:'3%'}} align='center'><Link to='/active' className='CTAButton'>VOTE NOW!</Link></div>
               <Row>
                 <Col className='subsectDiv firstSub' md={4}>
                   <p className='subsectTitle'>Build</p>

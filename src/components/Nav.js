@@ -70,7 +70,7 @@ class Navi extends Component {
         <div>
           <Navbar expand='md' className='mb-5s sticky nav-color'>
               <Container>
-                <Link className='navbar-brand white-text' to='#'>
+                <Link className='navbar-brand' to='#'>
                   YessNo
                 </Link>
                 <NavbarToggler onClick={this.toggle} className='navbar-light' />

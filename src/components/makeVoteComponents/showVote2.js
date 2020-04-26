@@ -51,7 +51,7 @@ class ShowVote extends Component {
           <Button className='editButton' onClick={this.onEdit} size='md' >Edit Vote</Button>
         </div>
         <Col>
-          <Card className='showCard' body>
+          <Card className='showCard darkCadetBlue' body>
             <img width='20%' src={icon} alt='vote icon'style={{marginLeft:'40%'}}  />
             <p className='showName' align='center'>{this.props.vote.info.name}</p>
             <Container>

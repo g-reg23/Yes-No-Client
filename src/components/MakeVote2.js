@@ -9,7 +9,9 @@ import { voteInfo } from '../actions/voteActions'
 import propTypes from 'prop-types'
 import { Container, Row, Col, Alert } from 'reactstrap';
 import FrontIcon from './FrontIcon';
-import { Spring } from 'react-spring/renderprops';
+// import { Redirect } from 'react-router'
+import { getMessages, clearMessages } from '../actions/messageActions';
+// import LoginPage from './loginPage';
 
 class MakeVote extends Component {
 
@@ -25,18 +27,18 @@ class MakeVote extends Component {
   }
   render() {
     let voteInfoCard = this.props.vote.info.saved === false ? <ConstructVote /> : <ShowVote />;
-    let alert = this.props.message.msg.length >= 0 || this.props.message.id === 'constructVote' ? null :
+    let alert = this.props.message.id === 'constructVote' ? null :
     <Alert align='center' color={this.props.message.type}>{this.props.message.msg}</Alert>;
     return (
-      <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
-        {props => (
-          <div style={props}>
+          <div>
             <FrontIcon view='makeVote'/>
             <div ref='makeVoteDiv'>
               <Container className='voteInfoContainer'>
                 <Row>
                   <Col>
-                    {alert}
+                    <div className='alertDiv'>
+                      {alert}
+                    </div>
                     {voteInfoCard}
                     <hr /><br />
                   </Col>
@@ -44,9 +46,6 @@ class MakeVote extends Component {
               </Container>
             </div>
           </div>
-          )
-        }
-      </Spring>
     );
   }
 }
@@ -54,12 +53,14 @@ class MakeVote extends Component {
 MakeVote.propTypes = {
   voteInfo: propTypes.func.isRequired,
   vote: propTypes.object.isRequired,
-  message: propTypes.object.isRequired
+  message: propTypes.object.isRequired,
+  auth: propTypes.object.isRequired,
 }
 
 const mapStateToProps = (state) => ({
   message: state.messageObject,
-  vote: state.voteObject
+  vote: state.voteObject,
+  auth: state.authObject,
 })
 
-export default connect(mapStateToProps, { voteInfo })(MakeVote);
+export default connect(mapStateToProps, { voteInfo, getMessages, clearMessages, })(MakeVote);

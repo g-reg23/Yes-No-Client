@@ -99,15 +99,16 @@ a:hover {
   color:black;
   text-decoration: underline;
 }
-
+.alertDiv {
+  margin:auto;
+  margin-top:10%;
+  width:80%;
+}
 .topDiv {
   padding: 16% 0 8% 0;
   background-image: url('images/prism.png');
-  /* background-image: url('images/crowd-participating-at-event.jpg'); */
-  /* background-image: url('images/396.jpg'); */
-  margin-bottom: 3.5%;
+  background: #322c3a;
   position: relative;
-  /* background-image: linear-gradient(#b8b1e7, #3e309c); */
 }
 .yesNoImage {
   margin-top: -1%;
@@ -200,17 +201,9 @@ a:hover {
 }
 .showCard {
   margin: 3% 0 4% 0;
-  /* background: #8376d5; */
-  /* background: -webkit-linear-gradient(to right, #29323c, #485563);
-  background: linear-gradient(to right, #29323c, #485563); */
-  /* background-color: #0d0a0b;
-  background-image: linear-gradient(315deg, #0d0a0b 0%, #009fc2 74%); */
-  background: #373b44; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #373b44, #4286f4); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #373b44, #4286f4);
+  background: #436e70;
 }
 .privShowCard {
-  background: #8376d5;
   max-width: 700px;
   margin:auto;
 }
@@ -252,6 +245,7 @@ a:hover {
 .headingDiv {
   padding: 2%;
   margin: 10% 2% 5% 2%;
+  text-align:center;
 }
 /* introDiv section:nth-child(even) {
   background: slategray;
@@ -276,12 +270,6 @@ a:hover {
 }
 .introDiv {
   padding: 4%;
-  margin-top: 5%;
-  margin-bottom: 7%;
-}
-.
-.voteDiv {
-  margin-top: 10%;
 }
 .voteInfoContainer {
   margin-bottom: 6%;
@@ -352,11 +340,7 @@ a:hover {
   cursor: pointer;
   height: 15rem;
   overflow-y: scroll;
-  background-color: #a399b2;
-  /* background-image: linear-gradient(147deg, #a399b2 0%, #4d4855 74%); */
-  background: #373b44; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #373b44, #4286f4); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #373b44, #4286f4);
+  margin-bottom:0;
 }
 .voterList td {
   width: 4%;
@@ -524,9 +508,20 @@ a:hover {
   text-align: center;
 }
 .clickable {
-  padding-top: -10%;
   cursor: pointer;
   text-align: center;
+}
+.VoterList {
+  display: block;
+}
+.tableBody {
+  height: 400px;
+  overflow-y: auto;
+  width: 100%;
+}
+.clickOff {
+  padding-top: -10%;
+  font-size: 1.25rem;
 }
 .linkDiv {
   display:flex;
@@ -572,6 +567,16 @@ a:hover {
 .switch-wrapper {
   position: relative;
 }
+/* backgrounds for active votes */
+.darkCadetBlue{
+  background: #436e70
+}
+.darkBlue {
+  background: #1566b7
+}
+.slateblue {
+  background: slateblue;
+}
 
 .switch-wrapper > div {
   position: absolute;
@@ -597,11 +602,6 @@ a:hover {
   background-color: #f3f4f7;
   background-image: linear-gradient(315deg, #f3f4f7 0%, #caccd1 74%);
 }
-.getVoterCard {
-  background: #D3CCE3;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
 .footerDiv {
   padding:5%;
   margin: 5%;
@@ -625,6 +625,7 @@ a:hover {
 .nav-color {
   background-color: #a399b2;
   background-image: linear-gradient(147deg, #a399b2 0%, #4d4855 74%);
+  background: #a399b2;
 }
 .secondary-text-color  { color: #757575; }
 .divider-color         { border-color: #BDBDBD; }
@@ -716,6 +717,9 @@ a:hover {
 }
 /* Media query for regular tablet */
 @media only screen and (min-width:768px) {
+  .alertDiv {
+    margin-top:7%
+  }
   .footP {
     font-size:1.3rem;
   }
@@ -775,9 +779,17 @@ a:hover {
     margin-left:45%;
   }
 } */
+@media only screen and (min-width:992px) {
+  .yes_no_buttons {
+    width:30%;
+  }
+}
 
 /* Media qury for reular laptops */
 @media only screen and (min-width:1024px) {
+  .alertDiv{
+    margin-top: 2%;
+  }
   .innerCard {
     margin-left: 15%;
     width:70%;
@@ -803,6 +815,9 @@ a:hover {
 }
 /* Media query for large laptops */
 @media only screen and (min-width:1440px) {
+  .alertDiv{
+    margin-top: 1%;
+  }
   .yes_no_buttons {
     width: 22%;
   }

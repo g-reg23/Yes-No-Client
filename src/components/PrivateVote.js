@@ -77,10 +77,12 @@ class PrivateVote extends Component {
     return (
       <div>
         <Container>
-          {message}
-          {alert}
+          <div className='alertDiv'>
+            {message}
+            {alert}
+          </div>
           <hr />
-              <Card className='privShowCard' body>
+              <Card className='privShowCard slateblue' body>
                 <img width='20%' src={icon} alt='vote icon'style={{marginLeft:'40%'}}  />
                 <p className='showName' align='center' style={{fontSize: '2rem'}}>{this.props.private.vote.name}</p>
                 <p align='center' className='showDesc'>{this.props.private.vote.desc}</p>
@@ -96,7 +98,7 @@ class PrivateVote extends Component {
                 <CardBody>
                   <p style={{marginBottom:'0'}} className='showCreator'>Created By: {this.props.private.vote.creator}</p><br /><br />
                   <PieChart yes={this.props.private.vote.yes} no={this.props.private.vote.no} voteId={this.props.private.vote._id} /><hr />
-                  <VoterList voters={this.props.private.vote.voters} />
+                  <VoterList voters={this.props.private.vote.voters} background='slateblue'/>
                 </CardBody>
               </Card>
           {alert}

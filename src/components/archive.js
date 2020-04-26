@@ -4,12 +4,10 @@ import { connect } from 'react-redux';
 import { getVotes } from '../actions/voteActions';
 import propTypes from 'prop-types';
 import { getMessages, clearMessages } from '../actions/messageActions';
-import { Container, Row, Col, Card, CardBody, Alert, Button } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Container, Row, Col, Card, CardBody, Alert } from 'reactstrap';
 import FrontIcon from './FrontIcon';
 import PieChart from './activeVoteComponents/PieChart';
 import '../App.css';
-import { Spring } from 'react-spring/renderprops'
 
 
 class Archive extends Component {
@@ -26,7 +24,9 @@ class Archive extends Component {
   renderMessage() {
     if (this.props.message.id === 'yesno') {
       return (
-        <Alert align='center' color='success'>{this.props.message.msg}</Alert>
+        <div className='alertDiv'>
+          <Alert align='center' color='success'>{this.props.message.msg}</Alert>
+        </div>
       )
     }
   }
@@ -56,27 +56,17 @@ class Archive extends Component {
     let alert = this.props.message.msg !== '' && this.props.message.id !== 'modal' && this.props.message.id !== 'yesno' ?
     <Alert color={this.props.message.type} align='center'>{this.props.message.msg}</Alert> : null;
     return(
-      <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
-        {props => (
-          <div style={props}>
-            <FrontIcon view='archive' />
-            <div className='introDiv'>
-              {alert}
-              <hr />
-              <div className='linkDiv'>
-                <Link align='center' className='links' to='/active'><Button className='linkButton'>View Public Votes</Button></Link>
-                <Link align='center' className='links' to='/private'><Button className='linkButton'>My Current Private Votes</Button></Link>
-              </div>>
-              <hr />
-              <Container>
-                {votes}
-              </Container>
-              <hr />
-            </div>
+      <div>
+        <FrontIcon view='archive' />
+          <div className='alertDiv'>
+            {alert}
           </div>
-          )
-        }
-      </Spring>
+          <hr />
+          <Container>
+            {votes}
+          </Container>
+          <hr />
+      </div>
     )
   }
 }

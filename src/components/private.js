@@ -6,7 +6,6 @@ import propTypes from 'prop-types'
 import MakePrivate from './makePrivate';
 import PrivateVote from './PrivateVote'
 import FrontIcon from './FrontIcon';
-import { Spring } from 'react-spring/renderprops'
 
 class Private extends Component {
 
@@ -23,14 +22,10 @@ class Private extends Component {
       display = <MakePrivate />
     }
     return (
-      <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
-        {props => (
-          <div style={props}>
-            <FrontIcon view='private'/>
-            {display}
-          </div>
-        )}
-      </Spring>
+      <div>
+        <FrontIcon view='private'/>
+        {display}
+      </div>
     )
   }
 }

@@ -81,13 +81,13 @@ class GetVoter extends Component {
     let innerAlert = this.props.alert.id !== 'getVoterError' ? null :
      <Alert color={this.props.alert.type} align='center'>{this.props.alert.msg}</Alert>
     let voters = this.state.voters.length > 0 ? '' : 'No current voters added';
-    let voterDisplay =  this.state.voters.length > 0 ? this.state.voters.map((votr, i) => <li className='voterListItem' key={i} align='center' value={votr.voterId}><strong>{votr.name}  {votr.number}</strong><span onClick={this.onClear.bind(this)} className='clearNumber'>Clear</span></li>) : '';
+    let voterDisplay =  this.state.voters.length > 0 ? this.state.voters.map((votr, i) => <li className='voterListItem smoke-text' key={i} align='center' value={votr.voterId}><strong>{votr.name}  {votr.number}</strong><span onClick={this.onClear.bind(this)} className='clearNumber'>Clear</span></li>) : '';
     return (
-      <Card className='getVoterCard' body >
-        <h1 className='infoTitle'><u>Voter Information</u></h1>
+      <Card className='getVoterCard slateblue' body >
+        <h1 className='infoTitle smoke-text'><u>Voter Information</u></h1>
         <CardBody>
-          <p>{voters}</p>
-          <CardTitle style={{fontSize:'1.25rem'}}>Add voters name, valid US phone number, and email address.</CardTitle>
+          <p className='smoke-text'>{voters}</p>
+          <CardTitle className='smoke-text' smoke-text style={{fontSize:'1.25rem'}}>Add voters name, valid US phone number, and email address.</CardTitle>
           <hr className='my-2' />
           <ol className='getVoterList'>
             {voterDisplay}
@@ -96,7 +96,7 @@ class GetVoter extends Component {
           <hr className='my-2' />
           <input className='textInput' type='text' placeholder='Voter Name' name='name' value={this.state.name} onChange={this.handleChange}/>
           <input className='textInput' type="number" name='number' onChange={this.handleChange} value={this.state.number} pattern="[0-9]{3} [0-9]{3} [0-9]{4}" maxLength="12" placeholder='888 888 8888'  title="Ten digits code" required />
-          <Button style={{marginTop:'5%'}} onClick={this.onAdd} color='primary' >Add Voter</Button>
+          <Button style={{marginTop:'5%'}} className='smoke-text' onClick={this.onAdd} color='primary' >Add Voter</Button>
         </CardBody>
         <Button onClick={this.submit}>Submit</Button>
       </Card>

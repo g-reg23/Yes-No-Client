@@ -19,6 +19,7 @@ const authInitialState = {
   google: false,
   pic: '',
   private: {},
+  toggleLoginFromComponent:false,
 }
 
 
