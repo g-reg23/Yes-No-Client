@@ -84,7 +84,7 @@ class MakePrivate extends Component {
             </CardBody><hr />
             <PieChart yes={0} no={0} voteId={0}/>
           </Card>
-          <p align='center'><Button onClick={this.handleGoBack}>Edit</Button></p>
+          <p align='center'><button className='goBackButton' onClick={this.handleGoBack}>Edit</button></p>
         </Col>
         <Col lg={6}>
           {this.props.private.info.saved === true ? <div><h3 className='headingDiv'>Add voters here. Give each voter a unique name, U.S. phone number, and email. You may add anywhere from 2 to 10 voters.</h3><GetVoters submitVote={this.handleSubmit.bind(this)} alert={this.props.message} error={this.handleError.bind(this)} clear={this.handleClear}/></div> : <h3>You must make your vote first, before adding voters.</h3>}

@@ -106,8 +106,9 @@ a:hover {
 }
 .topDiv {
   padding: 16% 0 8% 0;
-  background-image: url('images/prism.png');
-  background: #322c3a;
+  /* background-image: url('images/prism.png');
+  background: #322c3a; */
+  background:#322c3a;
   position: relative;
 }
 .yesNoImage {
@@ -122,8 +123,35 @@ a:hover {
   left: 20%;
   text-align:center;
 } */
-.routeTitle {
-
+.buttonDiv {
+  display:flex;
+  justify-content:space-evenly;
+  margin-top:4%;
+}
+.setButton, .goBackButton {
+  padding: 2% 3%;
+  border: none;
+  border-radius: .5rem;
+  min-width:5rem;
+}
+.setButton {
+  background:#1566b7;
+  color:whitesmoke;
+  transition: .3s;
+}
+.goBackButton {
+  background: #a399b2;
+  color:whitesmoke;
+}
+.setButton:hover {
+  color:#1566b7;
+  background:whitesmoke;
+  border:solid 1px #1566b7;
+}
+.goBackButton:hover {
+  color: #a399b2;
+  background:whitesmoke;
+  border:solid 1px #a399b2;
 }
 .mainTitle {
   font-size: 2rem;
@@ -152,9 +180,6 @@ a:hover {
   display: flex;
   justify-content: center;
 } */
-.setButton, .goBackButton {
-  margin-top: 5%;
-}
 .voteInfoHeader {
   font-weight:675;
   font-size: 1.25rem;
@@ -253,15 +278,11 @@ a:hover {
 .introDiv section:nth-child(odd) {
   background: khaki;
 } */
-.centerButtonRow {
-  display: flex;
-  justify-content: center;
+.voteInfoPara {
+  font-size:1.25rem;
 }
-/* .setButton {
-  margin-left: 3%;
-} */
-.goBackButton {
-  margin-left: 3%;
+.voteInformation {
+  margin:5%;
 }
 .innerCard {
   background: cadetblue;

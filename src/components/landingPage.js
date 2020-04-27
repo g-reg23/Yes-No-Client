@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'
 import '../App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
@@ -31,7 +31,7 @@ class LandingPage extends Component {
   }
 
   render() {
-    this.scroll();
+    // this.scroll();
     let message = this.props.message.msg !== '' && this.props.message.id !== 'modal' && this.props.message.id !== 'yesno' ? <Alert align='center' color={this.props.message.type}>{this.props.message.msg}</Alert> : null
     return (
           <div>

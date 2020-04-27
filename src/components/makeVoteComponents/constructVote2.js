@@ -50,6 +50,18 @@ class ConstructVote extends Component {
       this.setState({
         descSet: !this.state.descSet
       })
+      if (this.state.nameSet) {
+        let newVote = {
+          name: this.state.name,
+          desc: this.state.description,
+          creator: this.props.auth.username,
+          saved: true,
+        }
+        this.props.voteInfo(newVote)
+      } else {
+        this.props.getMessages({'msg': 'Please make sure the vote name is set.'}, '','','');
+        return;
+      }
       this.props.clearMessages();
     } else {
       this.props.getMessages({'msg': 'The vote description must be at least 10 characters and no more than 100 characters.'}, null, 'danger', 'constructVote');
@@ -100,19 +112,27 @@ class ConstructVote extends Component {
      <Alert color={this.props.message.type} align='center'>{this.props.message.msg}</Alert>
 
     let name = this.state.nameSet === false ?
-      <Tween duration={3} from={{ opacity:0 }}><div className='inputDiv'><input className='textInput' style={{marginTop:'3%'}} name='name' type='text' placeholder='Vote Question' onChange={this.handleChange}/><div className='centerButtonRow'><Button color='primary' className='setButton' onClick={this.setName}>SET</Button><br /></div></div></Tween> :
-      <Tween duration={3} from={{ opacity:0 }}><div className='inputDiv'><div><textarea className='textInput' style={{fontSize:'.85em', height:'5em'}} name='description' type='text' placeholder='Description/Additional Information' onChange={this.handleChange}></textarea>
-      <div className='centerButtonRow'><Button color='primary' className='setButton' onClick={this.setDesc}>SET</Button><Button color='primary' className='goBackButton' onClick={this.goBack}>Go Back</Button></div></div><div><p align='center' className='voteNameHead'>Vote Name</p><p className='voteNameTrue' align='center'>{this.state.name}</p></div></div></Tween>
+      <div className='inputDiv'><input className='textInput' style={{marginTop:'3%'}} name='name' type='text' placeholder='Vote Question' onChange={this.handleChange}/>
+        <div className='buttonDiv'><button className='setButton' onClick={this.setName}>SET</button><br />
+        </div>
+      </div> :
+      <div className='inputDiv'>
+        <div className='voteInformation'>
+          <p align='center' className='voteInfoPara'><b>Vote Name:</b></p>
+          <p align='center' className='voteInfoPara'>{this.state.name}</p>
+        </div>
+        <textarea className='textInput' style={{fontSize:'.85em', height:'5em'}} name='description' type='text' placeholder='Description/Additional Information' onChange={this.handleChange}>
+        </textarea>
+        <div className='buttonDiv'>
+          <button className='setButton' onClick={this.setDesc}>Set Vote</button>
+          <button  className='goBackButton' onClick={this.goBack}>Go Back</button>
+        </div>
+      </div>
 
     let intro1 = this.state.nameSet === false ? <CardTitle className='voteInfoHeader'>Please enter the question to be voted on in the box below. It should be a simple yes/no question. Then click the Set button</CardTitle> :
-      <CardTitle className='voteInfoHeader'>Now you may enter any additional details and a brief description of the vote and enter the Set button.</CardTitle>
-
-    let finalReview =<div><CardTitle className='voteInfoHeader'>Click save to view your vote before submitting. Otherwise click Go Back.</CardTitle>
-      <p align='center' className='voteNameHead'>Vote Name</p><p className='voteNameTrue' align='center'>{this.state.name}</p>
-      <p align='center' className='voteNameHead'>Vote Description</p><p className='voteNameTrue' align='center'>{this.state.description}</p>
-      <div className='centerButtonRow'><Button style={{marginTop:'5%'}} onClick={this.onSubmit} color='primary' type='submit' value='Submit'><span>Save</span></Button><Button color='primary' className='goBackButton' onClick={this.goBack}>Go Back</Button></div></div>
-
-    let show = this.state.nameSet === true && this.state.descSet === true ? finalReview : name;
+      <div>
+        <CardTitle className='voteInfoHeader'>Now you may enter any additional details and a brief description of the vote and enter the Set button.</CardTitle>
+      </div>
 
     return (
       <div>
@@ -122,7 +142,7 @@ class ConstructVote extends Component {
               {this.state.nameSet === true && this.state.descSet === true ? null : intro1}
               {innerAlert}
               <hr className='my-2' />
-              {show}
+              {name}
             </CardBody>
           </Card>
           <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} centered style={{marginTop:'3.5%'}}>

@@ -98,7 +98,7 @@ class GetVoter extends Component {
           <input className='textInput' type="number" name='number' onChange={this.handleChange} value={this.state.number} pattern="[0-9]{3} [0-9]{3} [0-9]{4}" maxLength="12" placeholder='888 888 8888'  title="Ten digits code" required />
           <Button style={{marginTop:'5%'}} className='smoke-text' onClick={this.onAdd} color='primary' >Add Voter</Button>
         </CardBody>
-        <Button onClick={this.submit}>Submit</Button>
+        <Button onClick={this.submit}>Submit Vote</Button>
       </Card>
     );
   }

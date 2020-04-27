@@ -111,14 +111,32 @@ class ConstructPrivate extends Component {
      <Alert color={this.props.message.type} align='center'>{this.props.message.msg}</Alert>
 
     let name = this.state.nameSet === false ?
-      <Tween duration={3} from={{ opacity:0 }}><div className='inputDiv'><input className='textInput' style={{marginTop:'3%'}} name='name' type='text' placeholder='Vote Question' onChange={this.handleChange}/><div className='centerButtonRow'><Button color='primary' className='setButton' onClick={this.setName}>SET</Button><br /></div></div></Tween> :
-      <Tween duration={3} from={{ opacity:0 }}><div className='inputDiv'><div><textarea className='textInput' style={{fontSize:'.85em', height:'5em'}} name='description' type='text' placeholder='Description/Additional Information' onChange={this.handleChange}></textarea>
-      <div className='centerButtonRow'><Button color='primary' className='setButton' onClick={this.setDesc}>SET</Button><Button color='primary' className='goBackButton' onClick={this.goBack}>Go Back</Button></div></div><div><p align='center' className='voteNameHead'>Vote Name</p><p className='voteNameTrue' align='center'>{this.state.name}</p></div></div></Tween>
+      <div className='inputDiv'>
+        <input className='textInput' style={{marginTop:'3%'}} name='name' type='text' placeholder='Vote Question' onChange={this.handleChange}/>
+        <div className='buttonDiv'><button className='setButton' onClick={this.setName}>Set Vote</button><br />
+        </div>
+      </div> :
+      <div className='inputDiv'>
+        <div className='voteInformation'>
+          <p align='center' className='voteInfoPara'><b>Vote Name</b></p>
+          <p className='voteInfoPara' align='center'>{this.state.name}</p>
+        </div>
+        <textarea className='textInput' style={{fontSize:'.85em', height:'5em'}} name='description' type='text' placeholder='Description/Additional Information' onChange={this.handleChange}>
+        </textarea>
+        <div className='buttonDiv'>
+          <button className='setButton' onClick={this.setDesc}>Set Vote</button>
+          <button className='goBackButton' onClick={this.goBack}>Go Back</button>
+        </div>
+      </div>
 
     let intro1 = this.state.nameSet === false ? <CardTitle className='voteInfoHeader'>Please enter the question to be voted on in the box below. It should be a simple yes/no question. Then click the Set button</CardTitle> :
       <CardTitle className='voteInfoHeader'>Now you may enter any additional details and a brief description of the vote and enter the Set button.</CardTitle>
 
     let finalReview =<div><CardTitle className='voteInfoHeader'>Now choose the length of your vote and click save. Otherwise click Go Back.</CardTitle>
+      <div className='voteInformation'>
+        <p align='center' className='voteNameHead'><b>Vote Name</b></p><p className='voteNameTrue' align='center'>{this.state.name}</p>
+        <p align='center' className='voteNameHead'><b>Vote Description</b></p><p className='voteNameTrue' align='center'>{this.state.description}</p>
+      </div>
       <select className='textInput' value={this.state.voteLength} onChange={this.selectChange}>
         <option name='length' value='2 Hours'>2 Hours</option>
         <option name='length' value='3 Hours'>3 Hours</option>
@@ -126,9 +144,7 @@ class ConstructPrivate extends Component {
         <option name='length' value='12 Hours'>12 Hours</option>
         <option name='length' value='24 Hours'>24 Hours</option>
       </select><br />
-      <p align='center' className='voteNameHead'>Vote Name</p><p className='voteNameTrue' align='center'>{this.state.name}</p>
-      <p align='center' className='voteNameHead'>Vote Description</p><p className='voteNameTrue' align='center'>{this.state.description}</p>
-      <div className='centerButtonRow'><Button style={{marginTop:'5%'}} onClick={this.onSubmit} color='primary' type='submit' value='Submit'><span>Save</span></Button><Button color='primary' className='goBackButton' onClick={this.goBack}>Go Back</Button></div></div>
+      <div className='buttonDiv'><button onClick={this.onSubmit} className='setButton'><span>Save Vote</span></button><button className='goBackButton' onClick={this.goBack}>Go Back</button></div></div>
 
     let show = this.state.nameSet === true && this.state.descSet === true ? finalReview : name;
 
@@ -138,7 +154,7 @@ class ConstructPrivate extends Component {
     return (
       <div>
         {alert}
-          <Card className='innerCard default-primary-color' body>
+          <Card className='innerCard' body>
             <h1 className='infoTitle'><u>Vote Information</u></h1>
             <CardBody>
               {this.state.nameSet === true && this.state.descSet === true ? null : intro1}
