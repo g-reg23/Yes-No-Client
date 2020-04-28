@@ -7,7 +7,7 @@ class YesIcon extends Component {
   render() {
 
     return(
-      <img style={{float:'right'}} width='25%' src={yes} alt='yes vote'  />
+      <img className='titleIcons yesTitleIcon' src={yes} alt='yes vote'  />
     )
   }
 }

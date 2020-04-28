@@ -11,7 +11,6 @@ class ConstructVote extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false,
       name: '',
       description: '',
       nameSet: false,
@@ -112,14 +111,21 @@ class ConstructVote extends Component {
      <Alert color={this.props.message.type} align='center'>{this.props.message.msg}</Alert>
 
     let name = this.state.nameSet === false ?
-      <div className='inputDiv'><input className='textInput' style={{marginTop:'3%'}} name='name' type='text' placeholder='Vote Question' onChange={this.handleChange}/>
-        <div className='buttonDiv'><button className='setButton' onClick={this.setName}>SET</button><br />
+      <div className='inputDiv'>
+        <CardTitle align='center' className='voteInfoHeader'>Please enter the question to be voted on in the box below. It should be a simple yes/no question. Then click the Set button</CardTitle>
+        <input className='textInput' style={{marginTop:'3%'}} name='name' type='text' placeholder='Vote Question' onChange={this.handleChange}/>
+        <div className='buttonDiv'>
+          <button className='setButton' onClick={this.setName}>SET</button>
+          <br />
         </div>
       </div> :
       <div className='inputDiv'>
         <div className='voteInformation'>
           <p align='center' className='voteInfoPara'><b>Vote Name:</b></p>
           <p align='center' className='voteInfoPara'>{this.state.name}</p>
+        </div>
+        <div>
+          <CardTitle align='center' className='voteInfoHeader'>Now you may enter any additional details and a brief description of the vote and enter the Set button.</CardTitle>
         </div>
         <textarea className='textInput' style={{fontSize:'.85em', height:'5em'}} name='description' type='text' placeholder='Description/Additional Information' onChange={this.handleChange}>
         </textarea>
@@ -128,32 +134,16 @@ class ConstructVote extends Component {
           <button  className='goBackButton' onClick={this.goBack}>Go Back</button>
         </div>
       </div>
-
-    let intro1 = this.state.nameSet === false ? <CardTitle className='voteInfoHeader'>Please enter the question to be voted on in the box below. It should be a simple yes/no question. Then click the Set button</CardTitle> :
-      <div>
-        <CardTitle className='voteInfoHeader'>Now you may enter any additional details and a brief description of the vote and enter the Set button.</CardTitle>
-      </div>
-
     return (
       <div>
           <Card className='innerCard accent-color-four white-text' body>
             <h1 className='infoTitle'><u>Vote Information</u></h1>
             <CardBody>
-              {this.state.nameSet === true && this.state.descSet === true ? null : intro1}
               {innerAlert}
               <hr className='my-2' />
               {name}
             </CardBody>
           </Card>
-          <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} centered style={{marginTop:'3.5%'}}>
-            <ModalHeader style={{background:'lightgray'}}>Input Error</ModalHeader>
-            <ModalBody style={{padding:'7% 5% 7% 5%'}}>
-              Sorry, The vote question must be at least 3 characters and the vote description must be at least 10 characters.
-            </ModalBody>
-            <ModalFooter style={{background:'lightgray'}}>
-              <Button color="primary" onClick={this.toggle}>OK</Button>
-            </ModalFooter>
-          </Modal>
       </div>
     );
   }

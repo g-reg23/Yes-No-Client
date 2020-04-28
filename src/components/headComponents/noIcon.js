@@ -7,7 +7,7 @@ class NoIcon extends Component {
   render() {
 
     return(
-        <img width='25%' src={no} alt='no vote icon'  />
+        <img className='titleIcons' src={no} alt='no vote icon'  />
     )
   }
 }

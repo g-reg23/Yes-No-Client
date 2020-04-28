@@ -104,12 +104,20 @@ a:hover {
   margin-top:10%;
   width:80%;
 }
+.frontDiv {
+  margin:5%;
+}
 .topDiv {
-  padding: 16% 0 8% 0;
-  /* background-image: url('images/prism.png');
-  background: #322c3a; */
+  padding: 25% 0 18% 0;
+  margin-top:5%;
   background:#322c3a;
   position: relative;
+}
+.titleIcons {
+  width:45%;
+}
+.yesTitleIcon {
+  float:right;
 }
 .yesNoImage {
   margin-top: -1%;
@@ -280,6 +288,15 @@ a:hover {
 } */
 .voteInfoPara {
   font-size:1.25rem;
+}
+
+.routeTitle, .routeSubTitle {
+  font-weight:450;
+  color:rgb(211, 211, 211);
+  margin:auto;
+}
+.infoHeader {
+  text-decoration:underline;
 }
 .voteInformation {
   margin:5%;
@@ -663,6 +680,9 @@ a:hover {
 
 /* Media query for Medium Moblie */
 @media only screen and (min-width:375px) {
+  .topDiv {
+    padding:20% 0 16% 0
+  }
   .yes_no_buttons {
     width: 43%;
   }
@@ -676,6 +696,9 @@ a:hover {
 }
 /* Media query for large mobile */
 @media only screen and (min-width:425px) {
+  .titleIcons {
+    width:38%;
+  }
   .yes_no_buttons {
     width: 31%;
   }
@@ -696,26 +719,43 @@ a:hover {
   }
 }
 @media only screen and (min-width:475px) {
+  .titleIcons {
+    width:34%;
+  }
+  .topDiv {
+    padding:15% 0 13% 0;
+    margin:0;
+  }
   .yesNoImage {
     margin-top: -6%;
   }
   .mainTitle {
     font-size: 2.6rem;
   }
-  /* .routeTitle {
-    left:30%;
-    top: 12%;
-  } */
   .subTitle {
     font-size:1.45rem;
   }
 }
 @media only screen and (min-width:575px) {
+  .topDiv {
+    padding:12% 0 12% 0;
+    margin:0;
+  }
+  .titleIcons {
+    width:30%;
+  }
   .yesNoImage {
     margin-top: -7%;
   }
 }
 @media only screen and (min-width:625px) {
+  .topDiv {
+    padding:10% 0 11% 0;
+    margin:0;
+  }
+  .titleIcons {
+    width: 27%;
+  }
   .yes_no_buttons {
     width: 26.5%;
   }
@@ -729,7 +769,7 @@ a:hover {
   .mainTitle {
     font-size: 2.8rem;
   }
-.routeTitle {
+  .routeTitle {
     margin-top:10%;
   }
   .subTitle {
@@ -737,7 +777,17 @@ a:hover {
   }
 }
 /* Media query for regular tablet */
-@media only screen and (min-width:768px) {
+@media only screen and (min-width:760px) {
+  .frontDiv {
+    margin:3%
+  }
+  .topDiv {
+    padding:8% 0 9% 0;
+    margin:0;
+  }
+  .titleIcons {
+    width:24%;
+  }
   .alertDiv {
     margin-top:7%
   }
@@ -795,12 +845,15 @@ a:hover {
     font-size: 1.8rem;
   }
 }
-/* @media only screen and (min-width:990px) {
-  .showCard {
-    margin-left:45%;
+@media only screen and (min-width:865px) {
+  .topDiv {
+    padding:7% 0 9% 0;
   }
-} */
-@media only screen and (min-width:992px) {
+}
+@media only screen and (min-width:950px) {
+  .topDiv {
+    padding:2% 0 9% 0;
+  }
   .yes_no_buttons {
     width:30%;
   }
@@ -808,6 +861,9 @@ a:hover {
 
 /* Media qury for reular laptops */
 @media only screen and (min-width:1024px) {
+  .topDiv {
+    padding:1% 0 8% 0;
+  }
   .alertDiv{
     margin-top: 2%;
   }
@@ -817,12 +873,6 @@ a:hover {
   }
   .yes_no_buttons {
     width: 25%;
-  }
-  .showButtons {
-    width: 18%;
-  }
-  .topDiv {
-    padding: 10% 0 8% 0;
   }
   .CTAButton {
     width: 27%;
@@ -835,7 +885,10 @@ a:hover {
   }
 }
 /* Media query for large laptops */
-@media only screen and (min-width:1440px) {
+@media only screen and (min-width:1400px) {
+  .titleIcons {
+    width:22%;
+  }
   .alertDiv{
     margin-top: 1%;
   }
@@ -845,9 +898,6 @@ a:hover {
   .showButtons {
     width: 15%;
   }
-  .topDiv {
-    padding: 7% 0 8% 0;
-  }
   .CTAButton {
     width: 24%;
     padding: 1.5% 5%;
@@ -856,13 +906,13 @@ a:hover {
 }
 /* Media query for desktops */
 @media only screen and (min-width:2060px) {
+  .titleIcons {
+    width:18%;
+  }
   .yes_no_buttons {
     width: 15%;
   }
   .showButtons {
     width: 10%;
-  }
-  .topDiv {
-    padding: 4% 0 6% 0;
   }
 }

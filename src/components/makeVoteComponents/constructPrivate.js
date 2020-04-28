@@ -112,15 +112,18 @@ class ConstructPrivate extends Component {
 
     let name = this.state.nameSet === false ?
       <div className='inputDiv'>
+        <CardTitle align='center' className='voteInfoHeader'>Please enter the question to be voted on in the box below. It should be a simple yes/no question. Then click the Set button</CardTitle>
         <input className='textInput' style={{marginTop:'3%'}} name='name' type='text' placeholder='Vote Question' onChange={this.handleChange}/>
         <div className='buttonDiv'><button className='setButton' onClick={this.setName}>Set Vote</button><br />
         </div>
       </div> :
       <div className='inputDiv'>
         <div className='voteInformation'>
-          <p align='center' className='voteInfoPara'><b>Vote Name</b></p>
+          <p align='center' className='voteInfoPara infoHeader'><b>Vote Name</b></p>
           <p className='voteInfoPara' align='center'>{this.state.name}</p>
         </div>
+        <hr />
+        <CardTitle align='center' className='voteInfoHeader'>Now you may enter any additional details and a brief description of the vote and enter the Set button.</CardTitle>
         <textarea className='textInput' style={{fontSize:'.85em', height:'5em'}} name='description' type='text' placeholder='Description/Additional Information' onChange={this.handleChange}>
         </textarea>
         <div className='buttonDiv'>
@@ -129,21 +132,25 @@ class ConstructPrivate extends Component {
         </div>
       </div>
 
-    let intro1 = this.state.nameSet === false ? <CardTitle className='voteInfoHeader'>Please enter the question to be voted on in the box below. It should be a simple yes/no question. Then click the Set button</CardTitle> :
-      <CardTitle className='voteInfoHeader'>Now you may enter any additional details and a brief description of the vote and enter the Set button.</CardTitle>
+    // let intro1 = this.state.nameSet === false ?
+    //   <CardTitle className='voteInfoHeader'>Please enter the question to be voted on in the box below. It should be a simple yes/no question. Then click the Set button</CardTitle> :
+    //   <CardTitle className='voteInfoHeader'>Now you may enter any additional details and a brief description of the vote and enter the Set button.</CardTitle>
 
-    let finalReview =<div><CardTitle className='voteInfoHeader'>Now choose the length of your vote and click save. Otherwise click Go Back.</CardTitle>
-      <div className='voteInformation'>
-        <p align='center' className='voteNameHead'><b>Vote Name</b></p><p className='voteNameTrue' align='center'>{this.state.name}</p>
-        <p align='center' className='voteNameHead'><b>Vote Description</b></p><p className='voteNameTrue' align='center'>{this.state.description}</p>
-      </div>
-      <select className='textInput' value={this.state.voteLength} onChange={this.selectChange}>
-        <option name='length' value='2 Hours'>2 Hours</option>
-        <option name='length' value='3 Hours'>3 Hours</option>
-        <option name='length' value='6 Hours'>6 Hours</option>
-        <option name='length' value='12 Hours'>12 Hours</option>
-        <option name='length' value='24 Hours'>24 Hours</option>
-      </select><br />
+    let finalReview =
+      <div>
+        <div className='voteInformation'>
+          <p align='center' className='voteNameHead infoHeader'><b>Vote Name</b></p><p className='voteNameTrue' align='center'>{this.state.name}</p>
+          <p align='center' className='voteNameHead infoHeader'><b>Vote Description</b></p><p className='voteNameTrue' align='center'>{this.state.description}</p>
+        </div>
+        <hr />
+        <CardTitle align='center' className='voteInfoHeader'>Now choose the length of your vote and click save. Otherwise click Go Back.</CardTitle>
+        <select className='textInput' value={this.state.voteLength} onChange={this.selectChange}>
+          <option name='length' value='2 Hours'>2 Hours</option>
+          <option name='length' value='3 Hours'>3 Hours</option>
+          <option name='length' value='6 Hours'>6 Hours</option>
+          <option name='length' value='12 Hours'>12 Hours</option>
+          <option name='length' value='24 Hours'>24 Hours</option>
+        </select><br />
       <div className='buttonDiv'><button onClick={this.onSubmit} className='setButton'><span>Save Vote</span></button><button className='goBackButton' onClick={this.goBack}>Go Back</button></div></div>
 
     let show = this.state.nameSet === true && this.state.descSet === true ? finalReview : name;
@@ -157,7 +164,6 @@ class ConstructPrivate extends Component {
           <Card className='innerCard' body>
             <h1 className='infoTitle'><u>Vote Information</u></h1>
             <CardBody>
-              {this.state.nameSet === true && this.state.descSet === true ? null : intro1}
               {innerAlert}
               <hr className='my-2' />
               {show}
