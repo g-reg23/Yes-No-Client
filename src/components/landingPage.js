@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import hacker from '../images/012-hacker.svg';
 import onlineVote from '../images/026-online-voting.svg';
 import vote from '../images/022-vote-2.svg';
+import LandingIcon from './landingIcon';
 import { clearMessages, getMessages } from '../actions/messageActions';
 
 class LandingPage extends Component {

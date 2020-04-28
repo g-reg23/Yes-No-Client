@@ -39,7 +39,7 @@ class App extends Component {
             <Helmet>
               <title>YessNo</title>
               <meta charSet="utf-8" />
-              <meta name="description" content="Yes No voting for the public or for small groups via links in sms messages." />
+              <meta name="description" content="Streamlined yes no voting on all platforms for the entire internet or small groups of your choosing." />
               <link rel="canonical" href="https://yessno.co/" />
             </Helmet>
             <Navi />

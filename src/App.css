@@ -11,6 +11,9 @@ a:hover {
   text-decoration: none;
   color: white;
 }
+.ynNavBrand {
+  margin-left: 2%;
+}
 
 .App {
   display: flex;
@@ -618,6 +621,30 @@ a:hover {
 
 .switch-wrapper > div {
   position: absolute;
+}
+/* .landingDesc {
+  width:60%;
+  background: cadetblue;
+  border-radius: .5rem;
+  padding:5%;
+  color:whitesmoke;
+  margin:auto;
+  margin-top:5%;
+} */
+/* .frontImage {
+  width:40%;
+  margin-left:30%;
+  margin-top:5%;
+  border-radius:.5rem;
+
+} */
+.frontDescription {
+  color:rgb(211, 211, 211);;
+  width:75%;
+  margin:auto;
+  margin-top:5%;
+  font-size:1.25rem;
+  text-align: center;
 }
 .resetInput {
   width: 60%;

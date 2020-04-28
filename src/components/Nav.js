@@ -4,6 +4,7 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 import RegisterModal from './navComponents/registerModal';
 import LoginModal from './navComponents/loginModal';
+import PollSVG from './navComponents/pollSVG';
 import {
   Collapse,
   Navbar,
@@ -71,7 +72,8 @@ class Navi extends Component {
           <Navbar expand='md' className='mb-5s sticky nav-color'>
               <Container>
                 <Link className='navbar-brand' to='#'>
-                  YessNo
+                  <PollSVG />
+                  <span className='ynNavBrand'>YessNo</span>
                 </Link>
                 <NavbarToggler onClick={this.toggle} className='navbar-light' />
                 <Collapse isOpen={this.state.isOpen} navbar>
