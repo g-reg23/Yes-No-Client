@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Card, CardBody,
-  CardTitle, Button, Modal, ModalHeader, ModalBody, ModalFooter, Alert } from 'reactstrap';
+  CardTitle, Alert } from 'reactstrap';
 import '../../App.css';
 import { connect } from 'react-redux';
 import { voteInfo } from '../../actions/voteActions';
 import { getMessages, clearMessages } from '../../actions/messageActions';
 import propTypes from 'prop-types';
-import { Tween } from 'react-gsap';
 class ConstructVote extends Component {
   constructor(props) {
     super(props);

@@ -638,6 +638,39 @@ a:hover {
   border-radius:.5rem;
 
 } */
+.frontButtons {
+  padding:13% 20%;
+  font-size: 1.25rem;
+  border-radius: .5rem;
+  margin-top: 2%;
+  white-space: nowrap;
+}
+.regFrontBut {
+  background: lightseagreen;
+  color: white;
+  font-weight: 700;
+  border: 2px solid #322c3a;
+  transition: .1s;
+}
+.logFrontBut {
+  background: white;
+  color: lightseagreen;
+  font-weight: 700;
+  border:2px lightseagreen solid;
+}
+.regFrontBut:hover {
+  background: white;
+  color: lightseagreen;
+  font-weight: 700;
+  border:2px lightseagreen solid;
+}
+.logFrontBut:hover {
+  background: lightseagreen;
+  color: white;
+  font-weight: 700;
+  border: 2px solid #322c3a;
+  transition: .1s;
+}
 .frontDescription {
   color:rgb(211, 211, 211);;
   width:75%;
@@ -705,6 +738,37 @@ a:hover {
 .white-text            {color: white}
 .smoke-text            {color:whitesmoke}
 
+.fade-in {
+animation: fadeIn ease 2s;
+-webkit-animation: fadeIn ease 2s;
+-moz-animation: fadeIn ease 2s;
+-o-animation: fadeIn ease 2s;
+-ms-animation: fadeIn ease 2s;
+}
+@keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
 /* Media query for Medium Moblie */
 @media only screen and (min-width:375px) {
   .topDiv {

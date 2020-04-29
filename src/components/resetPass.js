@@ -48,7 +48,7 @@ class ResetPass extends Component  {
     <Alert align='center' color={this.props.message.type}>{this.props.message.msg}</Alert> : null;
     return (
       <div>
-        <FrontIcon view='/'/>
+        <FrontIcon view='/' loggedIn={this.props.auth.isAuthenticated}/>
         <div ref='makeVoteDiv'>
           <Container className='voteInfoContainer'>
             <Row>

@@ -3,7 +3,8 @@ import { Container, Row, Col } from 'reactstrap';
 import '../App.css';
 import YesIcon from './headComponents/yesIcon';
 import NoIcon from './headComponents/noIcon';
-import icon from '../images/396.jpg';
+import RegMod from './modals/regMod';
+import LogMod from './modals/logMod';
 
 
 class FrontIcon extends Component {
@@ -71,7 +72,7 @@ class FrontIcon extends Component {
       default:
         top = <div className='frontDiv'><h1 className='routeTitle' align='center'>YessNo</h1>
         <h3 className='routeSubTitle' align='center'>Get Answers.. Fast.</h3></div>
-        desc = <h5 className='frontDescription'> YessNo is a streamlined voting platform. YessNo deals with
+        desc = <h5 className='frontDescription'> YessNo is a streamlined absolutely free voting platform. YessNo deals with
         simple yes or no votes to get quickly and exactly to the point.
         YessNo offers large scale public votes to the entire internet, as
         well as private small scale voting for groups of your own choosing.
@@ -90,6 +91,12 @@ class FrontIcon extends Component {
             <Col><NoIcon /></Col>
           </Row>
           {desc}
+          {!this.props.loggedIn ?
+            <div className='buttonDiv'>
+              <RegMod />
+              <LogMod />
+            </div> : null
+          }
         </Container>
       </div>
     )

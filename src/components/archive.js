@@ -57,7 +57,7 @@ class Archive extends Component {
     <Alert color={this.props.message.type} align='center'>{this.props.message.msg}</Alert> : null;
     return(
       <div>
-        <FrontIcon view='archive' />
+        <FrontIcon view='archive' loggedIn={this.props.auth.isAuthenticated}/>
           <div className='alertDiv'>
             {alert}
           </div>

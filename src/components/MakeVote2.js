@@ -31,7 +31,7 @@ class MakeVote extends Component {
     <Alert align='center' color={this.props.message.type}>{this.props.message.msg}</Alert>;
     return (
           <div>
-            <FrontIcon view='makeVote'/>
+            <FrontIcon view='makeVote' loggedIn={this.props.auth.isAuthenticated}/>
             <div ref='makeVoteDiv'>
               <Container className='voteInfoContainer'>
                 <Row>

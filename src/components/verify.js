@@ -38,7 +38,7 @@ class Verify extends Component {
     let message = this.props.message.msg !== '' && this.props.message.id !== 'modal' && this.props.message.id !== 'yesno' ? <Alert align='center' color={this.props.message.type}>{this.props.message.msg}</Alert> : null
     return (
           <div>
-            <FrontIcon view='/'/>
+            <FrontIcon view='/' loggedIn={this.props.auth.isAuthenticated}/>
             <Container id='about'>
             {message}
             <div style={{marginBottom:'3%'}} align='center'><Link to='/active' className='CTAButton'>VOTE NOW!</Link></div>

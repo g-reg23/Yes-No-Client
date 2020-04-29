@@ -113,7 +113,7 @@ class ActiveVotes extends Component {
     <Alert align='center' color={this.props.message.type}>{this.props.message.msg}</Alert> : null;
     return(
       <div>
-        <FrontIcon view='activeVotes' />
+        <FrontIcon view='activeVotes' loggedIn={this.props.auth.isAuthenticated}/>
         <div className='introDiv'>
           <div className='alertDiv'>
             {alert}

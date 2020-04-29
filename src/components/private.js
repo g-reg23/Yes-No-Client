@@ -23,7 +23,7 @@ class Private extends Component {
     }
     return (
       <div>
-        <FrontIcon view='private'/>
+        <FrontIcon view='private' loggedIn={this.props.auth.isAuthenticated}/>
         {display}
       </div>
     )

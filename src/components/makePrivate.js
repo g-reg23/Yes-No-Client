@@ -5,7 +5,7 @@ import ConstructPrivate from './makeVoteComponents/constructPrivate';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types'
-import { Container, Row, Col, Button, Alert, Card, CardBody } from 'reactstrap';
+import { Container, Row, Col, Alert, Card, CardBody } from 'reactstrap';
 import GetVoters from './makeVoteComponents/getVoters';
 import { resetPrivateInfo, postPrivateVote } from '../actions/privateActions'
 import yes from '../images/iconfinder_checkmark-24_103184.svg';

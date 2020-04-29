@@ -55,7 +55,7 @@ class PrivateVote extends Component {
     <Alert color={this.props.message.type} align='center'>{this.props.message.msg}</Alert> : null;
     return (
       <div>
-        <FrontIcon view='private'/>
+        <FrontIcon view='private' loggedIn={this.props.auth.isAuthenticated}/>
         <Container>
           {alert}
           <Row>

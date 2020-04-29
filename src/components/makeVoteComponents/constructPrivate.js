@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Card, CardBody,
-  CardTitle, Button, Alert } from 'reactstrap';
+  CardTitle, Alert } from 'reactstrap';
 import '../../App.css';
 import { connect } from 'react-redux';
 import { privInfo } from '../../actions/privateActions';
 import { getMessages, clearMessages } from '../../actions/messageActions';
 import propTypes from 'prop-types';
-import { Tween } from 'react-gsap';
+
 
 
 class ConstructPrivate extends Component {

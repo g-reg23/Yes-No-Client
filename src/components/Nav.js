@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import RegisterModal from './navComponents/registerModal';
 import LoginModal from './navComponents/loginModal';
 import PollSVG from './navComponents/pollSVG';
+import FavIcon from './navComponents/favIcon';
 import {
   Collapse,
   Navbar,
@@ -71,7 +72,7 @@ class Navi extends Component {
         <div>
           <Navbar expand='md' className='mb-5s sticky nav-color'>
               <Container>
-                <Link className='navbar-brand' to='#'>
+                <Link className='navbar-brand' to='/'>
                   <PollSVG />
                   <span className='ynNavBrand'>YessNo</span>
                 </Link>

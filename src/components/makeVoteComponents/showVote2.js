@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../../App.css';
-import { Card, CardBody, Button, Container, Row, Col } from 'reactstrap';
+import { Card, CardBody, Container, Row, Col } from 'reactstrap';
 import { connect } from 'react-redux';
 import { resetInfo, postVote } from '../../actions/voteActions'
 import propTypes from 'prop-types'

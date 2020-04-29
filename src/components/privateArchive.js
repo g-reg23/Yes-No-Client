@@ -36,7 +36,7 @@ class PrivateArchive extends Component {
       )
     return (
       <div>
-        <FrontIcon view={'privateArchive'}/>
+        <FrontIcon view={'privateArchive'} loggedIn={this.props.auth.isAuthenticated}/>
         <div className='alertDiv'>
           {alert}
         </div>

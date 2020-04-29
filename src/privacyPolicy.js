@@ -17,7 +17,7 @@ class PrivacyPolicy extends Component {
     <Alert color='success' align='center'>{this.props.message.msg}</Alert> : null;
     return (
           <div>
-            <FrontIcon view='privacyPolicy' />
+            <FrontIcon view='privacyPolicy' loggedIn={this.props.auth.isAuthenticated}/>
             <div className='privacyContainer'>
               {alert}
               <h1>Privacy Policy</h1>
@@ -132,10 +132,12 @@ class PrivacyPolicy extends Component {
 
 PrivacyPolicy.propTypes = {
   message: propTypes.object.isRequired,
+  auth:propTypes.object.isRequired,
 }
 
 const mapStateToProps = (state) => ({
   message: state.messageObject,
+  auth:state.authObject,
 })
 
 export default connect(mapStateToProps, {clearMessages})(PrivacyPolicy);

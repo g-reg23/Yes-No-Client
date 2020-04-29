@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 import hacker from '../images/012-hacker.svg';
 import onlineVote from '../images/026-online-voting.svg';
 import vote from '../images/022-vote-2.svg';
-import LandingIcon from './landingIcon';
 import { clearMessages, getMessages } from '../actions/messageActions';
 
 class LandingPage extends Component {
@@ -36,12 +35,11 @@ class LandingPage extends Component {
     let message = this.props.message.msg !== '' && this.props.message.id !== 'modal' && this.props.message.id !== 'yesno' ? <Alert align='center' color={this.props.message.type}>{this.props.message.msg}</Alert> : null
     return (
           <div>
-            <FrontIcon view='/'/>
+            <FrontIcon view='/' loggedIn={this.props.auth.isAuthenticated}/>
             <Container id='about'>
               <div className='alertDiv'>
                 {message}
               </div>
-              <div style={{marginBottom:'3%'}} align='center'><Link to='/active' className='CTAButton'>Vote!</Link></div>
               <Row>
                 <Col className='subsectDiv firstSub divider-color primary-text-color' md={4}>
                   <p className='subsectTitle'>Private Votes</p>
@@ -53,7 +51,7 @@ class LandingPage extends Component {
                     <Link to='/private' className='subsectButton' style={{padding:'2.5% 5% 2.5% 5%'}}>Private</Link>
                   </div>
                 </Col>
-                <Col className='subsectDiv middleDiv secondary-text-color default-primary-color' md={4}>
+                <Col className='subsectDiv middleDiv secondary-text-color' md={4}>
                   <p style={{color:'whitesmoke'}} className='subsectTitle'>Public Votes</p>
                   <div align='center'>
                     <img alt='votingIcon' src={vote} width='45%' />
