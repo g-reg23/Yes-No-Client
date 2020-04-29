@@ -160,9 +160,9 @@ a:hover {
   border:solid 1px #1566b7;
 }
 .goBackButton:hover {
-  color: #a399b2;
+  color: black;
   background:whitesmoke;
-  border:solid 1px #a399b2;
+  border:solid 1px black;
 }
 .mainTitle {
   font-size: 2rem;
@@ -214,7 +214,7 @@ a:hover {
   background:white;
 }
 .middleDiv {
-  background: slateblue;
+  background: #8884a4;
   border-radius: .75rem;
   border: none;
 }
@@ -316,9 +316,7 @@ a:hover {
   margin-bottom: 6%;
 }
 .voteIconDiv {
-  background-image: url('images/prism.png');
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: #322c3a;
   padding-bottom: 10%;
   padding-top: 4%;
   margin-top: 8%;
@@ -723,7 +721,7 @@ a:hover {
 .nav-color {
   background-color: #a399b2;
   background-image: linear-gradient(147deg, #a399b2 0%, #4d4855 74%);
-  background: #a399b2;
+  background: #8884a4;
 }
 .secondary-text-color  { color: #757575; }
 .divider-color         { border-color: #BDBDBD; }
