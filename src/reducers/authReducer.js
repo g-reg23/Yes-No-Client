@@ -36,6 +36,7 @@ export default function(state=authInitialState, action) {
     case REGISTER_FAIL:
       return state;
     case LOGIN_SUCCESS:
+      console.log(action.payload)
       return Object.assign({}, state, {
         isAuthenticated: true,
         _id: action.payload.user._id,
