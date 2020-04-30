@@ -189,8 +189,8 @@ export const resetPass = (data, id) => dispatch => {
    }
    axios.get('/api/auth/user', newConfig)
      .then(res => {
-       if (res.data.user === 'None to speak of' || res.data.user === 'No token') {
-         console.log(res.data.user = ': if');
+       if (typeof res.data.user === 'string') {
+         console.log(typeof res.data.user + 'h');
          dispatch(getMessages({'msg':'Please log in to access account'}, res.status, 'warning', 'noToke'))
        }else {
          console.log(res.data + ': else')

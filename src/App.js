@@ -23,12 +23,12 @@ import {Helmet} from 'react-helmet';
 
 class App extends Component {
   componentDidMount(prevProps) {
-    let path = window.location.pathname;
-    if (prevProps === undefined) {
-      if (path === '/' || path === '/makevote' || path === '/active' || path === '/private' || path === '/privateArchive' || path === '/archive' || path === '/privacyPolicy') {
-        store.dispatch(checkToke());
-      }
-    }
+    // let path = window.location.pathname;
+    // if (prevProps === undefined) {
+    //   if (path === '/' || path === '/makevote' || path === '/active' || path === '/private' || path === '/privateArchive' || path === '/archive' || path === '/privacyPolicy') {
+    store.dispatch(checkToke());
+    //   }
+    // }
   }
   render() {
 
