@@ -188,17 +188,11 @@ export const resetPass = (data, id) => dispatch => {
      }
    }
    axios.get('/api/auth/user', newConfig)
-     .then(res => {
-       if (typeof res.data.user === 'string') {
-         console.log(typeof res.data.user + 'h');
-         dispatch(getMessages({'msg':'Please log in to access account'}, res.status, 'warning', 'noToke'))
-       }else {
-         console.log(res.data + ': else')
-         dispatch({
-           type: LOGIN_SUCCESS,
-           payload: res.data
-         })
-         dispatch(getMessages({'msg': 'You were successfully logged in.'}, 200, 'success', 'loginSuccess'));
+       dispatch({
+         type: LOGIN_SUCCESS,
+         payload: res.data
+        })
+       dispatch(getMessages({'msg': 'You were successfully logged in.'}, 200, 'success', 'loginSuccess'));
       }
      })
      .catch(error => {
