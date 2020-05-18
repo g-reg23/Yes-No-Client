@@ -57,7 +57,9 @@ class PrivateVote extends Component {
       <div>
         <FrontIcon view='private' loggedIn={this.props.auth.isAuthenticated}/>
         <Container>
-          {alert}
+          <div className='alertDiv'>
+            {alert}
+          </div>
           <Row>
             <Col lg={6}>
               <Card className='showCard' body>

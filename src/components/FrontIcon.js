@@ -91,10 +91,10 @@ class FrontIcon extends Component {
             <Col><NoIcon /></Col>
           </Row>
           {desc}
-          {!this.props.loggedIn ?
+          {!this.props.loggedIn  && this.props.view !== 'viewPrivate' ?
             <div className='buttonDiv'>
               <RegMod />
-              <LogMod />
+              <LogMod view={this.props.view}/>
             </div> : null
           }
         </Container>

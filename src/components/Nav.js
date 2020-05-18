@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import RegisterModal from './navComponents/registerModal';
 import LoginModal from './navComponents/loginModal';
 import PollSVG from './navComponents/pollSVG';
-import FavIcon from './navComponents/favIcon';
+
 import {
   Collapse,
   Navbar,

@@ -34,7 +34,7 @@ class LogMod extends Component {
     message: propTypes.object.isRequired,
   }
   loginModal() {
-    this.props.clearMessages();
+    this.props.getMessages({'msg':'Please login.'}, 'client', 'danger', 'modal');
     this.setState({
       loginMod: !this.state.loginMod
     })
@@ -101,8 +101,15 @@ class LogMod extends Component {
       }
     }
   }
+  componentDidMount() {
+    if (this.props.view === 'private' || this.props.view === 'makeVote') {
+      if (!this.props.auth.isAuthenticated){
+        this.loginModal();
+      }
+    }
+  }
   render() {
-    let modAlert = this.props.message.id === 'modal' ? <Alert color={this.props.message.type}>{this.props.message.msg}</Alert> : null;
+    let modAlert = this.props.message.id === 'modal' ? <Alert align='center' color={this.props.message.type}>{this.props.message.msg}</Alert> : null;
     return (
         <div>
              <button onClick={this.loginModal} className='frontButtons logFrontBut'>Sign In</button>

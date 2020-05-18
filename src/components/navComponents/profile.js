@@ -85,7 +85,7 @@ class ProfileModal extends Component {
     }
   }
   render() {
-    let modAlert = this.props.message.id === 'modal' ? <Alert color={this.props.message.type}>{this.props.message.msg}</Alert> : null;
+    let modAlert = this.props.message.id === 'modal' ? <Alert color={this.props.message.type} align='center'>{this.props.message.msg}</Alert> : null;
     let social = this.props.auth.facebook === true || this.props.auth.google === true ? <Alert color='warning'>You cannot edit your facebook or google information.</Alert> :
     null
     return (

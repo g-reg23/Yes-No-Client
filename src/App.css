@@ -87,10 +87,19 @@ a:hover {
   padding-left:2%;
   transition: .1s;
 }
-.navLink:hover {
+.navLink:hover, .ynNavBrand:hover {
   color:black;
-  background: white;
   border-radius: .5rem;
+}
+.navLink:hover {
+  background:white;
+}
+.navIcon {
+  fill:#322c3a;
+  transition: .1s;
+}
+.navIcon:hover {
+  fill:white;
 }
 .topIcons {
   width: 50%;

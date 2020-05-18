@@ -187,13 +187,14 @@ export const resetPass = (data, id) => dispatch => {
       'Content-Type': 'application/json',
      }
    }
-   axios.get('/api/auth/user', newConfig)
+   axios.post('/api/auth/user', newConfig)
     .then(res => {
-       dispatch({
-         type: LOGIN_SUCCESS,
-         payload: res.data
-        })
-       dispatch(getMessages({'msg': 'You were successfully logged in.'}, 200, 'success', 'loginSuccess'));
+      console.log(res.data.user);
+      dispatch({
+       type: LOGIN_SUCCESS,
+       payload: res.data
+      })
+      dispatch(getMessages({'msg': 'You were successfully logged in.'}, 200, 'success', 'loginSuccess'));
      })
      .catch(error => {
        console.log('caught')

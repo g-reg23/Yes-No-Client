@@ -86,7 +86,7 @@ class RegMod extends Component {
 
   }
   render() {
-    let modAlert = this.props.message.id === 'modal' ? <Alert color={this.props.message.type}>{this.props.message.msg}</Alert> : null;
+    let modAlert = this.props.message.id === 'modal' ? <Alert color={this.props.message.type} align='center'>{this.props.message.msg}</Alert> : null;
     return (
         <div>
             <button onClick={this.registerModal} className='frontButtons logFrontBut'>Sign Up</button>

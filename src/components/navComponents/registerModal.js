@@ -87,7 +87,7 @@ class RegisterModal extends Component {
 
   }
   render() {
-    let modAlert = this.props.message.id === 'modal' ? <Alert color={this.props.message.type}>{this.props.message.msg}</Alert> : null;
+    let modAlert = this.props.message.id === 'modal' ? <Alert align='center' color={this.props.message.type}>{this.props.message.msg}</Alert> : null;
     const reg = !this.props.auth.isAuthenticated ? <Link className='nav-link navLink white-text' onClick={this.registerModal} to='#' style={style}>Sign Up</Link>:
     <ProfileModal handleClick={this.props.handleClick} colState={this.props.colState}/>
     return (

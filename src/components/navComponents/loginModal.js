@@ -101,8 +101,9 @@ class LoginModal extends Component {
       }
     }
   }
+
   render() {
-    let modAlert = this.props.message.id === 'modal' ? <Alert color={this.props.message.type}>{this.props.message.msg}</Alert> : null;
+    let modAlert = this.props.message.id === 'modal' ? <Alert color={this.props.message.type} align='center'>{this.props.message.msg}</Alert> : null;
     const auth = this.props.auth.isAuthenticated === false ? <Link className='nav-link navLink white-text' onClick={this.loginModal} to='#' style={style}>Login</Link> :
     <Link to='#' className= 'nav-link navLink white-text' onClick={this.logout} style={style}>Logout</Link>;
     return (
