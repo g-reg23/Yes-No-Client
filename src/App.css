@@ -87,8 +87,22 @@ a:hover {
   margin-top:8%;
   margin-bottom: 5%;
 }
+.backButton {
+  padding: 2%;
+  border-radius: .5rem;
+  background: darkgray;
+  color: whitesmoke;
+  border: none;
+}
 .clickTDiv {
   margin:5% 0 5% 0;
+  background:#1566b7;
+  padding:5%;
+  width:80%;
+  margin:auto;
+  margin-bottom:5%;
+  border-radius:.5rem;
+  cursor:pointer;
 }
 .sprintCTA {
   display: inline-block;
@@ -232,6 +246,11 @@ a:hover {
   left: 20%;
   text-align:center;
 } */
+
+.buildPic {
+  width:30%;
+  margin-left:35%;
+}
 .buttonDiv {
   display:flex;
   justify-content:space-evenly;
@@ -242,10 +261,11 @@ a:hover {
   border: none;
   border-radius: .5rem;
   min-width:5rem;
+  white-space: nowrap;
 }
 .setButton {
-  background:#1566b7;
-  color:whitesmoke;
+  background:whitesmoke;
+  color:#1566b7;
   transition: .3s;
 }
 .goBackButton {
@@ -253,9 +273,9 @@ a:hover {
   color:whitesmoke;
 }
 .setButton:hover {
-  color:#1566b7;
-  background:whitesmoke;
-  border:solid 1px #1566b7;
+  color:whitesmoke;
+  background:#1566b7;
+  border:solid 1px whitesmoke;
 }
 .goBackButton:hover {
   color: black;
@@ -265,6 +285,16 @@ a:hover {
 .mainTitle {
   font-size: 2rem;
   font-weight:700;
+}
+.subButton {
+  background:#1566b7;
+  color:whitesmoke;
+  transition: .3s;
+}
+.suButton {
+  background: whitesmoke;
+  color:#1566b7;
+  border: 1px solid #1566b7
 }
 .subTitle {
   font-size: 1.25rem;

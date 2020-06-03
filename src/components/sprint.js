@@ -1,21 +1,16 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { getMessages, clearMessages } from '../actions/messageActions';
 import {getSprints, postSprintData} from '../actions/sprintActions';
-import { Container, Row, Col, Card, CardBody, Alert } from 'reactstrap';
+import {Alert} from 'reactstrap';
 import balance from '../images/014-balance.svg';
 import graph from '../images/012-debate.svg';
 import hand from '../images/041-raise-hand.svg';
-import NoButton from './noButton'
-import YesButton from './yesButton';
 import FrontIcon from './FrontIcon';
 import SprintCard from './sprintCard';
-import PieChart from './activeVoteComponents/PieChart';
 import '../App.css';
 import icon from '../images/027-global-voting.svg';
-import VoterList from './voterList';
-import {Transition} from 'react-spring/renderprops';
 import ClickTitle from './sprintComponents/clickTitle';
 import SprintRes from './sprintComponents/sprintRes';
 
@@ -105,7 +100,6 @@ class Sprint extends Component {
   }
   render() {
     const icons = [balance, graph, hand, icon];
-    const colors = ['showCard darkCadetBlue sprintCard','showCard slateblue sprintCard','showCard darkBlue sprintCard'];
     let alert = this.props.message.msg !== '' && this.props.message.id !== 'modal' && this.props.message.id !== 'yesno' ?
     <Alert align='center' color={this.props.message.type}>{this.props.message.msg}</Alert> : null;
     return (
@@ -117,7 +111,7 @@ class Sprint extends Component {
         <div className='outerSprintDiv'>
           {!this.state.selected ?
             this.props.sprint.sprints.map((sprint,i) =>
-              <ClickTitle key={i} sprint={sprint} selectSprint={this.selectSprint} />
+              <ClickTitle key={i} sprint={sprint} selectSprint={this.selectSprint} index={i} image={icons[i%4]}/>
             ) : this.props.sprint.completed.includes(this.state.selectedSprint._id) || this.state.complete ?
               <SprintRes clickBack={this.clickBack} sprints={this.props.sprint.sprints} sprintId={this.state.selectedSprint._id} />
               :

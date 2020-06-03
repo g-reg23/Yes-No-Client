@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import '../../App.css';
-import { Link } from 'react-router-dom';
 import { Button, Modal, ModalBody, ModalFooter, Alert } from 'reactstrap';
 import { connect } from 'react-redux';
 import { register } from '../../actions/authActions';
@@ -9,10 +8,6 @@ import { getMessages, clearMessages } from '../../actions/messageActions';
 import Google from '../navComponents/google'
 
 import propTypes from 'prop-types';
-
-const style = {
-  paddingLeft:'3%',
-}
 
 
 class RegMod extends Component {

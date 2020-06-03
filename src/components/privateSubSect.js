@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import '../App.css';
-import voteIcon from '../images/004-voting.svg';
 import {useSpring, animated as a} from 'react-spring';
 import VisibilitySensor from 'react-visibility-sensor';
 import onlineVote from '../images/026-online-voting.svg';
-import {Col} from 'reactstrap'
 import { Link } from 'react-router-dom';
 
 function PrivateSubSect(props) {

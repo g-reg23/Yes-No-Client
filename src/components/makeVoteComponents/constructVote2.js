@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { voteInfo } from '../../actions/voteActions';
 import { getMessages, clearMessages } from '../../actions/messageActions';
 import propTypes from 'prop-types';
+import debate from '../../images/012-debate.svg';
 class ConstructVote extends Component {
   constructor(props) {
     super(props);
@@ -111,20 +112,20 @@ class ConstructVote extends Component {
 
     let name = this.state.nameSet === false ?
       <div className='inputDiv'>
-        <CardTitle align='center' className='voteInfoHeader'>Please enter the question to be voted on in the box below. It should be a simple yes/no question. Then click the Set button</CardTitle>
+        <CardTitle align='center' className='voteInfoHeader smoke-text'>Please enter the question to be voted on in the box below. It should be a simple yes/no question. Then click the Set button</CardTitle>
         <input className='textInput' style={{marginTop:'3%'}} name='name' type='text' placeholder='Vote Question' onChange={this.handleChange}/>
         <div className='buttonDiv'>
-          <button className='setButton' onClick={this.setName}>SET</button>
+          <button className='setButton' onClick={this.setName}>Set Question</button>
           <br />
         </div>
       </div> :
       <div className='inputDiv'>
         <div className='voteInformation'>
-          <p align='center' className='voteInfoPara'><b>Vote Name:</b></p>
-          <p align='center' className='voteInfoPara'>{this.state.name}</p>
+          <p align='center' className='voteInfoPara smoke-text'><b>Vote Question:</b></p>
+          <p align='center' className='voteInfoPara smoke-text'>{this.state.name}</p>
         </div>
         <div>
-          <CardTitle align='center' className='voteInfoHeader'>Now you may enter any additional details and a brief description of the vote and enter the Set button.</CardTitle>
+          <CardTitle align='center' className='voteInfoHeader smoke-text'>Now you may enter any additional details and a brief description of the vote and enter the Set button.</CardTitle>
         </div>
         <textarea className='textInput' style={{fontSize:'.85em', height:'5em'}} name='description' type='text' placeholder='Description/Additional Information' onChange={this.handleChange}>
         </textarea>
@@ -135,8 +136,9 @@ class ConstructVote extends Component {
       </div>
     return (
       <div>
-          <Card className='innerCard accent-color-four white-text' body>
-            <h1 className='infoTitle'><u>Vote Information</u></h1>
+          <Card className='innerCard' body>
+            <h1 className='infoTitle smoke-text'><u>Vote Information</u></h1>
+            <img className='buildPic' src={debate} alt='vote icon' />
             <CardBody>
               {innerAlert}
               <hr className='my-2' />

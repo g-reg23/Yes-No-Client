@@ -24,7 +24,6 @@ class PieChart extends Component {
   }
   render() {
     // CALCULATE PIE CHART STATS AND % YES/NO.
-    let height = this.props.forSprint ? height = 150 : height = 200;
     let total = this.props.yes + this.props.no;
     let yes = (this.props.yes/total)*360;
     let no = (this.props.no/total)*360;

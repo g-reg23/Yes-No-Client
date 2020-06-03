@@ -8,7 +8,7 @@ import yes from '../../images/iconfinder_checkmark-24_103184.svg';
 import no from '../../images/iconfinder_No_984759.svg';
 import { getMessages, clearMessages } from '../../actions/messageActions';
 import PieChart from '../activeVoteComponents/PieChart';
-import icon from '../../images/027-global-voting.svg';
+import balance from '../../images/014-balance.svg';
 
 class ShowVote extends Component {
   constructor(props) {
@@ -47,12 +47,12 @@ class ShowVote extends Component {
         <h3 style={{fontWeight:'500', marginTop: '3.5%', textAlign: 'center'}}>Click Submit if you are ready to submit this vote to the public, or  click edit to go back and work on the vote.</h3>
         <hr />
         <div className='buttonDiv'>
-          <button onClick={this.onSubmit} className='setButton'>Submit</button>
-          <button onClick={this.onEdit} className='goBackButton'>Edit Vote</button>
+          <button onClick={this.onSubmit} className='setButton subButton'>Submit</button>
+          <button onClick={this.onEdit} className='goBackButton'>Edit</button>
         </div>
         <Col>
-          <Card className='showCard darkCadetBlue' body>
-            <img width='20%' src={icon} alt='vote icon'style={{marginLeft:'40%'}}  />
+          <Card className='showCard slateBlue' body>
+            <img width='20%' src={balance} alt='vote icon' className='buildPic' />
             <p className='showName' align='center'>{this.props.vote.info.name}</p>
             <Container>
               <Row style={{margin:'5% 0 0 0'}}>

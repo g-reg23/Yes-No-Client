@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../App.css';
 import { Card, CardBody,
   CardTitle, Button, Alert } from 'reactstrap';
-
+import hand from '../../images/041-raise-hand.svg';
 
 
 class GetVoter extends Component {
@@ -85,6 +85,7 @@ class GetVoter extends Component {
     return (
       <Card className='getVoterCard slateblue' body >
         <h1 className='infoTitle smoke-text'><u>Voter Information</u></h1>
+        <img className='buildPic' src={hand} alt='vote icon' />
         <CardBody>
           <p className='smoke-text'>{voters}</p>
           <CardTitle className='smoke-text' smoke-text style={{fontSize:'1.25rem'}}>Add voters name, valid US phone number, and email address.</CardTitle>
@@ -96,7 +97,7 @@ class GetVoter extends Component {
           <hr className='my-2' />
           <input className='textInput' type='text' placeholder='Voter Name' name='name' value={this.state.name} onChange={this.handleChange}/>
           <input className='textInput' type="number" name='number' onChange={this.handleChange} value={this.state.number} pattern="[0-9]{3} [0-9]{3} [0-9]{4}" maxLength="12" placeholder='888 888 8888'  title="Ten digits code" required />
-          <Button style={{marginTop:'5%'}} className='smoke-text' onClick={this.onAdd} color='primary' >Add Voter</Button>
+          <button style={{marginTop:'5%'}} className='setButton' onClick={this.onAdd} color='primary' >Add Voter</button>
         </CardBody>
         <Button onClick={this.submit}>Submit Vote</Button>
       </Card>

@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { privInfo } from '../../actions/privateActions';
 import { getMessages, clearMessages } from '../../actions/messageActions';
 import propTypes from 'prop-types';
+import debate from '../../images/012-debate.svg';
 
 
 
@@ -163,9 +164,9 @@ class ConstructPrivate extends Component {
         {alert}
           <Card className='innerCard' body>
             <h1 className='infoTitle'><u>Vote Information</u></h1>
+            <img className='buildPic' src={debate} alt='vote icon' />
             <CardBody>
               {innerAlert}
-              <hr className='my-2' />
               {show}
             </CardBody>
           </Card>

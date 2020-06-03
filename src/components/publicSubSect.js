@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import '../App.css';
-import voteIcon from '../images/004-voting.svg';
-import {Col} from 'reactstrap';
 import {useSpring, animated as a} from 'react-spring';
 import VisibilitySensor from 'react-visibility-sensor';
-import onlineVote from '../images/026-online-voting.svg';
 import { Link } from 'react-router-dom';
 import vote from '../images/022-vote-2.svg';
 

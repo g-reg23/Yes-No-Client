@@ -4,9 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
-import { Container, Row, Col, Alert } from 'reactstrap';
+import { Alert } from 'reactstrap';
 import FrontIcon from './FrontIcon';
-import { Link } from 'react-router-dom';
 import { clearMessages, getMessages } from '../actions/messageActions';
 import SprintCTA from './sprintCTA';
 import PrivateSubSect from './privateSubSect';

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React  from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import '../App.css';
 import {useSpring, animated as a} from 'react-spring';
@@ -77,9 +77,11 @@ function FrontIcon(props) {
         top = <div><h1 className='routeTitle' align='center'>Sprints</h1>
         <h3 className='routeSubTitle' align='center'>Questions... Fast</h3></div>
         desc = <h5 className='frontDescription'> Sprints are quick yes/no question surveys.
-        Sprint questions are thought up by the YessNo team and all answers are anonymous. Even if you are logged
-        in, your answers are not connected to your account. Sprints are currently in development, coming soon
-        you can make your own public and private Sprints!!
+        All answers are anonymous, even if you are logged in, your answers are not connected to your account.
+        Sprints are currently in development, coming soon you can make your own public and private Sprints!!
+        In the meantime, to have your Sprint or a Sprint question added to the site please email:
+        <a className='' href='mailto:support@yessno.co'><u>support@yessno.co</u></a>.
+
         </h5>
         break;
       default:

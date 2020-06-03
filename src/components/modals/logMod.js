@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import '../../App.css';
-import { Link } from 'react-router-dom';
 import { Button, Modal, ModalBody, ModalFooter, Alert } from 'reactstrap';
 import { connect } from 'react-redux';
 import { login, logout, forgotPassword } from '../../actions/authActions';
 import { getMessages, clearMessages } from '../../actions/messageActions';
 import propTypes from 'prop-types';
 import Google from '../navComponents/google'
-
-const style = {
-  paddingLeft:'3%',
-}
 
 
 class LogMod extends Component {

@@ -13,7 +13,6 @@ import icon from '../images/027-global-voting.svg';
 import balance from '../images/014-balance.svg';
 import graph from '../images/012-debate.svg';
 import hand from '../images/041-raise-hand.svg';
-import stats from '../images/016-analysis.svg';
 import VoterList from './voterList';
 
 class ActiveVotes extends Component {

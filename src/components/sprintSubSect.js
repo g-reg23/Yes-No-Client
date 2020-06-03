@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import '../App.css';
-import voteIcon from '../images/004-voting.svg';
 import {useSpring, animated as a} from 'react-spring';
 import VisibilitySensor from 'react-visibility-sensor';
 import hacker from '../images/012-hacker.svg';
 import { Link } from 'react-router-dom';
-import {Col} from 'reactstrap';
 
 function SprintSubSect(props) {
   const [vis, setVis] = useState(false);

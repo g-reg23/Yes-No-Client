@@ -17,27 +17,29 @@ function SprintRes(props) {
     from: {opacity:0},
     config: {duration: 1200},
   })
-  const backClick = () => {
+  function backClick() {
     props.clickBack();
   }
-  let sprint;
-  props.sprints.map((sp, i) => {
-    if (sp._id === props.sprintId) {
-      sprint = sp;
-    }
-  })
+  const sprint = props.sprints.filter(sp => sp._id === props.sprintId);
+  console.log(sprint);
+  // props.sprints.map((sp, i) => {
+  //   if (sp._id === props.sprintId) {
+  //     return sprint = sp;
+  //   }
+  //   return;
+  // })
 
   return(
     <VisibilitySensor onChange={(isVisible) => setVis(isVisible)} partialVisibility>
       <a.div style={backgroundAnim}>
         <p className='sprintMessage' align='center'>You have already completed this Sprint, please view the data below.</p>
-        <h2 align='center' className='sprintResTitle'>{sprint.name} Results</h2>
-        <p className='totalSprintNum'>{sprint.total} completed Sprints.</p>
-        <p align='center' className='sprintCreator'>Created By: {sprint.creator}</p>
+        <h2 align='center' className='sprintResTitle'>{sprint[0].name} Results</h2>
+        <p className='totalSprintNum'>{sprint[0].total} completed Sprints.</p>
+        <p align='center' className='sprintCreator'>Created By: {sprint[0].creator}</p>
         <div className='buttonDiv'>
-          <button onClick={backClick}>Back To All Sprints</button>
+          <button className='backButton' onClick={backClick}>Back To All Sprints</button>
         </div>
-        {sprint.votes.map((vote, i) =>
+        {sprint[0].votes.map((vote, i) =>
           <div key={i} className={colors[i%3]}>
             <img src={icons[i%4]} alt='voting graph' className='graphPic'/>
             <h3 align='center' className='smoke-text'>{vote.question}</h3>

@@ -12,7 +12,7 @@ import yes from '../images/iconfinder_checkmark-24_103184.svg';
 import no from '../images/iconfinder_No_984759.svg';
 import { getMessages, clearMessages } from '../actions/messageActions';
 import PieChart from './activeVoteComponents/PieChart';
-import icon from '../images/027-global-voting.svg';
+import balance from '../images/014-balance.svg';
 
 class MakePrivate extends Component {
 
@@ -69,7 +69,7 @@ class MakePrivate extends Component {
         <Col lg={6}>
           <h3 className='headingDiv'>Review the vote information below, click Edit to make changes.</h3>
           <Card className='showCard darkCadetBlue' body>
-            <img width='20%' src={icon} alt='vote icon'style={{marginLeft:'40%'}}  />
+            <img width='20%' src={balance} alt='vote icon' className='buildPic'  />
             <p className='showName' align='center'>{this.props.private.info.name}</p>
             <p align='center' className='showDesc'>{this.props.private.info.desc}</p>
             <Container>
