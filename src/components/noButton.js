@@ -22,9 +22,10 @@ class NoButton extends React.Component {
   }
 
   render() {
+    const className = 'yes_no_buttons noVote ' + this.props.class;
     return (
       <form>
-        <img name='noVoteButton' className='yes_no_buttons noVote' id={'noVote' + this.props.index} onClick={this.voteNo.bind(this)} src={no} alt='no vote' disabled/>
+        <img name='noVoteButton' className={className} id={'noVote' + this.props.index} onClick={this.voteNo.bind(this)} src={no} alt='no vote' disabled/>
         <Popover placement='right' isOpen={this.state.popoverOpen} toggle={this.toggle} trigger='hover' target={'noVote' + this.props.index}>
           <PopoverHeader>This votes NO!!</PopoverHeader>
         </Popover>

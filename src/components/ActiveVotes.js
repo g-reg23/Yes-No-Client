@@ -10,6 +10,10 @@ import FrontIcon from './FrontIcon';
 import PieChart from './activeVoteComponents/PieChart';
 import '../App.css';
 import icon from '../images/027-global-voting.svg';
+import balance from '../images/014-balance.svg';
+import graph from '../images/012-debate.svg';
+import hand from '../images/041-raise-hand.svg';
+import stats from '../images/016-analysis.svg';
 import VoterList from './voterList';
 
 class ActiveVotes extends Component {
@@ -87,12 +91,13 @@ class ActiveVotes extends Component {
 
   render() {
     // this.scroll();
+    let icons = [balance, graph, icon, hand]
     const colors = ['showCard darkCadetBlue','showCard slateblue','showCard darkBlue'];
     let activeVotes = this.props.vote.fetched === true ? this.props.vote.votes.filter(vote => vote.active === true) : null;
     let votes = activeVotes !== null ? activeVotes.map((v, index) =>
       <Col lg={6} key={v._id}>
         <Card className={colors[index%3]} body>
-          <img width='20%' src={icon} alt='vote icon'style={{marginLeft:'40%'}}  />
+          <img width='20%' src={icons[index%4]} alt='vote icon'style={{marginLeft:'40%'}}  />
           <p className='showName' align='center'>{v.name}</p>
           <p align='center' className='showDesc'>{v.desc}</p>
           {this.props.message.status === v._id ? this.renderMessage() : null}

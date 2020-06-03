@@ -197,7 +197,6 @@ export const resetPass = (data, id) => dispatch => {
       dispatch(getMessages({'msg': 'You were successfully logged in.'}, 200, 'success', 'loginSuccess'));
      })
      .catch(error => {
-       console.log('caught')
        dispatch({type: LOGOUT});
        dispatch(getMessages(error.response.data, error.response.status, 'warning', 'noToke'))
      })

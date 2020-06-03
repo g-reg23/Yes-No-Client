@@ -23,9 +23,10 @@ class YesButton extends React.Component {
   }
 
   render() {
+    const className = 'yes_no_buttons yesVote ' + this.props.class;
     return (
       <form>
-        <img className='yes_no_buttons yesVote' id={'yesVote' + this.props.index} style={{float:'right'}} onClick={this.voteYes.bind(this)} src={yes} alt='yes vote' data-toggle="popover" data-trigger="hover" data-content='Vote Yes.'  />
+        <img className={className} id={'yesVote' + this.props.index} style={{float:'right'}} onClick={this.voteYes.bind(this)} src={yes} alt='yes vote' data-toggle="popover" data-trigger="hover" data-content='Vote Yes.'  />
         <Popover placement='left' isOpen={this.state.popoverOpen} toggle={this.toggle} trigger='hover' target={"yesVote" + this.props.index}>
           <PopoverHeader>This votes Yess!!</PopoverHeader>
         </Popover>

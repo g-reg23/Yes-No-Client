@@ -79,6 +79,7 @@ class Navi extends Component {
                 <NavbarToggler onClick={this.toggle} className='navbar-light' />
                 <Collapse isOpen={this.state.isOpen} navbar>
                   <Nav className='ml-auto' navbar>
+                    <Link className='nav-link navLink white-text' to='/sprint' onClick={this.toggle} style={style}>Sprint</Link>
                     <Dropdown isOpen={this.state.privateOpen} toggle={this.privateToggle} onMouseOver={this.privMouseEnter} onMouseLeave={this.privMouseLeave}>
                       <DropdownToggle nav caret className='nav-link navLink white-text' style={style}>
                         Private

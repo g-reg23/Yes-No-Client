@@ -7,24 +7,13 @@ import propTypes from 'prop-types';
 import { Container, Row, Col, Alert } from 'reactstrap';
 import FrontIcon from './FrontIcon';
 import { Link } from 'react-router-dom';
-import hacker from '../images/012-hacker.svg';
-import onlineVote from '../images/026-online-voting.svg';
-import vote from '../images/022-vote-2.svg';
 import { clearMessages, getMessages } from '../actions/messageActions';
+import SprintCTA from './sprintCTA';
+import PrivateSubSect from './privateSubSect';
+import PublicSubSect from './publicSubSect';
+import SprintSubSect from './sprintSubSect';
 
 class LandingPage extends Component {
-  constructor(props) {
-    super(props);
-    this.scroll = this.scroll.bind(this);
-  }
-  scroll() {
-    window.scrollTo(0,0)
-  }
-  componentDidUpdate(prevProps) {
-    if (prevProps.message.msg !== this.props.message.msg) {
-      window.scroll(0,50);
-    }
-  }
   componentDidMount() {
     if (this.props.message.id === 'loginSuccess' || this.props.message.id === 'regSuccess' || this.props.message.id === 'verifySuccess') return
     else this.props.clearMessages();
@@ -36,44 +25,17 @@ class LandingPage extends Component {
     return (
           <div>
             <FrontIcon view='/' loggedIn={this.props.auth.isAuthenticated}/>
-            <Container id='about'>
+            <div id='about'>
               <div className='alertDiv'>
                 {message}
               </div>
-              <Row>
-                <Col className='subsectDiv firstSub divider-color primary-text-color' md={4}>
-                  <p className='subsectTitle'>Private Votes</p>
-                  <div align='center'>
-                    <img alt='computerVoteIcon' src={onlineVote} width='45%' />
-                  </div>
-                  <p className='subsectBody'>Build votes for your social circle. If you have a burning question that must be answered quick, make a Private Vote. Each vote member will be immediately sent a link to the vote via SMS text message.</p>
-                  <div align='center'>
-                    <Link to='/private' className='subsectButton' style={{padding:'2.5% 5% 2.5% 5%'}}>Private</Link>
-                  </div>
-                </Col>
-                <Col className='subsectDiv middleDiv secondary-text-color' md={4}>
-                  <p style={{color:'whitesmoke'}} className='subsectTitle'>Public Votes</p>
-                  <div align='center'>
-                    <img alt='votingIcon' src={vote} width='45%' />
-                  </div>
-                  <p style={{color:'whitesmoke'}} className='subsectBody'>At YessNo anyone can put out a simple yes/no vote to the entire internet. Anytime you have an interesting question to vote on, just follow the simple instructions and you can have a vote up in minutes.</p>
-                  <div align='center'>
-                    <Link to='/makevote' className='subsectButtonOdd'>Public</Link>
-                  </div>
-                </Col>
-                <Col className='subsectDiv divider-color primary-text-color' md={4}>
-                  <p className='subsectTitle'>Vote</p>
-                  <div align='center'>
-                    <img alt='userIcon' src={hacker} width='45%' />
-                  </div>
-                  <p className='subsectBody'>All public votes at YessNo have a limited voting period, 500 votes. After that they are stored in the archive. To participate in currently active votes, click Vote. Or browse the archive to see all that made it to 500!</p>
-                  <div align='center'>
-                    <Link to='/active' className='subsectButton'>Vote</Link>
-                    <Link to='/archive' className='subsectButton'>Archive</Link>
-                  </div>
-                </Col>
-              </Row>
-            </Container>
+              <SprintCTA />
+              <div className='subsectContainer'>
+                <PrivateSubSect />
+                <PublicSubSect />
+                <SprintSubSect />
+              </div>
+            </div>
           </div>
     )
   }

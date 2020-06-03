@@ -1,19 +1,23 @@
-import React, { Component } from 'react';
+import React, {useState} from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import '../App.css';
+import {useSpring, animated as a} from 'react-spring';
 import YesIcon from './headComponents/yesIcon';
 import NoIcon from './headComponents/noIcon';
 import RegMod from './modals/regMod';
 import LogMod from './modals/logMod';
 
 
-class FrontIcon extends Component {
+function FrontIcon(props) {
+    const backgroundAnim = useSpring({
+      opacity: 1,
+      from: {opacity:0},
+      config: {duration: 1000},
+    })
 // SWITCH STATEMENT FOR PAGE TITLE, BASED ON ROUTE PASSED IN FROM APP.JS ROUTER.
-
-  render() {
     let top;
     let desc;
-    switch(this.props.view) {
+    switch(props.view) {
       case 'activeVotes':
         top = <div className='frontDiv'><h1 className='routeTitle' align='center'>Active Votes</h1>
         <h3 className='routeSubTitle' align='center'>Ask The Internet</h3></div>
@@ -69,38 +73,46 @@ class FrontIcon extends Component {
         data. Staying informed on the internet is your greatest weapon.
         </h5>
         break;
+      case 'sprint':
+        top = <div><h1 className='routeTitle' align='center'>Sprints</h1>
+        <h3 className='routeSubTitle' align='center'>Questions... Fast</h3></div>
+        desc = <h5 className='frontDescription'> Sprints are quick yes/no question surveys.
+        Sprint questions are thought up by the YessNo team and all answers are anonymous. Even if you are logged
+        in, your answers are not connected to your account. Sprints are currently in development, coming soon
+        you can make your own public and private Sprints!!
+        </h5>
+        break;
       default:
         top = <div className='frontDiv'><h1 className='routeTitle' align='center'>YessNo</h1>
         <h3 className='routeSubTitle' align='center'>Get Answers.. Fast.</h3></div>
         desc = <h5 className='frontDescription'> YessNo is a streamlined absolutely free voting platform. YessNo deals with
         simple yes or no votes to get quickly and exactly to the point.
-        YessNo offers large scale public votes to the entire internet, as
-        well as private small scale voting for groups of your own choosing.
+        YessNo offers large scale public votes to the entire internet,
+        private small scale voting for groups of your own choosing,
+        as well as rapid-fire yes-no surveys we call sprints.
         Easily build, participate or just browse on all platforms with
         YessNo.
         </h5>
         break;
     }
-    // let cta = this.props.view === '/' ? <button className='CTAButton'>Make A Vote</button> : ''
     return(
-      <div className='topDiv'>
-        {top}
-        <Container>
-          <Row>
-            <Col><YesIcon /></Col>
-            <Col><NoIcon /></Col>
-          </Row>
-          {desc}
-          {!this.props.loggedIn  && this.props.view !== 'viewPrivate' ?
-            <div className='buttonDiv'>
-              <RegMod />
-              <LogMod view={this.props.view}/>
-            </div> : null
-          }
-        </Container>
-      </div>
+        <a.div className='topDiv' style={backgroundAnim}>
+          {top}
+          <Container>
+            <Row>
+              <Col><YesIcon /></Col>
+              <Col><NoIcon /></Col>
+            </Row>
+            {desc}
+            {!props.loggedIn  && props.view !== 'viewPrivate' ?
+              <div className='buttonDiv'>
+                <RegMod />
+                <LogMod view={props.view}/>
+              </div> : null
+            }
+          </Container>
+        </a.div>
     )
-  }
 }
 
 export default FrontIcon;

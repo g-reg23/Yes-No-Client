@@ -24,6 +24,7 @@ class PieChart extends Component {
   }
   render() {
     // CALCULATE PIE CHART STATS AND % YES/NO.
+    let height = this.props.forSprint ? height = 150 : height = 200;
     let total = this.props.yes + this.props.no;
     let yes = (this.props.yes/total)*360;
     let no = (this.props.no/total)*360;
@@ -32,10 +33,19 @@ class PieChart extends Component {
     // SHOW HIGHER AVERAGE. YES VS NO.
     // let avg = avgYes > avgNo ? avgYes : avgNo;
     // SUMMARIZE DATA AND SHOW PIE CHART IF ANY VOTES. OTHERWISE SHOW 'No Votes Yet.'
-    let pie = total > 0 ? <div className='pieDiv' onClick={this.toggle}><h5 className='average'>{avgYes}</h5><h5 style={{textAlign:'center'}} className='total'>{avgNo}</h5><h5 className='total' style={{textAlign:'center'}}>{total} Total Votes</h5><VictoryPie data={[
-      {x:'Yes', y: yes},
-      {x:'No', y: no }
-    ]} height={200} className='pieChart' labelRadius={55}/><p style={{color:'white'}} className='hidePieChart'><u>Click anywhere in results to hide</u></p></div> : <p onClick={this.toggle} className='clickable white'>No votes yet!!</p>
+    let pie = total > 0 ?
+        <div className='pieDiv' onClick={this.toggle}>
+          <div className='pieResultsDiv'>
+            <h5 className='average'>{avgYes}</h5><h5 style={{textAlign:'center'}} className='total'>{avgNo}</h5>
+            <h5 className='total' style={{textAlign:'center'}}>{total} Total Votes</h5>
+          </div>
+          <div className='innerPieDiv'>
+            <VictoryPie data={[
+              {x:'Yes', y: yes},
+              {x:'No', y: no }
+            ]} height={200} className='pieChart' labelRadius={55}/>
+          </div>
+        </div> : <p onClick={this.toggle} className='clickable white'>No votes yet!!</p>
     let click = this.state.showPieChart === false ? <h6 className='clickable clickOff' style={{color:'white'}} onClick={this.toggle}><u>View Results</u></h6> : pie;
     return click;
   }

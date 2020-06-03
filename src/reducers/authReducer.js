@@ -74,10 +74,10 @@ export default function(state=authInitialState, action) {
           type:action.payload.user.type,
         })
     case UPDATE_PROFILE:
+    console.log('gotchou where i want you.')
       return Object.assign({}, state, {
         ...state,
-        username: action.payload.body.username,
-        email: action.payload.body.email,
+        username: action.payload.username,
       });
     case LOGOUT:
       return Object.assign({}, state, authInitialState)

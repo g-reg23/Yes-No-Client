@@ -19,14 +19,14 @@ import { Provider } from 'react-redux';
 import { checkToke } from './actions/authActions';
 import PrivacyPolicy from './privacyPolicy';
 import {Helmet} from 'react-helmet';
-// import Sprint from './components.sprint';
+import Sprint from './components/sprint';
 
 
 class App extends Component {
   componentDidMount(prevProps) {
     let path = window.location.pathname;
     if (prevProps === undefined) {
-      if (path === '/' || path === '/makevote' || path === '/active' || path === '/private' || path === '/privateArchive' || path === '/archive' || path === '/privacyPolicy') {
+      if (path === '/' || path === '/makevote' || path === '/active' || path === '/private' || path === '/privateArchive' || path === '/archive' || path === '/privacyPolicy' || path === '/sprint') {
         store.dispatch(checkToke());
       }
     }
@@ -52,6 +52,7 @@ class App extends Component {
               <Route exact path='/private' component={Private} />
               <Route exact path='/privateArchive' component={PrivateArchive} />
               <Route exact path='/viewPrivate/:id' component={ViewPrivate} />
+              <Route exact path='/sprint' component={Sprint} />
               <Route exact path='/privacyPolicy' component={PrivacyPolicy} />
               <Route exact path='/verify/:id' component={Verify} />
               <Route exact path='/resetPass/:id' component={ResetPass} />

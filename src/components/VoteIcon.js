@@ -1,19 +1,25 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 import voteIcon from '../images/004-voting.svg';
-// import { Tween, Timeline } from 'react-gsap';
+import {useSpring, animated as a} from 'react-spring';
+import VisibilitySensor from 'react-visibility-sensor';
 
 
-class VoteIcon extends Component {
+function VoteIcon() {
+  const [vis, setVis] = useState(false);
+  const backgroundAnim = useSpring({
+    opacity: vis ? 1 : 0,
+    from: {opacity:0},
+    config: {duration: 1000},
+  })
 
-
-  render() {
-    return(
-      <div className='voteIconDiv'>
+  return(
+    <VisibilitySensor onChange={(isVisible) => setVis(isVisible)} partialVisibility>
+      <a.div className='voteIconDiv' style={backgroundAnim}>
         <img src={voteIcon} alt='vote icon' width='30%' className='centerPic' />
-      </div>
-    )
-  }
+      </a.div>
+    </VisibilitySensor>
+  )
 }
 
 export default VoteIcon;

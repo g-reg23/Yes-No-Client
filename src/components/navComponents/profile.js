@@ -18,7 +18,6 @@ class ProfileModal extends Component {
     this.state = {
       profMod: false,
       profName: this.props.auth.username,
-      profEmail: this.props.auth.email,
       profPass: ''
     }
     this.profModal = this.profModal.bind(this);
@@ -55,8 +54,8 @@ class ProfileModal extends Component {
       if (this.state.profName.length > 2 && this.state.profEmail.length > 2 && this.state.profPass.length > 2) {
         let newProfile = {
           _id: this.props.auth._id,
-          username: this.state.profName,
-          email: this.state.profEmail,
+          username:this.props.auth.username,
+          newUsername: this.state.profName,
           password: this.state.profPass,
         };
         this.props.updateProfile(newProfile);
@@ -96,8 +95,8 @@ class ProfileModal extends Component {
               <ModalBody style={{padding:'7% 5% 7% 5%'}}>
                 {social}
                 {modAlert}
+                <p align='center'>Changing your email is currently disabled.</p>
                 <input placeholder='Username' type='text'  className='textInput' ref='username' name='profName' value={this.state.profName} onChange={this.handleProfChange} />
-                <input placeholder='Email' type='email'  className='textInput' ref='email' name='profEmail' value={this.state.profEmail} onChange={this.handleProfChange} />
                 <input placeholder='Password' type='password'  className='textInput' ref='password' name='profPass' onChange={this.handleProfChange} />
               </ModalBody>
               <ModalFooter style={{background:'lightgray'}}>
