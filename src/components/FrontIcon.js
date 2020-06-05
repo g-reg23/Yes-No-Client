@@ -80,7 +80,7 @@ function FrontIcon(props) {
         All answers are anonymous, even if you are logged in, your answers are not connected to your account.
         Sprints are currently in development, coming soon you can make your own public and private Sprints!!
         In the meantime, to have your Sprint or a Sprint question added to the site please email:
-        <a className='' href='mailto:support@yessno.co'><u>support@yessno.co</u></a>.
+        <a className='' href='mailto:support@yessno.co'>support@yessno.co.</a>
 
         </h5>
         break;

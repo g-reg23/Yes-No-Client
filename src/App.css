@@ -22,11 +22,16 @@ a:hover {
 /* New Navbar styling */
 
 .navbar2 {
+    overflow: hidden;
+    position:fixed;
+    top:0;
+    width:100%;
     font-size: 18px;
     background: #8884a4;;
     /* border: 1px solid rgba(0, 0, 0, 0.2); */
-    padding-bottom: 1%;
     margin : 0 !important;
+    z-index:1;
+    padding-bottom: 1%;
     /* font-family: 'Josefin Sans', sans-serif; */
 }
 .main-nav {
@@ -34,7 +39,7 @@ a:hover {
 }
 .main-nav li {
   text-align: center;
-  margin: 15px auto;
+  /* margin: 15px auto; */
 }
 .navbar-brand2{
   display: flex;
@@ -46,6 +51,9 @@ a:hover {
 .navLink2 {
     text-decoration: none;
     color: whitesmoke;
+    white-space:nowrap;
+    padding:14px 10px;
+    font-size: 1rem;
 }
 .navbar-toggle {
   position: absolute;
@@ -1026,7 +1034,20 @@ a:hover {
   }
 }
 /* Media query for regular tablet */
-@media only screen and (min-width:760px) {
+@media only screen and (min-width:768px) {
+  .navLink2 {
+    margin-left:10px;
+    margin-right:3px;
+  }
+  .navbar2 {
+    display:flex;
+    justify-content: space-between;
+  }
+  .main-nav {
+    display: flex;
+    justify-content:space-around;
+    height:2rem;
+  }
   .subsectDiv {
     width:95%;
   }

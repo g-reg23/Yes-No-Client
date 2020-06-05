@@ -53,20 +53,6 @@ class Navi extends Component {
       publicOpen: !this.state.publicOpen
     })
   }
-  privMouseEnter = () => {
-    this.setState({privateOpen: true});
-  }
-
-  privMouseLeave = () => {
-    this.setState({privateOpen: false});
-  }
-  pubMouseEnter = () => {
-    this.setState({publicOpen: true});
-  }
-
-  pubMouseLeave = () => {
-    this.setState({publicOpen: false});
-  }
   render() {
     return (
         <div>
@@ -80,7 +66,7 @@ class Navi extends Component {
                 <Collapse isOpen={this.state.isOpen} navbar>
                   <Nav className='ml-auto' navbar>
                     <Link className='nav-link navLink white-text' to='/sprint' onClick={this.toggle} style={style}>Sprint</Link>
-                    <Dropdown isOpen={this.state.privateOpen} toggle={this.privateToggle} onMouseOver={this.privMouseEnter} onMouseLeave={this.privMouseLeave}>
+                    <Dropdown isOpen={this.state.privateOpen} toggle={this.privateToggle}>
                       <DropdownToggle nav caret className='nav-link navLink white-text' style={style}>
                         Private
                       </DropdownToggle>
@@ -89,7 +75,7 @@ class Navi extends Component {
                         <Link className='nav-link navLink dropdownItem white-text' to='/privateArchive' onClick={this.toggle} style={style}>Archive</Link>
                       </DropdownMenu>
                     </Dropdown>
-                    <Dropdown isOpen={this.state.publicOpen} toggle={this.publicToggle} onMouseOver={this.pubMouseEnter} onMouseLeave={this.pubMouseLeave}>
+                    <Dropdown isOpen={this.state.publicOpen} toggle={this.publicToggle}>
                       <DropdownToggle nav caret className='nav-link navLink white-text' style={style}>
                         Public
                       </DropdownToggle>

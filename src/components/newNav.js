@@ -25,48 +25,65 @@ function Navi() {
   function handleToggle() {
     setToggle(!toggle);
   }
+  const [width, setWidth] = useState(window.innerWidth);
+  window.addEventListener('resize', handleResize);
+  window.addEventListener('click', clickToggle);
+  function clickToggle() {
+    console.log('hi');
+  }
+  function handleResize() {
+    setWidth(window.innerWidth);
+  }
+  const privStyle = {
+    display: privTog ? 'block' : 'none'
+  }
+  const pubStyle = {
+    display: pubTog ? 'block' : 'none'
+  }
+  console.log(window.innerWidth);
   return(
     <nav class="navbar2">
-        <div class="navbar-toggle" id="js-navbar-toggle">
-          <Hamb click={handleToggle}/>
-        </div>
+      {width < 769 ?
+          <div class="navbar-toggle" id="js-navbar-toggle">
+            <Hamb click={handleToggle}/>
+          </div> : null }
         <Link className='navbar-brand2' to='/'>
           <PollSVG />
           <span className='ynNavBrand'>YessNo</span>
         </Link>
-        {toggle ?
-          <ul class="main-nav" id="js-menu">
-            <li>
+        {toggle || width > 769 ?
+          <div class="main-nav" id="js-menu">
+            <div>
               <Link to='/sprint' className="navLink2" onClick={() => setToggle(!toggle)}>Sprint</Link>
-            </li>
-            <li>
-              <Link to='#' className="navLink2" onClick={() => setPriv(!privTog)}>Private</Link><div className='caretDiv'><CaretDown /></div>
+            </div>
+            <div>
+              <Link to='#' className="navLink2" onClick={() => setPriv(!privTog)}>Private</Link>
               {privTog ?
-                <div className='dropDownDiv'>
+                <div className='dropDownDiv' style={privStyle}>
                   <Link to='/private' className='navLink2 dropItem' onClick={() => setToggle(!toggle)}>Active</Link>
                   <Link to='/privateArchive' className='navLink2 dropItem' onClick={() => setToggle(!toggle)}>Archive</Link>
                 </div> : null
               }
-            </li>
-            <li>
+            </div>
+            <div>
               <Link to='#' className="navLink2" onClick={() => setPub(!pubTog)}>Public</Link>
               {pubTog ?
-                <div className='dropDownDiv'>
+                <div className='dropDownDiv' style={pubStyle}>
                   <Link to='/active' className='navLink2 dropItem' onClick={() => setToggle(!toggle)}>Active</Link>
                   <Link to='/archive' className='navLink2 dropItem' onClick={() => setToggle(!toggle)}>Archive</Link>
                 </div> : null
               }
-            </li>
-            <li>
+            </div>
+            <div>
               <Link to='/' class="navLink2" onClick={() => setToggle(!toggle)}>Home</Link>
-            </li>
-            <li>
+            </div>
+            <div>
               <LoginModal />
-            </li>
-            <li>
+            </div>
+            <div>
               <RegisterModal />
-            </li>
-          </ul> : null
+            </div>
+          </div> : null
         }
       </nav>
   )
